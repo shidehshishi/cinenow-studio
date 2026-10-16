@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Insights</title>
+<meta name="description" content="Perspectives on film IP, tokenisation and the future of alternative assets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* About page. Same system as the homepage: black and paper grounds, one spectrum signal,
+   Newsreader for ideas, Plus Jakarta Sans for data and labels. */
+:root{
+  color-scheme: dark;
+  --black:#0C0C0C; --charcoal:#2A2A2A; --paper:#F8F7F4;
+  --paper-2:#EFEDE8; --line-p:#D9D6CF; --line-d:#262626;
+  --mute-d:#A9A69F; --mute-d2:#7F7C76; --mute-p:#57544E; --mute-p2:#76736C; --soft-d:#C8C5BE;
+  --s1:#16A0F4; --s2:#7041E0; --s3:#E01CAB; --s4:#FF3787; --s5:#FF5B1F;
+  --spectrum: linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5));
+  --serif:'Newsreader','Iowan Old Style',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --t-display: clamp(42px, min(5.4vw, 9.6vh), 100px);
+  --t-head: clamp(36px, min(5.2vw, 8.4vh), 84px);
+  --t-state: clamp(18px, min(1.55vw, 2.8vh), 24px);
+  --t-body: 17px; --t-small: 14px; --t-label: 12px;
+  --gutter: clamp(16px, 4.4vw, 72px);
+  --nav-h: 84px;
+  --r-tile: 22px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--black)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--black);color:var(--paper);font-family:var(--sans);font-size:var(--t-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--s1);outline-offset:4px}
+h1,h2,h3{font-weight:400;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{width:100%;max-width:calc(1200px + 2 * var(--gutter));margin:0 auto;padding-inline:var(--gutter)}
+.label{margin:0;font-size:var(--t-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
+.head{margin:0;font-family:var(--serif);font-size:var(--t-head);line-height:1;letter-spacing:-.03em}
+.state{margin:0;font-family:var(--serif);font-size:var(--t-state);line-height:1.35}
+.ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.ln > span{display:inline-block}
+.spec{display:flex}
+.spec i{flex:1}
+.spec i:nth-child(1){background:var(--s1)}.spec i:nth-child(2){background:var(--s2)}.spec i:nth-child(3){background:var(--s3)}.spec i:nth-child(4){background:var(--s4)}.spec i:nth-child(5){background:var(--s5)}
+.dark{background:var(--black);color:var(--paper)}
+.paper{background:var(--paper);color:var(--black)}
+.sec{position:relative;padding-block:clamp(80px,12vh,140px)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;font-size:15px;font-weight:500;border-radius:999px;border:1px solid currentColor;background:none;cursor:pointer;transition:background-color .25s ease,color .25s ease,transform .12s ease-out}
+.btn svg{width:16px;height:16px;transition:transform .45s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:scale(.97)}
+.btn-solid-l{background:var(--paper);color:var(--black);border-color:transparent}
+.btn-solid-l:hover{background:#fff}
+
+/* nav: the same glass pill as the homepage */
+.progress{position:fixed;left:0;top:0;right:0;height:2px;z-index:60;background:var(--spectrum);transform-origin:left;transform:scaleX(0)}
+.nav{position:fixed;left:0;right:0;top:calc(12px + env(safe-area-inset-top,0px));z-index:50;pointer-events:none;color:var(--paper);transition:transform .6s var(--ease)}
+.nav.is-hidden{transform:translateY(-140%)}
+.nav-in{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:min(1200px,calc(100% - 2 * var(--gutter)));height:60px;margin:0 auto;padding:0 8px 0 22px;border-radius:999px;
+  background:rgba(20,20,20,.58);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid rgba(255,255,255,.09);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 14px 40px rgba(0,0,0,.22)}
+.logo{display:inline-flex;align-items:center}
+.logo svg{width:118px;height:26px;display:block}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500}
+.nav-links a:not(.btn){opacity:.72;transition:opacity .3s;position:relative}
+.nav-links a:not(.btn):hover,.nav-links a[aria-current]{opacity:1}
+.nav-links a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--spectrum)}
+.nav .btn{background:var(--paper);color:var(--black);border:0;min-height:44px;padding:0 20px;font-size:14px}
+.nav .btn:hover{background:#fff;transform:translateY(-1px)}
+.menu-btn{display:none;min-height:44px;min-width:44px;padding:0 16px;background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:999px;cursor:pointer;font-size:14px;font-weight:500}
+@media (max-width:960px){.nav-links{display:none}.menu-btn{display:inline-flex;align-items:center}}
+.menu{position:fixed;inset:0;z-index:70;background:var(--black);color:var(--paper);padding:calc(var(--nav-h) + 24px) var(--gutter) 40px;display:flex;flex-direction:column;justify-content:space-between}
+.menu[hidden]{display:none}
+.menu nav{display:flex;flex-direction:column;gap:6px}
+.menu nav a{font-family:var(--serif);font-size:44px;line-height:1.2}
+.menu nav a[aria-current]{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+.menu .close-btn{position:absolute;top:calc(20px + env(safe-area-inset-top,0px));right:var(--gutter);display:inline-flex}
+
+/* intro shutter (page arrival) */
+.shutter,.shutter-bg{position:fixed;inset:0;z-index:130;pointer-events:none;display:none}
+.shutter-bg{z-index:129;background:var(--black)}
+html.js-motion .shutter,html.js-motion .shutter-bg{display:flex}
+.shutter i{flex:1 1 0;margin-right:-1px;transform-origin:bottom}.shutter i:last-child{margin-right:0}
+.shutter i:nth-child(1){background:var(--s1)}.shutter i:nth-child(2){background:var(--s2)}.shutter i:nth-child(3){background:var(--s3)}.shutter i:nth-child(4){background:var(--s4)}.shutter i:nth-child(5){background:var(--s5)}
+
+/* section intro, centred like the homepage */
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;max-width:1000px;margin:0 auto}
+.sec-head .state{max-width:46ch}
+.idx{display:inline-flex;align-items:center;gap:12px}
+.idx b{font-weight:700}
+.idx i{display:block;width:28px;height:1px;background:currentColor;opacity:.4}
+.dark .idx{color:var(--mute-d)}
+.paper .idx{color:var(--mute-p2)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:stretch;overflow:hidden}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,96px);align-items:end;
+  padding-top:calc(var(--nav-h) + clamp(40px,9vh,120px));padding-bottom:clamp(40px,7vh,88px)}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--mute-d)}
+.kicker .spec{position:relative;width:46px;height:5px;overflow:hidden}
+.kicker .spec::after{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-110%);animation:glint 5.2s cubic-bezier(.45,0,.25,1) 1.8s infinite}
+@keyframes glint{0%{transform:translateX(-110%)}38%,100%{transform:translateX(200%)}}
+.display{margin:clamp(20px,3vh,32px) 0 0;font-family:var(--serif);font-size:var(--t-display);line-height:.95;letter-spacing:-.035em}
+.claims{list-style:none;margin:clamp(28px,4.4vh,48px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line-d);max-width:640px}
+.claims li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-d);font-family:var(--serif);font-size:clamp(19px,min(1.6vw,2.8vh),24px);line-height:1.3}
+.claims li span{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--mute-d2)}
+.hero-p{margin:clamp(22px,3.4vh,34px) 0 0;max-width:56ch;color:var(--soft-d);font-size:16px;line-height:1.65}
+.hero-media{position:relative;align-self:stretch;min-height:420px;max-height:calc(100svh - var(--nav-h) - 80px)}
+.hero-media .frame{position:absolute;inset:0;overflow:hidden;background:#141414}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-media .slate{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:8px;padding:14px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.hero-media .slate span{background:rgba(12,12,12,.74);padding:5px 8px}
+.hero-media .spec{position:absolute;left:0;right:0;bottom:0;height:3px}
+@media (max-width:1023px){
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:minmax(0,1fr);padding-top:calc(var(--nav-h) + 40px)}
+  .hero-media{min-height:0;aspect-ratio:4/5;max-height:none}
+}
+
+
+/* hero, calmer: one headline, one supporting line, one paragraph, one image */
+.hero .display{font-size:clamp(40px,min(4.9vw,9vh),88px);line-height:1;letter-spacing:-.03em}
+.hero .display .ln > span{white-space:nowrap}
+.hero-sub{margin:clamp(22px,3.2vh,32px) 0 0;max-width:42ch;font-family:var(--serif);font-size:clamp(20px,min(1.7vw,3vh),26px);line-height:1.38;color:var(--soft-d)}
+.hero-p{margin-top:clamp(18px,2.6vh,26px);max-width:52ch;color:var(--mute-d);font-size:15px}
+.hero-grid{align-items:center}
+@media (max-width:640px){.hero .display .ln > span{white-space:normal}}
+
+
+/* hero v2: the frame bleeds off the right edge, the copy sits in the dark beside it */
+@media (min-width:1024px){
+  .hero{min-height:100vh;min-height:100svh}
+  .hero-grid{grid-template-columns:minmax(0,1fr);align-items:center;min-height:100vh;min-height:100svh;padding-top:calc(var(--nav-h) + 24px);padding-bottom:48px}
+  .hero-grid{position:static}
+  .hero-grid > div:first-child{position:relative;z-index:2;max-width:min(660px,52%)}
+  .hero-media{position:absolute;top:0;right:0;bottom:0;width:min(54vw,880px);min-height:0;max-height:none;z-index:1}
+  .hero-media .frame{inset:0}
+  .hero-media img{object-position:50% 22%}
+  .hero-media::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,var(--black) 0%,rgba(12,12,12,.82) 12%,rgba(12,12,12,.25) 34%,rgba(12,12,12,0) 52%),
+               linear-gradient(0deg,rgba(12,12,12,.7) 0%,rgba(12,12,12,0) 26%),
+               linear-gradient(180deg,rgba(12,12,12,.55) 0%,rgba(12,12,12,0) 18%)}
+  .hero-media .spec{z-index:2;left:0}
+  .hero-grid > div:first-child{container-type:inline-size}
+  .hero .display{font-size:clamp(36px,min(8vh,9.6cqw),68px)}
+}
+
+/* ============ ROUTE: BVI → UAE → India ============ */
+.route{padding-block:clamp(64px,10vh,120px) clamp(80px,12vh,140px);border-top:1px solid #1A1A1A}
+.route-map{position:relative;margin-top:clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.route-line{position:absolute;left:calc(100% / 6);right:calc(100% / 6);top:27px;height:2px;background:#2A2A2A;overflow:hidden}
+.route-line i{position:absolute;inset:0;background:var(--spectrum);transform-origin:left}
+.route-line b{position:absolute;top:-2px;width:60px;height:6px;border-radius:6px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.85;animation:pulse-move 4.8s cubic-bezier(.45,0,.25,1) infinite}
+@keyframes pulse-move{0%{left:-60px}70%,100%{left:100%}}
+.node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.node .dot{position:relative;width:56px;height:56px;border-radius:50%;background:var(--black);border:1px solid #3A3A3A;display:grid;place-items:center}
+.node .dot::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--paper)}
+.node.gate .dot{width:56px;height:56px;border:0;background:conic-gradient(from 200deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5),var(--s1))}
+.node.gate .dot::before{content:"";position:absolute;inset:2px;border-radius:50%;background:var(--black)}
+.node.gate .dot::after{position:relative;z-index:1}
+.node.gate .dot{box-shadow:0 0 50px rgba(224,28,171,.25)}
+.node .code{font-family:var(--serif);font-size:clamp(38px,4.4vw,72px);line-height:1;letter-spacing:-.03em}
+.node .role{color:var(--mute-d)}
+.node p{margin:0;max-width:30ch;color:var(--soft-d);font-size:var(--t-small);line-height:1.55}
+.route-note{margin:clamp(48px,7vh,80px) auto 0;max-width:62ch;text-align:center;font-family:var(--serif);font-size:clamp(20px,min(1.8vw,3vh),28px);line-height:1.4;color:var(--paper)}
+.route-note em{font-style:normal;color:var(--mute-d)}
+@media (max-width:760px){
+  .route-map{grid-template-columns:minmax(0,1fr);gap:40px;padding-left:0}
+  .route-line{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto}
+  .route-line i{transform-origin:top}
+  .route-line b{display:none}
+  .node{display:grid;grid-template-columns:56px minmax(0,1fr);text-align:left;align-items:start;column-gap:20px;row-gap:6px}
+  .node .dot{grid-row:1/4}
+  .node .code{font-size:40px}
+}
+
+/* ============ AT A GLANCE ============ */
+.glance-grid{margin-top:clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.g-card{background:#fff;border-radius:var(--r-tile);padding:clamp(22px,2vw,30px);display:flex;flex-direction:column;gap:18px;min-width:0;box-shadow:0 1px 0 rgba(12,12,12,.04)}
+.g-vis{height:132px;display:flex;align-items:flex-end}
+.g-num{margin:0;font-family:var(--serif);font-size:clamp(48px,min(4.6vw,8vh),80px);line-height:.95;letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.g-cap{margin:0;font-size:15px;line-height:1.5;color:var(--mute-p);max-width:24ch}
+.g-key{margin-top:auto;padding-top:14px;border-top:1px solid var(--paper-2);font-size:12px;color:var(--mute-p2)}
+/* fund gauge */
+.gauge{width:100%}
+.gauge .ticks{display:flex;justify-content:space-between;align-items:flex-end;height:96px}
+.gauge .ticks i{width:2px;background:var(--line-p);height:28%;border-radius:2px}
+.gauge .ticks i:nth-child(5n+1){height:46%}
+.gauge .ticks i.on{background:var(--black)}
+.gauge .track{position:relative;height:8px;margin-top:10px;border-radius:8px;background:var(--paper-2);overflow:hidden}
+.gauge .track b{position:absolute;inset:0;background:var(--spectrum);transform-origin:left;border-radius:8px}
+.gauge .ends{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mute-p2)}
+/* film frames */
+.frames{width:100%;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px}
+.frames i{aspect-ratio:3/4;border-radius:3px;background:var(--black);position:relative}
+.frames i::before,.frames i::after{content:"";position:absolute;left:22%;right:22%;height:2px;background:rgba(255,255,255,.28);border-radius:1px}
+.frames i::before{top:12%}.frames i::after{bottom:12%}
+/* waffle */
+.waffle{width:132px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;margin-inline:0 auto}
+.waffle i{aspect-ratio:1;border-radius:2px;background:var(--paper-2)}
+.waffle i.on{background:var(--c,var(--black))}
+/* script marks */
+.marks{width:100%;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:3px}
+.marks i{aspect-ratio:1;border-radius:50%;background:var(--black)}
+@media (max-width:1100px){.glance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.glance-grid{grid-template-columns:minmax(0,1fr)}.g-vis{height:auto;min-height:100px}}
+
+/* ============ 01 GOVERNANCE ============ */
+.split{margin:clamp(48px,7vh,80px) auto 0;max-width:1200px}
+.split-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap,0px)}
+.party{position:relative;background:#141414;padding:clamp(18px,1.8vw,26px);min-height:clamp(150px,20vh,190px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid #222}
+.split-row .party:first-child{border-radius:var(--r,0px) 0 0 var(--r,0px)}
+.split-row .party:last-child{border-radius:0 var(--r,0px) var(--r,0px) 0}
+.party .label{color:var(--mute-d2)}
+.party h3{margin:0;font-family:var(--serif);font-size:clamp(22px,min(2vw,3.6vh),30px);line-height:1.08}
+.party .verb{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--soft-d)}
+.party .verb i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.party.lead{background:#191919}
+.split-cap{margin-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute-d2);font-size:13px}
+.split-cap strong{color:var(--paper);font-weight:500}
+@media (max-width:860px){.split-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.split-row .party{border-radius:16px!important}}
+.ledger{list-style:none;margin:clamp(56px,9vh,104px) auto 0;padding:0;max-width:1200px;border-top:1px solid var(--line-d)}
+.ledger-head{max-width:1200px;margin:clamp(72px,10vh,120px) auto 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.ledger-head .label{color:var(--mute-d)}
+.ledger-head p:not(.label){margin:0;font-family:var(--serif);font-size:clamp(24px,2.4vw,36px);line-height:1.1;letter-spacing:-.02em}
+.ledger-head + .ledger{margin-top:24px}
+.row{position:relative;display:grid;grid-template-columns:72px minmax(0,1.05fr) minmax(0,1.2fr) minmax(0,.95fr);gap:24px clamp(20px,3vw,48px);align-items:start;padding:clamp(24px,3.4vh,36px) 0;border-bottom:1px solid var(--line-d);transition:background-color .4s var(--ease)}
+.row::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.row .n{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--mute-d2);padding-top:10px;font-variant-numeric:tabular-nums}
+.row h3{margin:0;font-family:var(--serif);font-size:clamp(26px,min(2.4vw,4vh),40px);line-height:1.05;letter-spacing:-.02em;transition:transform .5s var(--ease)}
+.row p{margin:0;color:var(--soft-d);font-size:15px;line-height:1.6;max-width:46ch;padding-top:6px}
+.firms{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;padding-top:4px}
+.firms span{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:999px;border:1px solid #333;font-size:13px;font-weight:500;color:var(--paper);white-space:nowrap;transition:border-color .3s,background-color .3s}
+@media (hover:hover){
+  .row:hover::after{transform:scaleX(1)}
+  .row:hover h3{transform:translateX(6px)}
+  .row:hover .firms span{border-color:#5A5A5A;background:#151515}
+}
+@media (max-width:960px){
+  .row{grid-template-columns:44px minmax(0,1fr);gap:12px 16px}
+  .row p,.row .firms{grid-column:2}
+  .firms{justify-content:flex-start}
+}
+
+/* ============ 02 PARTNERS ============ */
+.filters{margin:clamp(40px,6vh,64px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:1200px}
+.filters button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-p);background:transparent;color:var(--mute-p);font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .25s,color .25s,border-color .25s,transform .12s}
+.filters button:hover{border-color:var(--black);color:var(--black)}
+.filters button:active{transform:scale(.97)}
+.filters button[aria-pressed="true"]{background:var(--black);border-color:var(--black);color:var(--paper)}
+.filters button small{font-size:11px;font-weight:700;opacity:.6;font-variant-numeric:tabular-nums}
+.directory{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.firm{position:relative;background:#fff;border-radius:18px;padding:22px 22px 20px;min-height:168px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;overflow:hidden;
+  transition:opacity .45s var(--ease),transform .45s var(--ease),filter .45s var(--ease),box-shadow .3s}
+.firm .cat{display:flex;justify-content:space-between;gap:8px;color:var(--mute-p2)}
+.firm h3{margin:0;font-family:var(--serif);font-size:clamp(24px,1.9vw,30px);line-height:1.05;letter-spacing:-.02em}
+.firm .role{margin:6px 0 0;font-size:14px;color:var(--mute-p);line-height:1.45}
+.firm .bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.firm-link{position:relative;flex:1;padding:22px 22px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;border-radius:inherit;color:inherit}
+.firm:has(.firm-link){padding:0}
+@media (max-width:480px){.firm-link{padding:16px}}
+.firm-link:focus-visible{outline:2px solid var(--s1);outline-offset:3px}
+.firm .ext{width:16px;height:16px;color:var(--mute-p2);opacity:.5;transition:opacity .3s,transform .4s var(--ease),color .3s}
+@media (hover:hover){.firm:hover .ext{opacity:1;color:var(--black);transform:translate(2px,-2px)}}
+.firm-link .cat{align-items:center}
+.firm.is-dim{opacity:.28;filter:grayscale(1);transform:scale(.985)}
+.firm.is-on .bar{transform:scaleX(1)}
+@media (hover:hover){.firm:hover{box-shadow:0 18px 40px rgba(12,12,12,.08)}.firm:hover .bar{transform:scaleX(1)}}
+.firm.unnamed{background:transparent;border:1px dashed #BDB9B1}
+.firm.unnamed h3{color:var(--mute-p)}
+.notes{margin:clamp(28px,4vh,40px) auto 0;max-width:1000px;display:flex;justify-content:center;gap:12px 40px;color:var(--mute-p);font-size:14px;line-height:1.6}
+.notes p{margin:0;display:flex;gap:12px}
+.notes p::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--black)}
+@media (max-width:1100px){.directory{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:820px){.directory{grid-template-columns:repeat(2,minmax(0,1fr))}.notes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.directory{gap:8px}.firm{min-height:0;padding:16px;border-radius:16px}.firm h3{font-size:21px}.firm .role{font-size:13px}.firm .cat{font-size:10px}}
+
+/* ============ 03 STRUCTURE ============ */
+.struct{margin-top:clamp(48px,7vh,80px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);align-items:stretch}
+.regcard{position:relative;border-radius:var(--r-tile);background:linear-gradient(160deg,#171717,#101010);border:1px solid #242424;padding:clamp(24px,2.6vw,40px);overflow:hidden;display:flex;flex-direction:column;gap:26px}
+.regcard .mark{position:absolute;right:-40px;bottom:-50px;width:260px;color:#1C1C1C;pointer-events:none}
+.regcard .top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--mute-d)}
+.regcard .top .spec{width:56px;height:5px}
+.regcard dl{position:relative;margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 28px}
+.regcard dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d2);margin-bottom:6px}
+.regcard dd{margin:0;font-family:var(--serif);font-size:clamp(20px,1.7vw,26px);line-height:1.2}
+.regcard .wide{grid-column:1/-1}
+.regcard dd.num{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.offer{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.offer p{margin:0;font-family:var(--serif);font-size:clamp(20px,min(1.7vw,3vh),27px);line-height:1.4}
+.offer p + p{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--soft-d)}
+.offer .regs{display:flex;flex-wrap:wrap;gap:8px}
+.offer .regs span{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;border:1px solid #333;font-size:13px;color:var(--soft-d)}
+.offer .regs span::before{content:"";width:10px;height:1.5px;background:var(--s5);transform:rotate(-45deg)}
+@media (max-width:960px){.struct{grid-template-columns:minmax(0,1fr)}.regcard dl{grid-template-columns:minmax(0,1fr)}}
+
+.doc{margin-top:clamp(40px,6vh,64px);position:relative;background:var(--paper);color:var(--black);border-radius:var(--r-tile);overflow:hidden}
+.doc-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:clamp(20px,2.4vw,32px) clamp(20px,3vw,48px);border-bottom:1px solid var(--line-p)}
+.doc-head h3{margin:0;font-family:var(--serif);font-size:clamp(24px,2.2vw,34px);line-height:1.1;letter-spacing:-.02em}
+.doc-head .label{color:var(--mute-p2)}
+.doc-body{position:relative;max-height:520px;overflow:hidden;transition:max-height .9s var(--ease)}
+.doc.open .doc-body{max-height:none}
+.doc.open .doc-cols{max-width:none;columns:2 380px}
+.doc-cols{padding:clamp(24px,3vw,44px) clamp(20px,3vw,48px) clamp(80px,10vh,110px);max-width:88ch;column-gap:clamp(28px,4vw,64px);font-size:13px;line-height:1.7;color:#3C3A36}
+.doc-cols p{margin:0 0 14px;break-inside:avoid-column}
+.doc-cols h4{margin:22px 0 10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);break-after:avoid}
+.doc-cols h4:first-child{margin-top:0}
+.doc-fade{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,rgba(248,247,244,0),var(--paper) 72%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:28px;pointer-events:none;transition:opacity .4s}
+.doc-fade .btn{pointer-events:auto;background:var(--black);color:var(--paper);border-color:var(--black)}
+.doc-fade .btn:hover{background:var(--charcoal)}
+.doc.open .doc-fade{position:static;height:auto;background:none;padding:0 0 32px}
+.doc.open .doc-fade .btn svg{transform:rotate(180deg)}
+.doc-fade .btn svg{transition:transform .4s var(--ease)}
+
+
+/* stills reel */
+.stills{padding-block:clamp(8px,1.4vh,14px) clamp(64px,9vh,104px);display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.reel{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reel-track{display:flex;gap:10px;width:max-content;will-change:transform}
+.reel-track img{height:clamp(140px,22vh,240px);width:auto;aspect-ratio:4/5;object-fit:cover;background:#161616;filter:saturate(.9);transition:filter .4s}
+.reel-track img:hover{filter:saturate(1.15)}
+/* image band */
+.band-img{position:relative;height:clamp(420px,78vh,760px);overflow:hidden;background:var(--black);color:var(--paper);display:flex;align-items:flex-end}
+.band-media{position:absolute;inset:0;overflow:hidden}
+.band-media img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.band-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.55),rgba(12,12,12,0) 30%,rgba(12,12,12,0) 45%,rgba(12,12,12,.88))}
+.band-copy{position:relative;z-index:1;padding-bottom:clamp(40px,8vh,88px)}
+.band-line{margin:0;max-width:22ch;font-family:var(--serif);font-size:clamp(34px,min(4.6vw,7.6vh),76px);line-height:1.02;letter-spacing:-.03em}
+.band-line .dim{color:rgba(248,247,244,.6)}
+/* partner logos */
+.firm .logo-ph{min-height:44px;display:flex;align-items:center}
+.firm .logo-ph img{height:var(--h,30px);width:auto;max-width:100%}
+.firm .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* ============ TEAM ============ */
+.t-tabs{margin:clamp(40px,6vh,64px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:1200px}
+.t-tabs button{min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line-p);background:transparent;color:var(--mute-p);font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .25s,color .25s,border-color .25s,transform .12s}
+.t-tabs button:hover{border-color:var(--black);color:var(--black)}
+.t-tabs button:active{transform:scale(.97)}
+.t-tabs button[aria-selected="true"]{background:var(--black);border-color:var(--black);color:var(--paper)}
+.t-tabs small{font-size:11px;font-weight:700;opacity:.6;font-variant-numeric:tabular-nums}
+.t-mandate{margin:28px auto 0;max-width:760px;min-height:64px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.t-gname{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-p2)}
+.t-gtext{font-family:var(--serif);font-size:clamp(19px,1.6vw,24px);line-height:1.35;color:var(--black)}
+.t-grid{list-style:none;margin:clamp(32px,5vh,52px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.6vw,24px) clamp(12px,1.4vw,20px)}
+.pc{min-width:0}
+.pc button{all:unset;display:flex;flex-direction:column;gap:4px;width:100%;cursor:pointer;border-radius:4px}
+.pc button:focus-visible{outline:2px solid var(--s1);outline-offset:6px}
+.pc .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);margin-bottom:12px}
+.pc .ph img{width:100%;height:100%;object-fit:cover;transform-origin:50% 100%;transition:transform 1s var(--ease),filter .6s var(--ease)}
+.pc .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.pc .more{position:absolute;left:12px;bottom:14px;display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;background:rgba(12,12,12,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--paper);font-size:12px;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .45s var(--ease)}
+.pc .more svg{width:12px;height:12px}
+.pc h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.5vw,23px);line-height:1.15}
+.pc .role{margin:0;color:var(--mute-p2);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.4}
+.pc .grp{margin:2px 0 0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-p2);opacity:.75}
+@media (hover:hover){
+  .pc button:hover .ph img{transform:scale(1.04)}
+  .pc button:hover .ph::after{transform:scaleX(1)}
+  .pc button:hover .more{opacity:1;transform:none}
+}
+.pc .more.always{opacity:1;transform:none}
+@media (hover:none){.pc .more{opacity:1;transform:none}}
+@media (max-width:1100px){.t-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:820px){.t-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.t-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding:2px var(--gutter);scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}.t-tabs::-webkit-scrollbar{display:none}.t-tabs button{flex:none}}
+@media (max-width:560px){.t-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pc .more{left:8px;bottom:8px;min-height:30px;padding:0 10px;font-size:11px}}
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:90}
+.drawer[hidden]{display:none}
+.dr-scrim{position:absolute;inset:0;background:rgba(12,12,12,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dr-panel{position:absolute;top:0;right:0;bottom:0;width:min(620px,100%);background:var(--paper);color:var(--black);overflow-y:auto;overscroll-behavior:contain;padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:24px;box-shadow:-30px 0 80px rgba(0,0,0,.35)}
+.dr-close{position:sticky;top:0;align-self:flex-end;width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--line-p);background:var(--paper);display:grid;place-items:center;cursor:pointer;z-index:2;margin-bottom:-68px}
+.dr-close svg{width:18px;height:18px}
+.dr-top{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:end;padding-right:56px}
+.dr-ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+.dr-ph img{width:100%;height:100%;object-fit:cover}
+.dr-id .label{color:var(--mute-p2)}
+.dr-id h3{margin:10px 0 0;font-family:var(--serif);font-size:clamp(30px,3vw,42px);line-height:1;letter-spacing:-.02em}
+.dr-role{margin:10px 0 0;font-size:15px;color:var(--mute-p)}
+.dr-heads{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--line-p);display:flex;flex-wrap:wrap;gap:8px}
+.dr-heads li{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line-p);font-size:12px;color:var(--mute-p)}
+.dr-heads:empty{display:none}
+.dr-links{display:flex;flex-wrap:wrap;gap:8px}
+.dr-links:empty{display:none}
+.dr-links a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 12px;border-radius:999px;background:var(--black);color:var(--paper);font-size:13px;font-weight:600;transition:transform .2s var(--ease),background-color .25s}
+.dr-links a:hover{background:var(--charcoal);transform:translateY(-1px)}
+.dr-links svg{width:16px;height:16px}
+.dr-links a.is-imdb{padding:0 12px}
+.dr-links svg.imdb{width:38px;height:19px;display:block}
+
+.dr-body p{margin:0 0 16px;font-size:15px;line-height:1.7;color:#3C3A36}
+.dr-body p.lead{font-family:var(--serif);font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:var(--black)}
+.dr-nav{display:flex;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line-p);margin-top:auto}
+.dr-nav .btn{min-height:44px;padding:0 20px;font-size:14px}
+@media (max-width:560px){.dr-top{grid-template-columns:96px minmax(0,1fr);gap:16px}}
+
+
+/* ============ INVESTOR ACCESS ============ */
+.access{position:relative;overflow:hidden;min-height:clamp(520px,86vh,820px);display:flex;align-items:center}
+.access-media{position:absolute;inset:0;overflow:hidden}
+.access-media img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;object-position:50% 50%}
+.access::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(12,12,12,.35),rgba(12,12,12,.86) 72%),linear-gradient(180deg,rgba(12,12,12,.6),rgba(12,12,12,.2) 40%,rgba(12,12,12,.9))}
+.access-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(80px,12vh,140px)}
+.access .state{max-width:46ch;color:var(--soft-d)}
+.access .ctas{margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn-ghost{color:var(--paper);border-color:rgba(248,247,244,.45);background:rgba(12,12,12,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--paper);background:rgba(248,247,244,.08)}
+
+
+/* filter + team tabs: plain pills, outline only (no inner flex boxes, no native button styling) */
+.filters button,.t-tabs button{-webkit-appearance:none;appearance:none;display:inline-block;line-height:40px;height:42px;min-height:0;white-space:nowrap;background-color:transparent;background-image:none;box-shadow:none;outline-offset:3px}
+.filters button::-moz-focus-inner,.t-tabs button::-moz-focus-inner{border:0;padding:0}
+.filters button span,.t-tabs button span,.filters button small,.t-tabs button small{display:inline;border:0;background:none;box-shadow:none;outline:0;text-decoration:none}
+.filters button small,.t-tabs button small{margin-left:8px}
+.filters button[aria-pressed="true"],.t-tabs button[aria-selected="true"]{background-color:var(--black)}
+
+/* ============ CLOSE + FOOTER (same as homepage) ============ */
+.close{padding-block:clamp(56px,8vh,96px) clamp(28px,4vh,40px);border-top:1px solid #1A1A1A}
+.close .wrap{display:flex;flex-direction:column;gap:clamp(16px,2.6vh,36px)}
+.signoff{margin:0;font-family:var(--serif);font-size:clamp(40px,min(6vw,9.6vh),112px);line-height:1;letter-spacing:-.03em}
+.signoff .become{background:linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:start;padding-top:clamp(18px,3vh,28px);border-top:1px solid var(--line-d)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:var(--t-small)}
+.foot-links a{color:var(--soft-d);transition:color .3s}
+.foot-links a:hover,.foot-links a[aria-current]{color:var(--paper)}
+.foot .disc{grid-column:1/-1;margin:0;max-width:110ch;font-size:12px;line-height:1.6;color:var(--mute-d2)}
+.foot .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--mute-d2)}
+.foot .legal .spec{width:56px;height:5px;align-self:center}
+@media (max-width:760px){.foot{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion: reduce){
+  .kicker .spec::after,.route-line b{animation:none;opacity:0}
+  *{transition-duration:.01ms!important}
+}
+/* ================= INSIGHTS ================= */
+.chip{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid currentColor;font-size:11.5px;font-weight:600;letter-spacing:.01em;opacity:.9}
+/* hero: a wall of real headlines drifts behind the title */
+.ins-hero{position:relative;overflow:hidden;min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--nav-h) + 48px);padding-bottom:72px}
+.wall{position:absolute;inset:-16% -10%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;transform:perspective(1400px) rotateX(16deg) rotateZ(-6deg) scale(1.08);transform-origin:50% 40%;opacity:.42;-webkit-mask:radial-gradient(ellipse 62% 52% at 50% 52%,rgba(0,0,0,.25) 12%,#000 62%);mask:radial-gradient(ellipse 62% 52% at 50% 52%,rgba(0,0,0,.25) 12%,#000 62%);pointer-events:none}
+.wcol{overflow:hidden}
+.wrun{display:flex;flex-direction:column;gap:0;animation:wup 70s linear infinite}
+.wcol:nth-child(2) .wrun{animation-duration:88s;animation-direction:reverse}
+.wcol:nth-child(3) .wrun{animation-duration:64s}
+.wcol:nth-child(4) .wrun{animation-duration:96s;animation-direction:reverse}
+.wcol:nth-child(5) .wrun{animation-duration:78s}
+.wcol:nth-child(6) .wrun{animation-duration:58s;animation-direction:reverse}
+@keyframes wup{to{transform:translateY(-50%)}}
+.wl{display:flex;align-items:center;justify-content:center;height:clamp(96px,13vh,128px);border-bottom:1px solid rgba(255,255,255,.035)}
+.wcol{border-right:1px solid rgba(255,255,255,.035)}
+.wl-cn svg{width:46px;height:auto;fill:rgba(248,247,244,.9)}
+.wl-spec svg{width:58px;fill:url(#cn-spec)}
+.wl img{height:var(--h);width:auto;max-width:78%;object-fit:contain}
+.ins-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(12,12,12,.94) 30%,rgba(12,12,12,.4) 75%,rgba(12,12,12,.2));pointer-events:none}
+.ins-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(transparent,var(--black));z-index:1;pointer-events:none}
+.ins-hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
+.ins-hero .kicker{justify-content:center}
+.ins-hero .display{margin:clamp(20px,3vh,32px) 0 0;font-family:var(--serif);font-size:clamp(46px,min(7.6vw,13.5vh),136px);line-height:.95;letter-spacing:-.045em}
+.ins-hero .display .ln:last-child > span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .04em .06em}
+.ins-sub{margin-top:clamp(24px,4vh,40px);max-width:none;white-space:nowrap;color:var(--paper);font-size:clamp(20px,min(1.8vw,3.2vh),28px)}
+.ins-p{margin:18px 0 0;max-width:60ch;color:var(--mute-d);font-size:15.5px;line-height:1.7}
+.ins-down{margin-top:clamp(28px,5vh,48px)}
+.ins-down svg{width:16px;height:16px;animation:bob 2.4s var(--ease) infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+.backed{padding-block:clamp(36px,6vh,64px);border-top:1px solid #1A1A1A;border-bottom:1px solid #1A1A1A}
+.backed-in{display:flex;align-items:center;justify-content:space-between;gap:24px 48px;flex-wrap:wrap}
+.backed-in .label{color:var(--mute-d2)}
+.blogos{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:24px clamp(32px,5vw,72px)}
+.blogos a{display:flex;align-items:center;min-height:44px}
+.blogos img{height:var(--h);width:auto;opacity:.8;transition:opacity .3s,transform .35s var(--ease)}
+.blogos a:hover img{opacity:1;transform:translateY(-2px)}
+@media (max-width:640px){.blogos img{height:calc(var(--h) * .74)}}
+@media (max-width:760px){.wall{grid-template-columns:repeat(3,minmax(0,1fr));inset:-10% -30%;opacity:.3}.wcol:nth-child(n+4){display:none}}
+@media (prefers-reduced-motion:reduce){.wrun,.ins-down svg{animation:none}}
+@media (max-width:900px){.ins-sub{white-space:normal;max-width:34ch}}
+/* question band */
+.qband{padding-block:clamp(26px,4.4vh,44px);border-bottom:1px solid #1A1A1A;overflow:hidden}
+.q-track{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.q-run{display:flex;align-items:center;gap:clamp(28px,4vw,56px);width:max-content;animation:qrun 42s linear infinite;font-family:var(--serif);font-size:clamp(30px,4vw,60px);line-height:1.1;letter-spacing:-.025em;white-space:nowrap}
+.q-run span:nth-of-type(3n+2){color:var(--mute-d2)}
+.q-run i{width:clamp(28px,3vw,44px);height:5px;flex:none;background:var(--spectrum)}
+@keyframes qrun{to{transform:translateX(-50%)}}
+/* featured */
+.feat{padding-bottom:clamp(40px,6vh,72px)}
+.feat-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);border-radius:var(--r-tile);overflow:hidden;background:var(--black);color:var(--paper);min-height:clamp(380px,56vh,540px)}
+.feat-ph{position:relative;overflow:hidden}
+.feat-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.feat-card:hover .feat-ph img{transform:scale(1.05)}
+.feat-tx{display:flex;flex-direction:column;justify-content:flex-end;gap:18px;padding:clamp(28px,4vw,64px)}
+.feat-k{margin:0 0 auto;display:flex;align-items:center;gap:14px;font-size:13px;color:var(--mute-d)}
+.feat-tx h2{margin:0;font-family:var(--serif);font-size:clamp(30px,3.2vw,52px);line-height:1.05;letter-spacing:-.025em;max-width:20ch}
+.feat-meta{margin:0;font-size:14px;color:var(--mute-d)}
+.feat-go{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500}
+.feat-go svg,.nr-go svg,.pc-go svg{width:18px;height:18px;transition:transform .45s var(--ease)}
+.feat-card:hover .feat-go svg{transform:translate(3px,-3px)}
+/* filter bar */
+.lib{background:var(--paper)}
+.lib-bar{position:sticky;top:0;scroll-margin-top:0;z-index:20;background:rgba(248,247,244,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-p);transition:top .5s var(--ease)}
+body:has(.nav:not(.is-hidden)) .lib-bar{top:calc(var(--nav-h) + 4px)}
+.lib-in{display:flex;align-items:center;min-height:68px}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-block:12px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line-p);background:none;color:var(--mute-p);font-size:14px;font-weight:500;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.tabs button:hover{border-color:var(--black);color:var(--black)}
+.tabs button[aria-selected="true"]{background:var(--black);border-color:var(--black);color:var(--paper)}
+.desk-in{padding-top:clamp(40px,6vh,64px)}
+.desk-t{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(36px,4.4vw,68px);line-height:1;letter-spacing:-.03em}
+.desk-d{margin:14px 0 0;max-width:52ch;color:var(--mute-p);font-size:17px}
+/* news list */
+.lib-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.7fr);gap:24px 48px;align-items:end;margin-bottom:clamp(32px,5vh,56px)}
+.lib-sub{margin:0;color:var(--mute-p);font-size:16px;max-width:40ch;justify-self:end}
+.dark .lib-sub{color:var(--mute-d)}
+.nlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--black)}
+.nr a{display:grid;grid-template-columns:110px minmax(0,1fr) 48px;gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(22px,3.4vh,34px) 0;border-bottom:1px solid var(--line-p);transition:background-color .3s,padding .45s var(--ease)}
+.nr a:hover{background:#F1EFEA;padding-inline:16px}
+.nr-d{display:flex;flex-direction:column;line-height:1}
+.nr-d b{font-family:var(--serif);font-weight:400;font-size:44px;letter-spacing:-.03em}
+.nr-d span{margin-top:6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-p2)}
+.nr-t h3{margin:0;font-family:var(--serif);font-size:clamp(22px,1.9vw,30px);line-height:1.15;letter-spacing:-.015em;max-width:44ch}
+.nr-t p{margin:12px 0 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--mute-p2)}
+.nr-go{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-p);transition:background-color .3s,color .3s,border-color .3s}
+.nr a:hover .nr-go{background:var(--black);color:var(--paper);border-color:var(--black)}
+.nr a:hover .nr-go svg{transform:translate(2px,-2px)}
+.empty{margin:0;padding:40px 0;border-bottom:1px solid var(--line-p);font-family:var(--serif);font-size:24px;color:var(--mute-p2)}
+.empty-d{border-color:var(--line-d);color:var(--mute-d2)}
+[hidden]{display:none!important}
+/* press cards */
+.pgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pc a{display:flex;flex-direction:column;gap:22px;height:100%;padding:clamp(24px,2.6vw,36px);border-radius:var(--r-tile);background:#141414;border:1px solid #1F1F1F;transition:background-color .35s,border-color .35s,transform .45s var(--ease)}
+.pc a:hover{background:#1A1A1A;border-color:#2E2E2E;transform:translateY(-3px)}
+.pc-top{display:flex;align-items:center;justify-content:space-between;min-height:36px}
+.pc-logo img{height:var(--h);width:auto;opacity:.92}
+.pc-go{color:var(--mute-d)}
+.pc a:hover .pc-go{color:var(--paper)}
+.pc a:hover .pc-go svg{transform:translate(2px,-2px)}
+.pc h3{margin:0 0 auto;font-family:var(--serif);font-size:clamp(24px,2.1vw,34px);line-height:1.1;letter-spacing:-.02em}
+.pc-meta{margin:0;padding-top:18px;border-top:1px solid #262626;display:flex;gap:8px 20px;flex-wrap:wrap;font-size:13px;color:var(--mute-d2)}
+.also{margin-top:clamp(56px,8vh,88px)}
+.also .label{color:var(--mute-d2);margin-bottom:22px}
+.also-mq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.also-run{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:clamp(40px,5vw,72px);width:max-content;animation:qrun 60s linear infinite}
+.also-run img{height:var(--h);width:auto;opacity:.55;transition:opacity .3s}
+.also-run li:hover img{opacity:1}
+.also-mq:hover .also-run{animation-play-state:paused}
+.press-foot{margin-top:clamp(40px,6vh,64px);padding-top:28px;border-top:1px solid var(--line-d);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.press-foot p{margin:0;color:var(--mute-d);font-size:15px}
+.press-foot p a{color:var(--paper);text-decoration:underline;text-underline-offset:4px;text-decoration-color:#444}
+.btn:hover{background:var(--paper);color:var(--black)}
+.paper .btn:hover{background:var(--black);color:var(--paper)}
+@media (max-width:900px){
+  .lib-head{grid-template-columns:minmax(0,1fr)}
+  .lib-sub{justify-self:start}
+  .feat-card{grid-template-columns:minmax(0,1fr)}
+  .feat-ph{aspect-ratio:16/10}
+  .pgrid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  .nr a{grid-template-columns:minmax(0,1fr) 40px}
+  .nr-d{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:10px}
+  .nr-d b{font-size:28px}
+  .nr-go{width:40px;height:40px}
+}
+
+.pc-word{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;color:var(--paper)}
+.pc-desc{margin:-8px 0 0;font-size:15px;line-height:1.6;color:var(--mute-d);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pc h3{margin-bottom:0}
+.pc-meta{margin-top:auto}
+.nr.more,.pc.more{display:none}
+.show-all .more,.filtered .more{display:list-item}
+.more-wrap{margin-top:clamp(28px,4vh,40px);display:flex;justify-content:center}
+.more-btn .more-n{display:inline-grid;place-items:center;min-width:26px;height:22px;padding:0 7px;border-radius:999px;font-size:12px;font-weight:600}
+.paper .more-btn .more-n{background:var(--black);color:var(--paper)}
+.dark .more-btn .more-n{background:var(--paper);color:var(--black)}
+.more-wrap[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.q-run,.also-run{animation:none}}
+
+
+/* mobile menu: opens as a circle growing from the menu button, links rise in one after another */
+.menu{display:flex!important;visibility:hidden;pointer-events:none;clip-path:circle(0px at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .65s cubic-bezier(.7,0,.25,1),visibility 0s linear .65s}
+.menu:not([hidden]),.menu.is-open{visibility:visible;pointer-events:auto;clip-path:circle(150vmax at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .8s cubic-bezier(.65,0,.2,1),visibility 0s}
+.menu nav a,.menu > .btn{opacity:0;transform:translateY(28px);transition:opacity .3s ease,transform .3s ease}
+.menu:not([hidden]) nav a,.menu:not([hidden]) > .btn,.menu.is-open nav a,.menu.is-open > .btn{opacity:1;transform:none;transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) nav a:nth-child(1){transition-delay:.18s}.menu:not([hidden]) nav a:nth-child(2){transition-delay:.24s}.menu:not([hidden]) nav a:nth-child(3){transition-delay:.3s}.menu:not([hidden]) nav a:nth-child(4){transition-delay:.36s}.menu:not([hidden]) nav a:nth-child(5){transition-delay:.42s}.menu:not([hidden]) > .btn{transition-delay:.5s}
+.menu .close-btn{opacity:0;transform:rotate(-90deg);transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) .close-btn,.menu.is-open .close-btn{opacity:1;transform:none;transition-delay:.2s}
+html:has(.menu:not([hidden])){overflow:hidden}
+@media (prefers-reduced-motion:reduce){.menu,.menu:not([hidden]){clip-path:none;transition:none}.menu nav a,.menu > .btn,.menu .close-btn{transition:none!important}}
+
+/* type consistency: one intro size for every paragraph under a heading, one size for serif lead lines */
+.intro{margin:0 auto;font-family:var(--sans);font-size:17px;line-height:1.65;max-width:60ch}
+.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:17px!important;line-height:1.65}
+.hero-sub,.ins-sub,.d-sub,.p-lead,.c-sub,.feat .state{font-size:var(--t-state)!important;line-height:1.4}
+@media (max-width:640px){.intro,.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:16px!important}}
+section .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle){background:none}
+.dark .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--paper);color:var(--black);border-color:var(--paper)}
+.paper .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--black);color:var(--paper);border-color:var(--black)}
+
+</style>
+</head>
+<body>
+<div class="shutter-bg" aria-hidden="true"></div>
+<div class="shutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="progress" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cn-logo" viewBox="0 0 258 55"><path d="M214.386 38.4465L212.613 38.4382C206.988 38.0676 202.434 33.852 201.939 28.3481C201.442 22.8194 205.156 17.7867 210.76 16.5576C217.304 15.1212 223.809 18.9721 224.955 25.4174C225.744 29.8532 223.788 34.2084 220 36.6158C218.246 37.7313 216.366 38.2748 214.386 38.4453V38.4465ZM218.341 32.4642C221.057 29.8389 221.179 25.5168 218.779 22.7092C216.075 19.5464 211.001 19.5262 208.277 22.6666C205.881 25.4268 205.97 29.653 208.51 32.3008C211.106 35.0089 215.589 35.1262 218.341 32.4654V32.4642Z"/><path d="M253.199 16.265H258L252.815 38.0865L247.743 38.0877L243.088 22.8881L238.438 38.0829L233.364 38.0853L228.183 16.2686L233.152 16.2578L236.341 31.0555L240.922 16.265L245.458 16.2638L250.013 30.9655L253.199 16.265Z"/><path d="M195.355 38.0697L191.097 38.0865L179.159 23.5049L179.145 38.0841L174.555 38.0817V16.2626L179.171 16.2578L190.818 30.3764L190.833 16.2602H195.355V38.0697Z"/><path d="M143.129 38.0697L138.87 38.0865L126.933 23.5049L126.919 38.0841L122.329 38.0817V16.2626L126.944 16.2578L138.592 30.3764L138.606 16.2602H143.128L143.129 38.0697Z"/><path d="M163.194 28.9665L154.518 28.9689V34.1619L167.786 34.1607L167.789 38.0805H149.668V16.2578H167.66L167.658 20.1801L154.518 20.1789V25.1678L163.182 25.1666L163.194 28.9665Z"/><path d="M100.909 31.7913L104.092 34.7261C102.034 36.8534 99.2936 38.2261 96.2019 38.598C95.0589 38.736 93.8296 38.6916 92.6828 38.604C91.3055 38.4996 90.0544 38.0701 88.8316 37.5422C84.8646 35.8276 82.3083 32.2952 82.0432 28.229C81.7291 23.42 84.5995 19.0934 89.3555 17.2216C93.1758 15.7182 97.5109 15.9906 101.123 17.9199C102.326 18.5763 103.325 19.3298 104.23 20.3424L100.937 23.3444C99.2898 21.4367 97.0102 20.3892 94.4591 20.3928C90.3453 20.3928 87.1609 23.3408 86.9936 27.1443C86.8558 30.2603 88.7222 33.0152 91.8667 34.1142C95.0846 35.1761 98.5677 34.3422 100.91 31.7901L100.909 31.7913Z"/><path d="M115.612 16.2578H110.762V38.0805H115.612V16.2578Z"/><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+    <symbol id="cn-mark" viewBox="0 0 67 55"><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="./" aria-label="CineNow home"><svg role="img" aria-label="CineNow" fill="currentColor"><use href="#cn-logo"/></svg></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="./">Home</a>
+      <a href="about.html">About</a>
+      <a href="investors.html">Investors</a>
+      <a href="insights.html" aria-current="page">Insights</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="partner.html">Collaborate With Us</a>
+    </nav>
+    <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <button class="menu-btn close-btn" id="menu-close" aria-label="Close menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <nav aria-label="Mobile">
+    <a href="./">Home</a><a href="about.html">About</a><a href="investors.html">Investors</a><a href="insights.html" aria-current="page">Insights</a><a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-solid-l" href="partner.html" style="align-self:flex-start">Collaborate With Us</a>
+</div>
+
+<main>
+<!-- HERO: the coverage wall -->
+<section class="dark ins-hero" id="hero" aria-labelledby="hero-h">
+  <div class="wall" aria-hidden="true"><div class="wcol"><div class="wrun"><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div></div></div><div class="wcol"><div class="wrun"><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div></div></div><div class="wcol"><div class="wrun"><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div></div></div><div class="wcol"><div class="wrun"><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:34px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div></div></div><div class="wcol"><div class="wrun"><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div></div></div><div class="wcol"><div class="wrun"><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:48px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:26px" loading="lazy"></div><div class="wl"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:48px" loading="lazy"></div><div class="wl"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:34px" loading="lazy"></div><div class="wl"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:26px" loading="lazy"></div><div class="wl wl-cn"><svg viewBox="0 0 67 55" aria-hidden="true"><use href="#cn-mark"/></svg></div><div class="wl"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:26px" loading="lazy"></div></div></div><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="cn-spec" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#16A0F4"/><stop offset=".25" stop-color="#7041E0"/><stop offset=".5" stop-color="#E01CAB"/><stop offset=".75" stop-color="#FF3787"/><stop offset="1" stop-color="#FF5B1F"/></linearGradient></defs></svg></div>
+  <div class="wrap ins-hero-in">
+    <p class="label kicker" data-in><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CineNow Insights</p>
+    <h1 class="display" id="hero-h"><span class="ln"><span>Where Film Meets</span></span><span class="ln"><span>Capital Markets.</span></span></h1>
+    <p class="state ins-sub" data-in>Perspectives on film IP, tokenisation and the future of alternative assets.</p>
+    <p class="ins-p" data-in>CineNow&#8217;s leaders write and speak on the questions shaping a new asset class. What makes IP institutional? What makes capital tradable? What actually creates liquidity? This is where those conversations live.</p>
+    <a class="btn ins-down" href="#news" data-in>Read the Latest <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<!-- BACKED BY -->
+<section class="dark backed" aria-labelledby="backed-h">
+  <div class="wrap backed-in">
+    <h2 class="label" id="backed-h" data-in>Backed By</h2>
+    <ul class="blogos" data-in>
+      <li><a href="https://www.investwithabudhabi.com/" target="_blank" rel="noopener" aria-label="ADIO, Abu Dhabi Investment Office (opens in a new tab)"><img src="img/logos/adio.webp" alt="ADIO, Abu Dhabi Investment Office" style="--h:30px" width="900" height="119"></a></li>
+      <li><a href="https://www.adgm.com/" target="_blank" rel="noopener" aria-label="ADGM, Abu Dhabi Global Market (opens in a new tab)"><img src="img/logos/adgm.svg" alt="ADGM, Abu Dhabi Global Market" style="--h:44px" width="154" height="52"></a></li>
+      <li><a href="https://www.cma.gov.ae/" target="_blank" rel="noopener" aria-label="Creative Media Authority, Abu Dhabi (opens in a new tab)"><img src="img/logos/cma.webp" alt="Creative Media Authority, Abu Dhabi" style="--h:50px" width="622" height="210"></a></li>
+      <li><a href="https://www.cma.gov.ae/initiatives/abu-dhabi-film-commission" target="_blank" rel="noopener" aria-label="Abu Dhabi Film Commission (opens in a new tab)"><img src="img/logos/adfc.svg" alt="Abu Dhabi Film Commission" style="--h:34px" width="266" height="42"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="paper sec feat" aria-labelledby="feat-h">
+  <div class="wrap">
+    <a class="feat-card" href="https://www.outlookbusiness.com/news/film-financing-has-been-messy-cinenows-rohit-dalmia-wants-to-change-that" target="_blank" rel="noopener" data-in>
+      <div class="feat-ph"><img src="img/ins-feature.webp" alt="A cinema camera lens lit in spectrum colours" width="720" height="897" loading="lazy"></div>
+      <div class="feat-tx">
+        <p class="feat-k"><span class="chip">Investor Insights</span><span>Featured interview</span></p>
+        <h2 id="feat-h">Film Financing Has Been Opaque: CineNow&#8217;s Rohit Dalmia Wants to Change That</h2>
+        <p class="feat-meta">Outlook Business · 28 Sep 2026</p>
+        <span class="feat-go">Read on Outlook Business <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- LIBRARY: filters -->
+<div class="lib">
+<div class="lib-bar" id="lib-bar">
+  <div class="wrap lib-in">
+    <div class="tabs" role="tablist" aria-label="Filter by topic">
+      <button role="tab" aria-selected="true" data-f="all">All</button>
+      <button role="tab" aria-selected="false" data-f="inv">Investor Insights</button>
+      <button role="tab" aria-selected="false" data-f="tok">Tokenisation</button>
+      <button role="tab" aria-selected="false" data-f="film">Film Announcements</button>
+    </div>
+  </div>
+</div>
+<section class="paper desk" id="desk" aria-live="polite">
+  <div class="wrap">
+    <div class="desk-in" id="desk-in" hidden>
+      <h2 class="desk-t" id="desk-t"></h2>
+      <p class="desk-d" id="desk-d"></p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="paper sec news" id="news" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="lib-head">
+      <h2 class="head" id="news-h" data-lines><span class="ln"><span>Announcements and Milestones</span></span></h2>
+      <p class="lib-sub" data-in>Press releases on the fund, partnerships and the tokenisation roadmap.</p>
+    </div>
+    <ol class="nlist" id="nlist" data-in><li class="nr" data-cat="tok"><a href="https://gulfnews.com/gn-focus/company-news/cinenow-launches-uae-led-tokenisation-network-to-power-150m-india-film-ip-investment-push-1.500683819" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-09-22"><b>22</b><span>Sep 2026</span></time><div class="nr-t"><h3>CineNow Launches UAE-Led Tokenisation Network to Power $150M India Film-IP Investment Push</h3><p><span class="chip">Tokenisation</span>News · Gulf News</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr" data-cat="inv"><a href="https://www.broadcastprome.com/news/cinenow-builds-uae-led-investment-infrastructure-for-indian-film-ip/" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-09-22"><b>22</b><span>Sep 2026</span></time><div class="nr-t"><h3>CineNow Builds UAE-Led Investment Infrastructure for Indian Film IP</h3><p><span class="chip">Investor Insights</span>News · BroadcastProME</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr" data-cat="tok"><a href="https://mena.entrepreneur.com/business-news/cinenow-moves-into-next-phase-of-film-ip-investment-with-uae-led-tokenisation-and-global-advisory-network" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-09-13"><b>13</b><span>Sep 2026</span></time><div class="nr-t"><h3>CineNow Moves Into Next Phase of Film-IP Investment With UAE-Led Tokenisation and Global Advisory Network</h3><p><span class="chip">Tokenisation</span>News · Entrepreneur Middle East</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr" data-cat="tok"><a href="https://markets.businessinsider.com/news/stocks/cinenow-taps-digital-asset-executives-as-entertainment-ip-fund-targets-150m-and-tokenization-1036535970" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-09-10"><b>10</b><span>Sep 2026</span></time><div class="nr-t"><h3>CineNow Taps Digital Asset Executives as Entertainment IP Fund Targets $150M and Tokenisation</h3><p><span class="chip">Tokenisation</span>Press Release · Business Insider</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr" data-cat="film"><a href="https://www.exchange4media.com/media-others-news/cinenow-brings-industry-leaders-together-to-back-indias-entertainment-industry-157655.html" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-08-26"><b>26</b><span>Aug 2026</span></time><div class="nr-t"><h3>CineNow Brings Industry Leaders Together to Back India’s Entertainment Industry</h3><p><span class="chip">Film Announcements</span>News · Exchange4Media</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr" data-cat="inv"><a href="https://www.albayan.ae/economy/1546732" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-08-18"><b>18</b><span>Aug 2026</span></time><div class="nr-t"><h3 lang="ar" dir="rtl">«سيني ناو» تختار الإمارات لإطلاق مقر رئيسي</h3><p><span class="chip">Investor Insights</span>News · Al Bayan</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="tok"><a href="https://enterpriseam.com/uae/2026/08/07/cinenow-picks-the-uae-as-hq-for-a-push-to-tokenize-indias-film-industry/" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-08-07"><b>07</b><span>Aug 2026</span></time><div class="nr-t"><h3>CineNow Picks the UAE as HQ for a Push to Tokenise India&#x27;s Film Industry</h3><p><span class="chip">Tokenisation</span>News · EnterpriseAM</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="inv"><a href="https://mena.entrepreneur.com/business-news/cinenow-secures-majority-backing-for-150m-fund-targets-720m-in-film-ip-monetisation" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-08-03"><b>03</b><span>Aug 2026</span></time><div class="nr-t"><h3>CineNow Secures Majority Backing for $150M Fund, Targets $720M in Film-IP Monetisation</h3><p><span class="chip">Investor Insights</span>News · Entrepreneur Middle East</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="film"><a href="https://www.moneycontrol.com/entertainment/siddharth-roy-kapur-associates-with-cinenow-as-principal-advisor-to-the-founding-team-article-13961045.html" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-06-29"><b>29</b><span>Jun 2026</span></time><div class="nr-t"><h3>Siddharth Roy Kapur Associates With CineNow as Principal Advisor to the Founding Team</h3><p><span class="chip">Film Announcements</span>Press Release · Moneycontrol</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="film"><a href="https://www.business-standard.com/content/press-releases-ani/ht-media-presents-crafting-bharat-business-conclave-awards-2026-honors-india-s-most-influential-entrepreneurs-innovators-and-industry-leaders-126061900009_1.html" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-06-19"><b>19</b><span>Jun 2026</span></time><div class="nr-t"><h3>HT Media Presents Crafting Bharat Business Conclave &amp; Awards 2026 Honors India&#x27;s Most Influential Entrepreneurs, Innovators, and Industry Leaders</h3><p><span class="chip">Film Announcements</span>Press Release · Business Standard</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="inv"><a href="https://www.ptinews.com/story/business/cinenow-to-shortly-close-rs-1-350-cr-fund-to-finance-films/3764417" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-06-14"><b>14</b><span>Jun 2026</span></time><div class="nr-t"><h3>CineNow to Shortly Close ₹1,350-Crore Fund to Finance Films</h3><p><span class="chip">Investor Insights</span>News · PTI</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="film"><a href="https://www.business-standard.com/content/press-releases-ani/abhay-sinha-joins-cinenow-as-founding-member-strategic-council-126060900011_1.html" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-06-09"><b>09</b><span>Jun 2026</span></time><div class="nr-t"><h3>Abhay Sinha Joins CineNow as Founding Member, Strategic Council</h3><p><span class="chip">Film Announcements</span>Press Release · Business Standard</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li><li class="nr more" data-cat="inv"><a href="https://gulfnews.com/friday/cinenows-film-ip-bets-on-the-uae-as-indian-cinemas-next-capital-hub-1.500560692" target="_blank" rel="noopener"><time class="nr-d" datetime="2026-06-02"><b>02</b><span>Jun 2026</span></time><div class="nr-t"><h3>CineNow’s Film IP Bets on the UAE as Indian Cinema’s Next Capital Hub</h3><p><span class="chip">Investor Insights</span>Press Release · Gulf News</p></div><span class="nr-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li></ol>
+    <div class="more-wrap" data-more="nlist"><button class="btn more-btn" type="button">Show All Announcements <span class="more-n">13</span></button></div>
+    <p class="empty" id="news-empty" hidden>No announcements in this topic yet. The first will appear here.</p>
+  </div>
+</section>
+
+<!-- IN THE PRESS -->
+<section class="dark sec inpress" id="press" aria-labelledby="press-h">
+  <div class="wrap">
+    <div class="lib-head">
+      <h2 class="head" id="press-h" data-lines><span class="ln"><span>CineNow in the Media</span></span></h2>
+      <p class="lib-sub" data-in>Coverage across India, the Gulf and global media, with the full press archive.</p>
+    </div>
+    <ul class="pgrid" id="pgrid" data-in><li class="pc" data-cat="tok"><a href="https://www.cioandleader.com/tokenization-can-be-indias-next-digital-public-revolution/" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/cio-leader.webp" alt="CIO&amp;Leader" width="562" height="160" style="--h:24px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Tokenisation Can Be India’s Next Digital Public Revolution</h3><p class="pc-desc">India’s digital transformation has repeatedly demonstrated that technology, when combined with visionary public policy, can fundamentally reshape an economy. From Aadhaar establishing digital identity to UPI revolutionising payments, India has built digital infrastructure that has become a global benchmark. Today, another opportunity stands before us, one that could redefine investment, ownership and capital formation: tokenisation.</p><p class="pc-meta"><span>25 Sep 2026</span><span>Opinion</span><span>Tokenisation</span></p></a></li><li class="pc" data-cat="inv"><a href="https://www.theweek.in/news/biz-tech/2026/09/24/cinenow-film-financing-india.amp.html" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/the-week.webp" alt="The Week" width="245" height="62" style="--h:24px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Why Does CineNow Want to Change How Films Are Financed? Founder Rohit Dalmia Opens up on Unique Business Model</h3><p class="pc-desc">CineNow introduces a portfolio-based investment approach to India&#x27;s film financing sector, aiming to provide structured capital and overcome traditional fragmentation.</p><p class="pc-meta"><span>24 Sep 2026</span><span>Feature</span><span>Investor Insights</span></p></a></li><li class="pc" data-cat="inv"><a href="https://theprint.in/entertainment/cinenow-investment-platform-bollywood-rohit-dalmia/3047810" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/theprint.webp" alt="ThePrint" width="400" height="75" style="--h:22px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Uber for Movies? CineNow Wants to Fund Your Script Without Stealing the IP</h3><p class="pc-desc">Speaking to ThePrint, founder Rohit Dalmia said the platform prioritises local stories and non-star-led projects over traditional star-powered films.</p><p class="pc-meta"><span>20 Sep 2026</span><span>Feature</span><span>Investor Insights</span></p></a></li><li class="pc" data-cat="inv"><a href="https://www.youtube.com/watch?v=qETt6yeTR7A" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/theprint.webp" alt="ThePrint" width="400" height="75" style="--h:22px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>CineNow Set to Finance Films in India. It’s Received 3,000 Scripts Already</h3><p class="pc-desc">CineNow is a film tech platform designed to marry finance capital with technology and provides the funding mechanism for the film industry. But it’s not just a film fund or a financier, it&#x27;s designed to be a complete ecosystem sustainable beyond a typical film&#x27;s life cycle.</p><p class="pc-meta"><span>20 Sep 2026</span><span>Interview</span><span>Investor Insights</span></p></a></li><li class="pc" data-cat="inv"><a href="https://enterpriseam.com/uae/2026/09/15/investors-are-circling-the-regions-undermonetized-ip/" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/enterprise-am.webp" alt="EnterpriseAM" width="1113" height="160" style="--h:18px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Investors Are Circling the Region’s Undermonetized IP</h3><p class="pc-desc">In the UAE, there’s another option coming onto the scene for investors: your favorite song or film. Two funds setting up shop in the UAE this year are looking at entertainment intellectual property (IP) — film scripts, music catalogs, artist likenesses — as an investable asset, the way real estate already has. One wants to buy the Arabic catalog that already exists and make it work harder. The other wants to manufacture new IP from nothing and use the UAE as its production base.</p><p class="pc-meta"><span>15 Sep 2026</span><span>Industry Analysis</span><span>Investor Insights</span></p></a></li><li class="pc" data-cat="inv"><a href="https://www.moneycontrol.com/news/business/how-cinenow-s-rohit-dalmia-plans-to-disrupt-film-financing-in-india-13978251.html" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/moneycontrol.webp" alt="Moneycontrol" width="220" height="35" style="--h:22px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>How CineNow&#x27;s Rohit Dalmia Plans to Disrupt Film Financing in India</h3><p class="pc-desc">An exclusive look at Rohit Dalmia&#x27;s vision to transform India&#x27;s film financing ecosystem through structured capital, Film IP monetisation, institutional investment, and greater transparency.</p><p class="pc-meta"><span>20 Jul 2026</span><span>Feature</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://youtu.be/NCR2u6UQx_I?si=xLv-Bb9kmrtfS3oT" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/the-core.webp" alt="The Media Room / The Core" width="85" height="86" style="--h:30px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Are Indian Films the Next Big Alternative Investment?</h3><p class="pc-desc">A conversation exploring whether Indian films can become the next major alternative investment, with insights into film financing, Film IP, investment structures, and the evolving entertainment economy.</p><p class="pc-meta"><span>16 Jul 2026</span><span>Interview</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://estatemagazine.ae/how-rohit-dalmia-is-building-the-future-of/" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/estate.webp" alt="Estate" width="529" height="119" style="--h:20px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>How Rohit Dalmia Is Building The Future Of Capital</h3><p class="pc-desc">An in-depth feature exploring Rohit Dalmia&#x27;s vision for the future of capital and his approach to transforming film intellectual property into a structured and investable asset class.</p><p class="pc-meta"><span>9 Jul 2026</span><span>Feature</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://drive.google.com/file/d/1bFM1Jn03V8QwzjA4uFQJAKMs8uXy_2k5/view?usp=share_link" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/cnbc-awaaz.webp" alt="CNBC Awaaz" width="241" height="160" style="--h:28px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3 lang="hi">Awaaz Entrepreneur: CineNow का Film-Tech Fund: कितना बड़ा मौका? रोहित डालमिया से जानिए</h3><p class="pc-desc">Can films become the next major investment asset? In this exclusive CNBC Awaaz conversation, Shreya Thakur speaks with Rohit Dalmia, Chairman &amp; Managing Director of CineNow, about the ₹1,350-crore Film-Tech Fund and how CineNow is transforming Film IP into a structured, transparent, and institution-ready investment asset class for India&#x27;s entertainment industry.</p><p class="pc-meta"><span>4 Jul 2026</span><span>Interview</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://drive.google.com/file/d/13EEaA1-5xc_zqHlajjMJg8V01bv-uMIo/view?usp=share_link" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/business-standard.webp" alt="Business Standard" width="378" height="47" style="--h:20px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>New Funding Models Look to Brighten the Silver Screen</h3><p class="pc-desc">A new kind of capital is making its way into the ₹22,000-crore Indian film business. Rather than relying solely on traditional private equity or strategic investment, emerging funding models are introducing new approaches to financing India&#x27;s entertainment industry.</p><p class="pc-meta"><span>30 Jun 2026</span><span>Industry Analysis</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://www.fortuneindia.com/business-news/can-film-ip-become-indias-next-alternative-asset-class-cinenow-launches-1350-crore-entertainment-investment-platform/143610" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/fortune-india.webp" alt="Fortune India" width="675" height="160" style="--h:20px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Can Film IP Become India’s Next Alternative Asset Class? CineNow Launches ₹1,350-Crore Entertainment Investment Platform</h3><p class="pc-desc">Fortune India explores how CineNow is building institutional financial infrastructure for India’s entertainment industry through a ₹1,350-crore investment platform focused on film intellectual property. The article examines CineNow’s portfolio-driven approach, governance-led capital allocation, and long-term vision of transforming film IP into a scalable alternative asset class.</p><p class="pc-meta"><span>17 Jun 2026</span><span>Feature</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://www.hindustantimes.com/ht-insight/knowledge/what-indian-cinema-teaches-the-world-about-brand-india-101781106323475.html" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/hindustan-times.webp" alt="Hindustan Times" width="458" height="50" style="--h:20px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>What Indian Cinema Teaches the World About Brand India</h3><p class="pc-desc">Rohit Dalmia explores how Indian cinema has become one of India&#x27;s strongest global ambassadors, demonstrating that authenticity, storytelling, and cultural identity can build international trust and shape Brand India.</p><p class="pc-meta"><span>10 Jun 2026</span><span>Opinion</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://www.businesstoday.in/impact-feature/story/when-war-shakes-markets-but-cinema-stays-steady-530116-2026-05-06" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/business-today.webp" alt="Business Today" width="527" height="59" style="--h:18px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>When War Shakes Markets but Cinema Stays Steady</h3><p class="pc-desc">This article examines how geopolitical uncertainty disrupted traditional financial markets while the Indian film &#x27;Dhurandhar&#x27; continued generating revenues across theatrical, streaming, music, and international rights. It argues that film intellectual property is emerging as a resilient alternative asset class and explores how structured financing and tokenisation could reshape investment in Indian cinema.</p><p class="pc-meta"><span>6 May 2026</span><span>Opinion</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://www.businessworld.in/article/cinenow-bets-on-turning-film-financing-into-a-market-not-a-gamble-604118" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><span class="pc-word">BusinessWorld</span></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>CineNow Bets on Turning Film Financing Into a Market—Not a Gamble</h3><p class="pc-desc">BusinessWorld explores how CineNow is redefining Indian film financing by transforming film intellectual property into a structured financial asset class. Through tokenisation, diversified film portfolios, and institutional capital frameworks, the platform aims to replace traditional relationship-driven financing with a scalable investment model.</p><p class="pc-meta"><span>26 Apr 2026</span><span>Industry Analysis</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://www.financialexpress.com/business/industry-lights-camera-capital-cinenows-1350-crore-fund-recasts-film-financing-model-4197281/" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/financial-express.webp" alt="The Financial Express" width="1373" height="160" style="--h:20px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Lights, Camera, Capital: CineNow’s ₹1,350-Crore Fund Recasts Film Financing Model</h3><p class="pc-desc">Financial Express explores how CineNow’s ₹1,350-crore Secured Participation Fund is introducing institutional investment principles into Indian film financing. Through slate-based investing, tokenisation, and diversified film IP revenue streams, the model aims to reduce dependence on box-office performance while creating structured investment opportunities.</p><p class="pc-meta"><span>6 Apr 2026</span><span>Industry Analysis</span><span>Investor Insights</span></p></a></li><li class="pc more" data-cat="inv"><a href="https://economictimes.indiatimes.com/industry/media/entertainment/why-film-financiers-remain-boxed-in-and-what-cinenows-rs-1350-crore-film-tech-model-is-trying-to-change/articleshow/129999247.cms" target="_blank" rel="noopener"><div class="pc-top"><span class="pc-logo"><img src="img/press/economic-times.webp" alt="The Economic Times" width="1833" height="160" style="--h:18px" loading="lazy"></span><span class="pc-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><h3>Why Film Financiers Remain Boxed In and What CineNow’s ₹1,350-Crore Film-Tech Model Is Trying to Change</h3><p class="pc-desc">The Economic Times examines the structural challenges of film financing in India and how CineNow’s ₹1,350-crore Secured Participation Fund aims to modernize the industry through asset-backed financing, institutional governance, and diversified film IP investments.</p><p class="pc-meta"><span>3 Apr 2026</span><span>Industry Analysis</span><span>Investor Insights</span></p></a></li></ul>
+    <div class="more-wrap" data-more="pgrid"><button class="btn more-btn" type="button">Show All Coverage <span class="more-n">16</span></button></div>
+    <p class="empty empty-d" id="press-empty" hidden>No coverage in this topic yet.</p>
+    <div class="press-foot" data-in>
+      <a class="btn" href="docs/CineNow-Media-Kit.zip" download>Download the Media Kit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+      <p>Media enquiries: <a href="mailto:corporate.communications@cinenow.global">corporate.communications@cinenow.global</a></p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CLOSE + FOOTER -->
+<section class="dark close" aria-label="Brand sign-off and footer">
+  <div class="wrap">
+    <p class="signoff" data-in>When Stories <span class="become">Become</span> Assets</p>
+    <footer class="foot">
+      <nav class="foot-links" aria-label="Footer">
+        <a href="./">Home</a><a href="about.html">About</a><a href="investors.html">Investors</a><a href="insights.html" aria-current="page">Insights</a><a href="contact.html">Contact</a>
+      </nav>
+      <nav class="foot-links" aria-label="Legal" style="font-size:13px">
+        <a href="docs.html">Docs</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a><a href="#">Disclaimer</a><a href="docs/CineNow-Media-Kit.zip" download>Media Kit</a>
+      </nav>
+      <p class="disc">This website is introductory only. It is not an offer or a solicitation. Any offer is made solely to qualified investors through a confidential Private Placement Memorandum, and only where permitted by law. Promotion in the UAE is distributed or approved by Greenstone Equity Partners Financial Products Promotion LLC, regulated by the UAE Capital Market Authority (licence no. 703050).</p>
+      <div class="legal"><span>© 2026 CineNow Limited. A British Virgin Islands business company, no. 2194385.</span><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </footer>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function () {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = !!(window.gsap && window.ScrollTrigger);
+  document.addEventListener('click', e => { const a = e.target.closest && e.target.closest('a[href="#"]'); if (a) e.preventDefault(); });
+  const menu = document.getElementById('menu'), mOpen = document.getElementById('menu-open'), mClose = document.getElementById('menu-close');
+  const closeMenu = () => { menu.hidden = true; mOpen.setAttribute('aria-expanded', 'false'); mOpen.focus(); };
+  mOpen.addEventListener('click', () => { menu.hidden = false; mOpen.setAttribute('aria-expanded', 'true'); mClose.focus(); });
+  mClose.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) closeMenu(); });
+  window.CN = { reduce, hasGsap };
+  /* arrival: the spectrum shutter rises and clears, as on Home and About */
+  if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js-motion');
+    gsap.timeline({ defaults: { ease: 'expo.inOut' } })
+      .from('.shutter i', { scaleY: 0, duration: .55, stagger: .05 })
+      .set('.shutter-bg', { autoAlpha: 0 })
+      .to('.shutter i', { yPercent: -100, duration: .75, stagger: .05 }, '+=.04')
+      .set('.shutter', { display: 'none' });
+  }
+
+  const DESK = {
+    inv: ['Investor Insights', 'Film IP as an asset class, and the industry behind it.'],
+    tok: ['The Road to Tradability', 'How fund units are tokenised, who is building it and when.'],
+    film: ['From the Slate', 'Films, filmmakers and partners joining the CineNow portfolio.']
+  };
+  const tabs = document.querySelectorAll('.tabs button'), deskIn = document.getElementById('desk-in');
+  function filter(f, push) {
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.f === f)));
+    ['nlist','pgrid'].forEach(id => { const l = document.getElementById(id); l.classList.toggle('filtered', f !== 'all'); const w = document.querySelector('[data-more="' + id + '"]'); if (w) w.hidden = f !== 'all' || l.classList.contains('show-all'); });
+    deskIn.hidden = f === 'all';
+    if (f !== 'all') { document.getElementById('desk-t').textContent = DESK[f][0]; document.getElementById('desk-d').textContent = DESK[f][1]; }
+    [['.nr', 'news-empty', 'nlist'], ['.pc', 'press-empty', 'pgrid']].forEach(([sel, empty, list]) => {
+      let n = 0; document.querySelectorAll(sel).forEach(el => { const on = f === 'all' || el.dataset.cat === f; el.hidden = !on; if (on) n++; });
+      document.getElementById(empty).hidden = n > 0; document.getElementById(list).hidden = n === 0;
+    });
+    if (window.gsap && !CN.reduce) gsap.fromTo('.nr:not([hidden]), .pc:not([hidden]), #desk-in', { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .04, ease: 'expo.out', clearProps: 'all' });
+    if (push) { try { history.replaceState(null, '', f === 'all' ? location.pathname : '?topic=' + f); } catch (e) {} if (window.ScrollTrigger) ScrollTrigger.refresh(); }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => {
+    filter(b.dataset.f, true);
+    // bring the topic heading into view just under the nav and the filter bar
+    const lib = document.querySelector('.lib'), y = lib.getBoundingClientRect().top + scrollY - 92;
+    if (Math.abs(scrollY - y) > 40) { CN.lenis ? CN.lenis.scrollTo(y, { duration: 1 }) : scrollTo({ top: y, behavior: 'smooth' }); }
+  }));
+  document.querySelectorAll('[data-more]').forEach(w => w.querySelector('button').addEventListener('click', () => {
+    const list = document.getElementById(w.dataset.more); list.classList.add('show-all'); w.hidden = true;
+    if (window.gsap && !CN.reduce) gsap.fromTo(list.querySelectorAll('.more'), { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .04, ease: 'expo.out', clearProps: 'all' });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }));
+  const q = new URLSearchParams(location.search).get('topic'); if (q && DESK[q]) filter(q, false);
+
+  if (!hasGsap || reduce) {  return; }
+  gsap.registerPlugin(ScrollTrigger);
+  const EASE = 'expo.out';
+  const lenis = window.Lenis ? new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true }) : null;
+  if (lenis) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+  window.CN.lenis = lenis;
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+    e.preventDefault(); lenis ? lenis.scrollTo(t, { offset: -20, duration: 1.4 }) : t.scrollIntoView({ behavior: 'smooth' });
+  }));
+  const nav = document.getElementById('nav'); let lastY = 0;
+  addEventListener('scroll', () => { nav.classList.toggle('is-hidden', scrollY > lastY && scrollY > 500 && menu.hidden); lastY = scrollY; }, { passive: true });
+  gsap.to('.progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+  gsap.timeline({ delay: .95 })
+    .from('#hero-h .ln > span', { yPercent: 110, duration: 1.3, stagger: .1, ease: EASE }, .1)
+    .from('#hero [data-in]', { y: 22, autoAlpha: 0, duration: 1, stagger: .07, ease: EASE }, .3);
+  document.querySelectorAll('main section:not(#hero)').forEach(s => {
+    const tl = gsap.timeline({ paused: true });
+    const lines = s.querySelectorAll('[data-lines] .ln > span'), ins = s.querySelectorAll('[data-in]');
+    if (lines.length) tl.from(lines, { yPercent: 110, filter: 'blur(8px)', duration: 1.2, stagger: .1, ease: EASE }, 0);
+    if (ins.length) tl.from(ins, { y: 30, autoAlpha: 0, duration: 1, stagger: .06, ease: EASE }, .15);
+    ScrollTrigger.create({ trigger: s, start: 'top 85%', once: true, onEnter: () => tl.play() });
+  });
+  gsap.from('.feat-ph img', { scale: 1.15, duration: 1.8, ease: EASE, scrollTrigger: { trigger: '.feat-card', start: 'top 85%', once: true } });
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

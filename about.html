@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About</title>
+<meta name="description" content="The financial backbone of the entertainment industry. Governance, partners and legal structure behind CineNow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* About page. Same system as the homepage: black and paper grounds, one spectrum signal,
+   Newsreader for ideas, Plus Jakarta Sans for data and labels. */
+:root{
+  color-scheme: dark;
+  --black:#0C0C0C; --charcoal:#2A2A2A; --paper:#F8F7F4;
+  --paper-2:#EFEDE8; --line-p:#D9D6CF; --line-d:#262626;
+  --mute-d:#A9A69F; --mute-d2:#7F7C76; --mute-p:#57544E; --mute-p2:#76736C; --soft-d:#C8C5BE;
+  --s1:#16A0F4; --s2:#7041E0; --s3:#E01CAB; --s4:#FF3787; --s5:#FF5B1F;
+  --spectrum: linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5));
+  --serif:'Newsreader','Iowan Old Style',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --t-display: clamp(42px, min(5.4vw, 9.6vh), 100px);
+  --t-head: clamp(36px, min(5.2vw, 8.4vh), 84px);
+  --t-state: clamp(18px, min(1.55vw, 2.8vh), 24px);
+  --t-body: 17px; --t-small: 14px; --t-label: 12px;
+  --gutter: clamp(16px, 4.4vw, 72px);
+  --nav-h: 84px;
+  --r-tile: 22px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--black)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--black);color:var(--paper);font-family:var(--sans);font-size:var(--t-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--s1);outline-offset:4px}
+h1,h2,h3{font-weight:400;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{width:100%;max-width:calc(1200px + 2 * var(--gutter));margin:0 auto;padding-inline:var(--gutter)}
+.label{margin:0;font-size:var(--t-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
+.head{margin:0;font-family:var(--serif);font-size:var(--t-head);line-height:1;letter-spacing:-.03em}
+.state{margin:0;font-family:var(--serif);font-size:var(--t-state);line-height:1.35}
+.ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.ln > span{display:inline-block}
+.spec{display:flex}
+.spec i{flex:1}
+.spec i:nth-child(1){background:var(--s1)}.spec i:nth-child(2){background:var(--s2)}.spec i:nth-child(3){background:var(--s3)}.spec i:nth-child(4){background:var(--s4)}.spec i:nth-child(5){background:var(--s5)}
+.dark{background:var(--black);color:var(--paper)}
+.paper{background:var(--paper);color:var(--black)}
+.sec{position:relative;padding-block:clamp(80px,12vh,140px)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;font-size:15px;font-weight:500;border-radius:999px;border:1px solid currentColor;background:none;cursor:pointer;transition:background-color .25s ease,color .25s ease,transform .12s ease-out}
+.btn svg{width:16px;height:16px;transition:transform .45s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:scale(.97)}
+.btn-solid-l{background:var(--paper);color:var(--black);border-color:transparent}
+.btn-solid-l:hover{background:#fff}
+
+/* nav: the same glass pill as the homepage */
+.progress{position:fixed;left:0;top:0;right:0;height:2px;z-index:60;background:var(--spectrum);transform-origin:left;transform:scaleX(0)}
+.nav{position:fixed;left:0;right:0;top:calc(12px + env(safe-area-inset-top,0px));z-index:50;pointer-events:none;color:var(--paper);transition:transform .6s var(--ease)}
+.nav.is-hidden{transform:translateY(-140%)}
+.nav-in{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:min(1200px,calc(100% - 2 * var(--gutter)));height:60px;margin:0 auto;padding:0 8px 0 22px;border-radius:999px;
+  background:rgba(20,20,20,.58);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid rgba(255,255,255,.09);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 14px 40px rgba(0,0,0,.22)}
+.logo{display:inline-flex;align-items:center}
+.logo svg{width:118px;height:26px;display:block}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500}
+.nav-links a:not(.btn){opacity:.72;transition:opacity .3s;position:relative}
+.nav-links a:not(.btn):hover,.nav-links a[aria-current]{opacity:1}
+.nav-links a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--spectrum)}
+.nav .btn{background:var(--paper);color:var(--black);border:0;min-height:44px;padding:0 20px;font-size:14px}
+.nav .btn:hover{background:#fff;transform:translateY(-1px)}
+.menu-btn{display:none;min-height:44px;min-width:44px;padding:0 16px;background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:999px;cursor:pointer;font-size:14px;font-weight:500}
+@media (max-width:960px){.nav-links{display:none}.menu-btn{display:inline-flex;align-items:center}}
+.menu{position:fixed;inset:0;z-index:70;background:var(--black);color:var(--paper);padding:calc(var(--nav-h) + 24px) var(--gutter) 40px;display:flex;flex-direction:column;justify-content:space-between}
+.menu[hidden]{display:none}
+.menu nav{display:flex;flex-direction:column;gap:6px}
+.menu nav a{font-family:var(--serif);font-size:44px;line-height:1.2}
+.menu nav a[aria-current]{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+.menu .close-btn{position:absolute;top:calc(20px + env(safe-area-inset-top,0px));right:var(--gutter);display:inline-flex}
+
+/* intro shutter (page arrival) */
+.shutter,.shutter-bg{position:fixed;inset:0;z-index:100;pointer-events:none;display:none}
+.shutter-bg{z-index:99;background:var(--black)}
+html.js-motion .shutter,html.js-motion .shutter-bg{display:flex}
+.shutter i{flex:1 1 0;margin-right:-1px;transform-origin:bottom}.shutter i:last-child{margin-right:0}
+.shutter i:nth-child(1){background:var(--s1)}.shutter i:nth-child(2){background:var(--s2)}.shutter i:nth-child(3){background:var(--s3)}.shutter i:nth-child(4){background:var(--s4)}.shutter i:nth-child(5){background:var(--s5)}
+
+/* section intro, centred like the homepage */
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;max-width:1000px;margin:0 auto}
+.sec-head .state{max-width:46ch}
+.idx{display:inline-flex;align-items:center;gap:12px}
+.idx b{font-weight:700}
+.idx i{display:block;width:28px;height:1px;background:currentColor;opacity:.4}
+.dark .idx{color:var(--mute-d)}
+.paper .idx{color:var(--mute-p2)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:stretch;overflow:hidden}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,96px);align-items:end;
+  padding-top:calc(var(--nav-h) + clamp(40px,9vh,120px));padding-bottom:clamp(40px,7vh,88px)}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--mute-d)}
+.kicker .spec{position:relative;width:46px;height:5px;overflow:hidden}
+.kicker .spec::after{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-110%);animation:glint 5.2s cubic-bezier(.45,0,.25,1) 1.8s infinite}
+@keyframes glint{0%{transform:translateX(-110%)}38%,100%{transform:translateX(200%)}}
+.display{margin:clamp(20px,3vh,32px) 0 0;font-family:var(--serif);font-size:var(--t-display);line-height:.95;letter-spacing:-.035em}
+.claims{list-style:none;margin:clamp(28px,4.4vh,48px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line-d);max-width:640px}
+.claims li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-d);font-family:var(--serif);font-size:clamp(19px,min(1.6vw,2.8vh),24px);line-height:1.3}
+.claims li span{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--mute-d2)}
+.hero-p{margin:clamp(22px,3.4vh,34px) 0 0;max-width:56ch;color:var(--soft-d);font-size:16px;line-height:1.65}
+.hero-media{position:relative;align-self:stretch;min-height:420px;max-height:calc(100svh - var(--nav-h) - 80px)}
+.hero-media .frame{position:absolute;inset:0;overflow:hidden;background:#141414}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-media .slate{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:8px;padding:14px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.hero-media .slate span{background:rgba(12,12,12,.74);padding:5px 8px}
+.hero-media .spec{position:absolute;left:0;right:0;bottom:0;height:3px}
+@media (max-width:1023px){
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:minmax(0,1fr);padding-top:calc(var(--nav-h) + 40px)}
+  .hero-media{min-height:0;aspect-ratio:4/5;max-height:none}
+}
+
+
+/* hero, calmer: one headline, one supporting line, one paragraph, one image */
+.hero .display{font-size:clamp(40px,min(4.9vw,9vh),88px);line-height:1;letter-spacing:-.03em}
+.hero .display .ln > span{white-space:nowrap}
+.hero-sub{margin:clamp(22px,3.2vh,32px) 0 0;max-width:42ch;font-family:var(--serif);font-size:clamp(20px,min(1.7vw,3vh),26px);line-height:1.38;color:var(--soft-d)}
+.hero-p{margin-top:clamp(18px,2.6vh,26px);max-width:52ch;color:var(--mute-d);font-size:15px}
+.hero-grid{align-items:center}
+@media (max-width:640px){.hero .display .ln > span{white-space:normal}}
+
+
+/* hero v2: the frame bleeds off the right edge, the copy sits in the dark beside it */
+@media (min-width:1024px){
+  .hero{min-height:100vh;min-height:100svh}
+  .hero-grid{grid-template-columns:minmax(0,1fr);align-items:center;min-height:100vh;min-height:100svh;padding-top:calc(var(--nav-h) + 24px);padding-bottom:48px}
+  .hero-grid{position:static}
+  .hero-grid > div:first-child{position:relative;z-index:2;max-width:min(660px,52%)}
+  .hero-media{position:absolute;top:0;right:0;bottom:0;width:min(54vw,880px);min-height:0;max-height:none;z-index:1}
+  .hero-media .frame{inset:0}
+  .hero-media img{object-position:50% 22%}
+  .hero-media::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,var(--black) 0%,rgba(12,12,12,.82) 12%,rgba(12,12,12,.25) 34%,rgba(12,12,12,0) 52%),
+               linear-gradient(0deg,rgba(12,12,12,.7) 0%,rgba(12,12,12,0) 26%),
+               linear-gradient(180deg,rgba(12,12,12,.55) 0%,rgba(12,12,12,0) 18%)}
+  .hero-media .spec{z-index:2;left:0}
+  .hero-grid > div:first-child{container-type:inline-size}
+  .hero .display{font-size:clamp(36px,min(8vh,9.6cqw),68px)}
+}
+
+/* ============ ROUTE: BVI → UAE → India ============ */
+.route{padding-block:clamp(64px,10vh,120px) clamp(80px,12vh,140px);border-top:1px solid #1A1A1A}
+.route-map{position:relative;margin-top:clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.route-line{position:absolute;left:calc(100% / 6);right:calc(100% / 6);top:27px;height:2px;background:#2A2A2A;overflow:hidden}
+.route-line i{position:absolute;inset:0;background:var(--spectrum);transform-origin:left}
+.route-line b{position:absolute;top:-2px;width:60px;height:6px;border-radius:6px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.85;animation:pulse-move 4.8s cubic-bezier(.45,0,.25,1) infinite}
+@keyframes pulse-move{0%{left:-60px}70%,100%{left:100%}}
+.node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.node .dot{position:relative;width:56px;height:56px;border-radius:50%;background:var(--black);border:1px solid #3A3A3A;display:grid;place-items:center}
+.node .dot::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--paper)}
+.node.gate .dot{width:56px;height:56px;border:0;background:conic-gradient(from 200deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5),var(--s1))}
+.node.gate .dot::before{content:"";position:absolute;inset:2px;border-radius:50%;background:var(--black)}
+.node.gate .dot::after{position:relative;z-index:1}
+.node.gate .dot{box-shadow:0 0 50px rgba(224,28,171,.25)}
+.node .code{font-family:var(--serif);font-size:clamp(38px,4.4vw,72px);line-height:1;letter-spacing:-.03em}
+.node .role{color:var(--mute-d)}
+.node p{margin:0;max-width:30ch;color:var(--soft-d);font-size:var(--t-small);line-height:1.55}
+.route-note{margin:clamp(48px,7vh,80px) auto 0;max-width:62ch;text-align:center;font-family:var(--serif);font-size:clamp(20px,min(1.8vw,3vh),28px);line-height:1.4;color:var(--paper)}
+.route-note em{font-style:normal;color:var(--mute-d)}
+@media (max-width:760px){
+  .route-map{grid-template-columns:minmax(0,1fr);gap:40px;padding-left:0}
+  .route-line{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto}
+  .route-line i{transform-origin:top}
+  .route-line b{display:none}
+  .node{display:grid;grid-template-columns:56px minmax(0,1fr);text-align:left;align-items:start;column-gap:20px;row-gap:6px}
+  .node .dot{grid-row:1/4}
+  .node .code{font-size:40px}
+}
+
+/* ============ AT A GLANCE ============ */
+.glance-grid{margin-top:clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.g-card{background:#fff;border-radius:var(--r-tile);padding:clamp(22px,2vw,30px);display:flex;flex-direction:column;gap:18px;min-width:0;box-shadow:0 1px 0 rgba(12,12,12,.04)}
+.g-vis{height:132px;display:flex;align-items:flex-end}
+.g-num{margin:0;font-family:var(--serif);font-size:clamp(48px,min(4.6vw,8vh),80px);line-height:.95;letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.g-cap{margin:0;font-size:15px;line-height:1.5;color:var(--mute-p);max-width:24ch}
+.g-key{margin-top:auto;padding-top:14px;border-top:1px solid var(--paper-2);font-size:12px;color:var(--mute-p2)}
+/* fund gauge */
+.gauge{width:100%}
+.gauge .ticks{display:flex;justify-content:space-between;align-items:flex-end;height:96px}
+.gauge .ticks i{width:2px;background:var(--line-p);height:28%;border-radius:2px}
+.gauge .ticks i:nth-child(5n+1){height:46%}
+.gauge .ticks i.on{background:var(--black)}
+.gauge .track{position:relative;height:8px;margin-top:10px;border-radius:8px;background:var(--paper-2);overflow:hidden}
+.gauge .track b{position:absolute;inset:0;background:var(--spectrum);transform-origin:left;border-radius:8px}
+.gauge .ends{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mute-p2)}
+/* film frames */
+.frames{width:100%;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px}
+.frames i{aspect-ratio:3/4;border-radius:3px;background:var(--black);position:relative}
+.frames i::before,.frames i::after{content:"";position:absolute;left:22%;right:22%;height:2px;background:rgba(255,255,255,.28);border-radius:1px}
+.frames i::before{top:12%}.frames i::after{bottom:12%}
+/* waffle */
+.waffle{width:132px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;margin-inline:0 auto}
+.waffle i{aspect-ratio:1;border-radius:2px;background:var(--paper-2)}
+.waffle i.on{background:var(--c,var(--black))}
+/* script marks */
+.marks{width:100%;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:3px}
+.marks i{aspect-ratio:1;border-radius:50%;background:var(--black)}
+@media (max-width:1100px){.glance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.glance-grid{grid-template-columns:minmax(0,1fr)}.g-vis{height:auto;min-height:100px}}
+
+/* ============ 01 GOVERNANCE ============ */
+.split{margin:clamp(48px,7vh,80px) auto 0;max-width:1200px}
+.split-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap,0px)}
+.party{position:relative;background:#141414;padding:clamp(18px,1.8vw,26px);min-height:clamp(150px,20vh,190px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid #222}
+.split-row .party:first-child{border-radius:var(--r,0px) 0 0 var(--r,0px)}
+.split-row .party:last-child{border-radius:0 var(--r,0px) var(--r,0px) 0}
+.party .label{color:var(--mute-d2)}
+.party h3{margin:0;font-family:var(--serif);font-size:clamp(22px,min(2vw,3.6vh),30px);line-height:1.08}
+.party .verb{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--soft-d)}
+.party .verb i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.party.lead{background:#191919}
+.split-cap{margin-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute-d2);font-size:13px}
+.split-cap strong{color:var(--paper);font-weight:500}
+@media (max-width:860px){.split-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.split-row .party{border-radius:16px!important}}
+.ledger{list-style:none;margin:clamp(56px,9vh,104px) auto 0;padding:0;max-width:1200px;border-top:1px solid var(--line-d)}
+.ledger-head{max-width:1200px;margin:clamp(72px,10vh,120px) auto 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.ledger-head .label{color:var(--mute-d)}
+.ledger-head p:not(.label){margin:0;font-family:var(--serif);font-size:clamp(24px,2.4vw,36px);line-height:1.1;letter-spacing:-.02em}
+.ledger-head + .ledger{margin-top:24px}
+.row{position:relative;display:grid;grid-template-columns:72px minmax(0,1.05fr) minmax(0,1.2fr) minmax(0,.95fr);gap:24px clamp(20px,3vw,48px);align-items:start;padding:clamp(24px,3.4vh,36px) 0;border-bottom:1px solid var(--line-d);transition:background-color .4s var(--ease)}
+.row::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.row .n{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--mute-d2);padding-top:10px;font-variant-numeric:tabular-nums}
+.row h3{margin:0;font-family:var(--serif);font-size:clamp(26px,min(2.4vw,4vh),40px);line-height:1.05;letter-spacing:-.02em;transition:transform .5s var(--ease)}
+.row p{margin:0;color:var(--soft-d);font-size:15px;line-height:1.6;max-width:46ch;padding-top:6px}
+.firms{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;padding-top:4px}
+.firms span{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:999px;border:1px solid #333;font-size:13px;font-weight:500;color:var(--paper);white-space:nowrap;transition:border-color .3s,background-color .3s}
+@media (hover:hover){
+  .row:hover::after{transform:scaleX(1)}
+  .row:hover h3{transform:translateX(6px)}
+  .row:hover .firms span{border-color:#5A5A5A;background:#151515}
+}
+@media (max-width:960px){
+  .row{grid-template-columns:44px minmax(0,1fr);gap:12px 16px}
+  .row p,.row .firms{grid-column:2}
+  .firms{justify-content:flex-start}
+}
+
+/* ============ 02 PARTNERS ============ */
+.filters{margin:clamp(40px,6vh,64px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:1200px}
+.filters button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-p);background:transparent;color:var(--mute-p);font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .25s,color .25s,border-color .25s,transform .12s}
+.filters button:hover{border-color:var(--black);color:var(--black)}
+.filters button:active{transform:scale(.97)}
+.filters button[aria-pressed="true"]{background:var(--black);border-color:var(--black);color:var(--paper)}
+.filters button small{font-size:11px;font-weight:700;opacity:.6;font-variant-numeric:tabular-nums}
+.directory{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.firm{position:relative;background:#fff;border-radius:18px;padding:22px 22px 20px;min-height:168px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;overflow:hidden;
+  transition:opacity .45s var(--ease),transform .45s var(--ease),filter .45s var(--ease),box-shadow .3s}
+.firm .cat{display:flex;justify-content:space-between;gap:8px;color:var(--mute-p2)}
+.firm h3{margin:0;font-family:var(--serif);font-size:clamp(24px,1.9vw,30px);line-height:1.05;letter-spacing:-.02em}
+.firm .role{margin:6px 0 0;font-size:14px;color:var(--mute-p);line-height:1.45}
+.firm .bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.firm-link{position:relative;flex:1;padding:22px 22px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;border-radius:inherit;color:inherit}
+.firm:has(.firm-link){padding:0}
+@media (max-width:480px){.firm-link{padding:16px}}
+.firm-link:focus-visible{outline:2px solid var(--s1);outline-offset:3px}
+.firm .ext{width:16px;height:16px;color:var(--mute-p2);opacity:.5;transition:opacity .3s,transform .4s var(--ease),color .3s}
+@media (hover:hover){.firm:hover .ext{opacity:1;color:var(--black);transform:translate(2px,-2px)}}
+.firm-link .cat{align-items:center}
+.firm.is-dim{opacity:.28;filter:grayscale(1);transform:scale(.985)}
+.firm.is-on .bar{transform:scaleX(1)}
+@media (hover:hover){.firm:hover{box-shadow:0 18px 40px rgba(12,12,12,.08)}.firm:hover .bar{transform:scaleX(1)}}
+.firm.unnamed{background:transparent;border:1px dashed #BDB9B1}
+.firm.unnamed h3{color:var(--mute-p)}
+.notes{margin:clamp(28px,4vh,40px) auto 0;max-width:1000px;display:flex;justify-content:center;gap:12px 40px;color:var(--mute-p);font-size:14px;line-height:1.6}
+.notes p{margin:0;display:flex;gap:12px}
+.notes p::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--black)}
+@media (max-width:1100px){.directory{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:820px){.directory{grid-template-columns:repeat(2,minmax(0,1fr))}.notes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.directory{gap:8px}.firm{min-height:0;padding:16px;border-radius:16px}.firm h3{font-size:21px}.firm .role{font-size:13px}.firm .cat{font-size:10px}}
+
+/* ============ 03 STRUCTURE ============ */
+.struct{margin-top:clamp(48px,7vh,80px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);align-items:stretch}
+.regcard{position:relative;border-radius:var(--r-tile);background:linear-gradient(160deg,#171717,#101010);border:1px solid #242424;padding:clamp(24px,2.6vw,40px);overflow:hidden;display:flex;flex-direction:column;gap:26px}
+.regcard .mark{position:absolute;right:-40px;bottom:-50px;width:260px;color:#1C1C1C;pointer-events:none}
+.regcard .top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--mute-d)}
+.regcard .top .spec{width:56px;height:5px}
+.regcard dl{position:relative;margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 28px}
+.regcard dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d2);margin-bottom:6px}
+.regcard dd{margin:0;font-family:var(--serif);font-size:clamp(20px,1.7vw,26px);line-height:1.2}
+.regcard .wide{grid-column:1/-1}
+.regcard dd.num{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.offer{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.offer p{margin:0;font-family:var(--serif);font-size:clamp(20px,min(1.7vw,3vh),27px);line-height:1.4}
+.offer p + p{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--soft-d)}
+.offer .regs{display:flex;flex-wrap:wrap;gap:8px}
+.offer .regs span{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;border:1px solid #333;font-size:13px;color:var(--soft-d)}
+.offer .regs span::before{content:"";width:10px;height:1.5px;background:var(--s5);transform:rotate(-45deg)}
+@media (max-width:960px){.struct{grid-template-columns:minmax(0,1fr)}.regcard dl{grid-template-columns:minmax(0,1fr)}}
+
+.doc{margin-top:clamp(40px,6vh,64px);position:relative;background:var(--paper);color:var(--black);border-radius:var(--r-tile);overflow:hidden}
+.doc-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:clamp(20px,2.4vw,32px) clamp(20px,3vw,48px);border-bottom:1px solid var(--line-p)}
+.doc-head h3{margin:0;font-family:var(--serif);font-size:clamp(24px,2.2vw,34px);line-height:1.1;letter-spacing:-.02em}
+.doc-head .label{color:var(--mute-p2)}
+.doc-body{position:relative;max-height:520px;overflow:hidden;transition:max-height .9s var(--ease)}
+.doc.open .doc-body{max-height:none}
+.doc.open .doc-cols{max-width:none;columns:2 380px}
+.doc-cols{padding:clamp(24px,3vw,44px) clamp(20px,3vw,48px) clamp(80px,10vh,110px);max-width:88ch;column-gap:clamp(28px,4vw,64px);font-size:13px;line-height:1.7;color:#3C3A36}
+.doc-cols p{margin:0 0 14px;break-inside:avoid-column}
+.doc-cols h4{margin:22px 0 10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);break-after:avoid}
+.doc-cols h4:first-child{margin-top:0}
+.doc-fade{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,rgba(248,247,244,0),var(--paper) 72%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:28px;pointer-events:none;transition:opacity .4s}
+.doc-fade .btn{pointer-events:auto;background:var(--black);color:var(--paper);border-color:var(--black)}
+.doc-fade .btn:hover{background:var(--charcoal)}
+.doc.open .doc-fade{position:static;height:auto;background:none;padding:0 0 32px}
+.doc.open .doc-fade .btn svg{transform:rotate(180deg)}
+.doc-fade .btn svg{transition:transform .4s var(--ease)}
+
+
+/* stills reel */
+.stills{padding-block:clamp(8px,1.4vh,14px) clamp(64px,9vh,104px);display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.reel{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reel-track{display:flex;gap:10px;width:max-content;will-change:transform}
+.reel-track img{height:clamp(140px,22vh,240px);width:auto;aspect-ratio:4/5;object-fit:cover;background:#161616;filter:saturate(.9);transition:filter .4s}
+.reel-track img:hover{filter:saturate(1.15)}
+/* image band */
+.band-img{position:relative;height:clamp(420px,78vh,760px);overflow:hidden;background:var(--black);color:var(--paper);display:flex;align-items:flex-end}
+.band-media{position:absolute;inset:0;overflow:hidden}
+.band-media img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.band-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.55),rgba(12,12,12,0) 30%,rgba(12,12,12,0) 45%,rgba(12,12,12,.88))}
+.band-copy{position:relative;z-index:1;padding-bottom:clamp(40px,8vh,88px)}
+.band-line{margin:0;max-width:22ch;font-family:var(--serif);font-size:clamp(34px,min(4.6vw,7.6vh),76px);line-height:1.02;letter-spacing:-.03em}
+.band-line .dim{color:rgba(248,247,244,.6)}
+/* partner logos */
+.firm .logo-ph{min-height:44px;display:flex;align-items:center}
+.firm .logo-ph img{height:var(--h,30px);width:auto;max-width:100%}
+.firm .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* ============ TEAM ============ */
+.t-tabs{margin:clamp(40px,6vh,64px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:1200px}
+.t-tabs button{min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line-p);background:transparent;color:var(--mute-p);font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .25s,color .25s,border-color .25s,transform .12s}
+.t-tabs button:hover{border-color:var(--black);color:var(--black)}
+.t-tabs button:active{transform:scale(.97)}
+.t-tabs button[aria-selected="true"]{background:var(--black);border-color:var(--black);color:var(--paper)}
+.t-tabs small{font-size:11px;font-weight:700;opacity:.6;font-variant-numeric:tabular-nums}
+.t-mandate{margin:28px auto 0;max-width:760px;min-height:64px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.t-gname{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-p2)}
+.t-gtext{font-family:var(--serif);font-size:clamp(19px,1.6vw,24px);line-height:1.35;color:var(--black)}
+.t-grid{list-style:none;margin:clamp(32px,5vh,52px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.6vw,24px) clamp(12px,1.4vw,20px)}
+.pc{min-width:0}
+.pc button{all:unset;display:flex;flex-direction:column;gap:4px;width:100%;cursor:pointer;border-radius:4px}
+.pc button:focus-visible{outline:2px solid var(--s1);outline-offset:6px}
+.pc .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);margin-bottom:12px}
+.pc .ph img{width:100%;height:100%;object-fit:cover;transform-origin:50% 100%;transition:transform 1s var(--ease),filter .6s var(--ease)}
+.pc .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.pc .more{position:absolute;left:12px;bottom:14px;display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;background:rgba(12,12,12,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--paper);font-size:12px;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .45s var(--ease)}
+.pc .more svg{width:12px;height:12px}
+.pc h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.5vw,23px);line-height:1.15}
+.pc .role{margin:0;color:var(--mute-p2);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.4}
+.pc .grp{margin:2px 0 0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-p2);opacity:.75}
+@media (hover:hover){
+  .pc button:hover .ph img{transform:scale(1.04)}
+  .pc button:hover .ph::after{transform:scaleX(1)}
+  .pc button:hover .more{opacity:1;transform:none}
+}
+.pc .more.always{opacity:1;transform:none}
+@media (hover:none){.pc .more{opacity:1;transform:none}}
+@media (max-width:1100px){.t-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:820px){.t-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.t-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding:2px var(--gutter);scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}.t-tabs::-webkit-scrollbar{display:none}.t-tabs button{flex:none}}
+@media (max-width:560px){.t-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pc .more{left:8px;bottom:8px;min-height:30px;padding:0 10px;font-size:11px}}
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:90}
+.drawer[hidden]{display:none}
+.dr-scrim{position:absolute;inset:0;background:rgba(12,12,12,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dr-panel{position:absolute;top:0;right:0;bottom:0;width:min(620px,100%);background:var(--paper);color:var(--black);overflow-y:auto;overscroll-behavior:contain;padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:24px;box-shadow:-30px 0 80px rgba(0,0,0,.35)}
+.dr-close{position:sticky;top:0;align-self:flex-end;width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--line-p);background:var(--paper);display:grid;place-items:center;cursor:pointer;z-index:2;margin-bottom:-68px}
+.dr-close svg{width:18px;height:18px}
+.dr-top{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:end;padding-right:56px}
+.dr-ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+.dr-ph img{width:100%;height:100%;object-fit:cover}
+.dr-id .label{color:var(--mute-p2)}
+.dr-id h3{margin:10px 0 0;font-family:var(--serif);font-size:clamp(30px,3vw,42px);line-height:1;letter-spacing:-.02em}
+.dr-role{margin:10px 0 0;font-size:15px;color:var(--mute-p)}
+.dr-heads{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--line-p);display:flex;flex-wrap:wrap;gap:8px}
+.dr-heads li{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line-p);font-size:12px;color:var(--mute-p)}
+.dr-heads:empty{display:none}
+.dr-links{display:flex;flex-wrap:wrap;gap:8px}
+.dr-links:empty{display:none}
+.dr-links a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 12px;border-radius:999px;background:var(--black);color:var(--paper);font-size:13px;font-weight:600;transition:transform .2s var(--ease),background-color .25s}
+.dr-links a:hover{background:var(--charcoal);transform:translateY(-1px)}
+.dr-links svg{width:16px;height:16px}
+.dr-links a.is-imdb{padding:0 12px}
+.dr-links svg.imdb{width:38px;height:19px;display:block}
+
+.dr-body p{margin:0 0 16px;font-size:15px;line-height:1.7;color:#3C3A36}
+.dr-body p.lead{font-family:var(--serif);font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:var(--black)}
+.dr-nav{display:flex;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line-p);margin-top:auto}
+.dr-nav .btn{min-height:44px;padding:0 20px;font-size:14px}
+@media (max-width:560px){.dr-top{grid-template-columns:96px minmax(0,1fr);gap:16px}}
+
+
+/* ============ INVESTOR ACCESS ============ */
+.access{position:relative;overflow:hidden;min-height:clamp(520px,86vh,820px);display:flex;align-items:center}
+.access-media{position:absolute;inset:0;overflow:hidden}
+.access-media img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;object-position:50% 50%}
+.access::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(12,12,12,.35),rgba(12,12,12,.86) 72%),linear-gradient(180deg,rgba(12,12,12,.6),rgba(12,12,12,.2) 40%,rgba(12,12,12,.9))}
+.access-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(80px,12vh,140px)}
+.access .state{max-width:46ch;color:var(--soft-d)}
+.access .ctas{margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn-ghost{color:var(--paper);border-color:rgba(248,247,244,.45);background:rgba(12,12,12,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--paper);background:rgba(248,247,244,.08)}
+
+
+/* filter + team tabs: plain pills, outline only (no inner flex boxes, no native button styling) */
+.filters button,.t-tabs button{-webkit-appearance:none;appearance:none;display:inline-block;line-height:40px;height:42px;min-height:0;white-space:nowrap;background-color:transparent;background-image:none;box-shadow:none;outline-offset:3px}
+.filters button::-moz-focus-inner,.t-tabs button::-moz-focus-inner{border:0;padding:0}
+.filters button span,.t-tabs button span,.filters button small,.t-tabs button small{display:inline;border:0;background:none;box-shadow:none;outline:0;text-decoration:none}
+.filters button small,.t-tabs button small{margin-left:8px}
+.filters button[aria-pressed="true"],.t-tabs button[aria-selected="true"]{background-color:var(--black)}
+
+/* ============ CLOSE + FOOTER (same as homepage) ============ */
+.close{padding-block:clamp(56px,8vh,96px) clamp(28px,4vh,40px);border-top:1px solid #1A1A1A}
+.close .wrap{display:flex;flex-direction:column;gap:clamp(16px,2.6vh,36px)}
+.signoff{margin:0;font-family:var(--serif);font-size:clamp(40px,min(6vw,9.6vh),112px);line-height:1;letter-spacing:-.03em}
+.signoff .become{background:linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:start;padding-top:clamp(18px,3vh,28px);border-top:1px solid var(--line-d)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:var(--t-small)}
+.foot-links a{color:var(--soft-d);transition:color .3s}
+.foot-links a:hover,.foot-links a[aria-current]{color:var(--paper)}
+.foot .disc{grid-column:1/-1;margin:0;max-width:110ch;font-size:12px;line-height:1.6;color:var(--mute-d2)}
+.foot .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--mute-d2)}
+.foot .legal .spec{width:56px;height:5px;align-self:center}
+@media (max-width:760px){.foot{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion: reduce){
+  .kicker .spec::after,.route-line b{animation:none;opacity:0}
+  *{transition-duration:.01ms!important}
+}
+section .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle){background:none}
+.dark .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--paper);color:var(--black);border-color:var(--paper)}
+.paper .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--black);color:var(--paper);border-color:var(--black)}
+.menu-btn{width:44px;height:44px;min-width:44px;padding:0!important;justify-content:center;border-radius:999px}
+.menu-btn svg{display:block}
+/* type consistency: one intro size for every paragraph under a heading, one size for serif lead lines */
+.intro{margin:0 auto;font-family:var(--sans);font-size:17px;line-height:1.65;max-width:60ch}
+.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:17px!important;line-height:1.65}
+.hero-sub,.ins-sub,.d-sub,.p-lead,.c-sub,.feat .state{font-size:var(--t-state)!important;line-height:1.4}
+@media (max-width:640px){.intro,.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:16px!important}}
+/* mobile menu: opens as a circle growing from the menu button, links rise in one after another */
+.menu{display:flex!important;visibility:hidden;pointer-events:none;clip-path:circle(0px at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .65s cubic-bezier(.7,0,.25,1),visibility 0s linear .65s}
+.menu:not([hidden]),.menu.is-open{visibility:visible;pointer-events:auto;clip-path:circle(150vmax at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .8s cubic-bezier(.65,0,.2,1),visibility 0s}
+.menu nav a,.menu > .btn{opacity:0;transform:translateY(28px);transition:opacity .3s ease,transform .3s ease}
+.menu:not([hidden]) nav a,.menu:not([hidden]) > .btn,.menu.is-open nav a,.menu.is-open > .btn{opacity:1;transform:none;transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) nav a:nth-child(1){transition-delay:.18s}.menu:not([hidden]) nav a:nth-child(2){transition-delay:.24s}.menu:not([hidden]) nav a:nth-child(3){transition-delay:.3s}.menu:not([hidden]) nav a:nth-child(4){transition-delay:.36s}.menu:not([hidden]) nav a:nth-child(5){transition-delay:.42s}.menu:not([hidden]) > .btn{transition-delay:.5s}
+.menu .close-btn{opacity:0;transform:rotate(-90deg);transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) .close-btn,.menu.is-open .close-btn{opacity:1;transform:none;transition-delay:.2s}
+html:has(.menu:not([hidden])){overflow:hidden}
+@media (prefers-reduced-motion:reduce){.menu,.menu:not([hidden]){clip-path:none;transition:none}.menu nav a,.menu > .btn,.menu .close-btn{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shutter-bg" aria-hidden="true"></div>
+<div class="shutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="progress" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cn-logo" viewBox="0 0 258 55"><path d="M214.386 38.4465L212.613 38.4382C206.988 38.0676 202.434 33.852 201.939 28.3481C201.442 22.8194 205.156 17.7867 210.76 16.5576C217.304 15.1212 223.809 18.9721 224.955 25.4174C225.744 29.8532 223.788 34.2084 220 36.6158C218.246 37.7313 216.366 38.2748 214.386 38.4453V38.4465ZM218.341 32.4642C221.057 29.8389 221.179 25.5168 218.779 22.7092C216.075 19.5464 211.001 19.5262 208.277 22.6666C205.881 25.4268 205.97 29.653 208.51 32.3008C211.106 35.0089 215.589 35.1262 218.341 32.4654V32.4642Z"/><path d="M253.199 16.265H258L252.815 38.0865L247.743 38.0877L243.088 22.8881L238.438 38.0829L233.364 38.0853L228.183 16.2686L233.152 16.2578L236.341 31.0555L240.922 16.265L245.458 16.2638L250.013 30.9655L253.199 16.265Z"/><path d="M195.355 38.0697L191.097 38.0865L179.159 23.5049L179.145 38.0841L174.555 38.0817V16.2626L179.171 16.2578L190.818 30.3764L190.833 16.2602H195.355V38.0697Z"/><path d="M143.129 38.0697L138.87 38.0865L126.933 23.5049L126.919 38.0841L122.329 38.0817V16.2626L126.944 16.2578L138.592 30.3764L138.606 16.2602H143.128L143.129 38.0697Z"/><path d="M163.194 28.9665L154.518 28.9689V34.1619L167.786 34.1607L167.789 38.0805H149.668V16.2578H167.66L167.658 20.1801L154.518 20.1789V25.1678L163.182 25.1666L163.194 28.9665Z"/><path d="M100.909 31.7913L104.092 34.7261C102.034 36.8534 99.2936 38.2261 96.2019 38.598C95.0589 38.736 93.8296 38.6916 92.6828 38.604C91.3055 38.4996 90.0544 38.0701 88.8316 37.5422C84.8646 35.8276 82.3083 32.2952 82.0432 28.229C81.7291 23.42 84.5995 19.0934 89.3555 17.2216C93.1758 15.7182 97.5109 15.9906 101.123 17.9199C102.326 18.5763 103.325 19.3298 104.23 20.3424L100.937 23.3444C99.2898 21.4367 97.0102 20.3892 94.4591 20.3928C90.3453 20.3928 87.1609 23.3408 86.9936 27.1443C86.8558 30.2603 88.7222 33.0152 91.8667 34.1142C95.0846 35.1761 98.5677 34.3422 100.91 31.7901L100.909 31.7913Z"/><path d="M115.612 16.2578H110.762V38.0805H115.612V16.2578Z"/><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+    <symbol id="cn-mark" viewBox="0 0 67 55"><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="./" aria-label="CineNow home"><svg role="img" aria-label="CineNow" fill="currentColor"><use href="#cn-logo"/></svg></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="./">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="investors.html">Investors</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="partner.html">Collaborate With Us</a>
+    </nav>
+    <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <button class="menu-btn close-btn" id="menu-close" aria-label="Close menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <nav aria-label="Mobile">
+    <a href="./">Home</a><a href="about.html" aria-current="page">About</a><a href="investors.html">Investors</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-solid-l" href="partner.html" style="align-self:flex-start">Collaborate With Us</a>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="dark hero" id="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="label kicker" data-in><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>About CineNow</p>
+      <h1 class="display" id="hero-h"><span class="ln"><span>The Financial Backbone</span></span><span class="ln"><span>of the Entertainment</span></span><span class="ln"><span>Industry.</span></span></h1>
+      <p class="hero-sub" data-in>Governance for an unstructured market.<br>Counsel across five jurisdictions.<br>People from cinema, finance and technology.</p>
+      <p class="hero-p" data-in>CineNow was built to bring the discipline of structured finance to the rights behind Indian cinema. It is anchored in the British Virgin Islands, headquartered regionally in the UAE, and connected to India's creative industry through the people who shaped it.</p>
+    </div>
+    <figure class="hero-media" style="margin:0" aria-label="A classical dancer against spectrum light">
+      <div class="frame" id="hero-frame"><img src="img/dancer.webp" alt="A classical Indian dancer mid-pose against a wall of spectrum light at dusk" width="1500" height="1649"></div>
+    </figure>
+  </div>
+</section>
+
+<!-- ROUTE -->
+<section class="dark route" aria-labelledby="route-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="route-h" data-lines><span class="ln"><span>Anchored. Headquartered.</span></span><span class="ln"><span>Connected.</span></span></h2>
+    </div>
+    <div class="route-map" id="route">
+      <div class="route-line" aria-hidden="true"><i id="route-fill"></i><b></b></div>
+      <div class="node" data-node>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="code">BVI</span>
+        <span class="label role">Anchored</span>
+        <p>CineNow Limited is a British Virgin Islands business company.</p>
+      </div>
+      <div class="node gate" data-node>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="code">UAE</span>
+        <span class="label role">Headquartered regionally</span>
+        <p>Our gateway between global capital and Indian film IP.</p>
+      </div>
+      <div class="node" data-node>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="code">India</span>
+        <span class="label role">Connected</span>
+        <p>Through the people who shaped its creative industry.</p>
+      </div>
+    </div>
+    <p class="route-note" data-in>The UAE is our gateway between global capital and Indian film IP. <em>From here, we bring together institutional investors, independent oversight and India's leading creative voices in one structure.</em></p>
+  </div>
+</section>
+
+
+<!-- STILLS: the archive rolls past like end credits -->
+<section class="dark stills" aria-label="Stills from Indian cinema">
+  <div class="reel" data-dir="-1"><div class="reel-track" id="reel-a"></div></div>
+  <div class="reel" data-dir="1"><div class="reel-track" id="reel-b"></div></div>
+</section>
+
+<!-- AT A GLANCE -->
+<section class="paper sec" id="glance" aria-labelledby="glance-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="glance-h" data-lines><span class="ln"><span>The Fund, in Four Numbers.</span></span></h2>
+    </div>
+    <div class="glance-grid">
+      <article class="g-card" data-in>
+        <div class="g-vis"><div class="gauge" id="gauge" aria-hidden="true"><div class="ticks"></div><div class="track"><b></b></div><div class="ends"><span>$0</span><span>$150M</span></div></div></div>
+        <p class="g-num" data-count="150" data-pre="$" data-suf="M">$150M</p>
+        <p class="g-cap">Target fund size.</p>
+        <p class="g-key">Each mark on the scale is $10M.</p>
+      </article>
+      <article class="g-card" data-in>
+        <div class="g-vis"><div class="frames" id="frames" aria-hidden="true"></div></div>
+        <p class="g-num" data-count="30" data-suf="+">30+</p>
+        <p class="g-cap">Target films over six years.</p>
+        <p class="g-key">Each frame is one film.</p>
+      </article>
+      <article class="g-card" data-in>
+        <div class="g-vis"><div class="waffle" id="waffle" aria-hidden="true"></div></div>
+        <p class="g-num" data-count="60" data-pre="~" data-suf="%">~60%</p>
+        <p class="g-cap">Of deployment planned for regional-language cinema.</p>
+        <p class="g-key">Each square is 1% of deployment.</p>
+      </article>
+      <article class="g-card" data-in>
+        <div class="g-vis"><div class="marks" id="marks" aria-hidden="true"></div></div>
+        <p class="g-num" data-count="3000" data-suf="+">3,000+</p>
+        <p class="g-cap">Scripts received since opening for creative collaboration.</p>
+        <p class="g-key">Each mark is ten scripts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 01 GOVERNANCE -->
+<section class="dark sec" id="governance" aria-labelledby="gov-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="gov-h" data-lines><span class="ln"><span>Structure That Protects</span></span><span class="ln"><span>Every Decision.</span></span></h2>
+      <p class="intro" style="color:var(--soft-d)" data-in>Institutional credibility in film finance depends on separation. Creative insight, investment approval, capital control and independent oversight each sit with a different party.</p>
+    </div>
+
+    <div class="split" id="split">
+      <div class="split-row">
+        <div class="party lead"><p class="label">Party 01</p><h3>Creative Insight</h3><span class="verb"><i style="--c:var(--s1)"></i>Informs</span></div>
+        <div class="party"><p class="label">Party 02</p><h3>Investment Approval</h3><span class="verb"><i style="--c:var(--s2)"></i>Decides</span></div>
+        <div class="party"><p class="label">Party 03</p><h3>Capital Control</h3><span class="verb"><i style="--c:var(--s3)"></i>Releases</span></div>
+        <div class="party"><p class="label">Party 04</p><h3>Independent Oversight</h3><span class="verb"><i style="--c:var(--s5)"></i>Verifies</span></div>
+      </div>
+      <div class="split-cap"><span>Four roles. Four parties. No overlap.</span></div>
+    </div>
+
+    <div class="ledger-head">
+      <p data-in>Five layers of independence.</p>
+    </div>
+    <ol class="ledger">
+      <li class="row" data-in>
+        <span class="n">01</span>
+        <h3>Legal</h3>
+        <p>Counsel in each jurisdiction the structure touches, with promotion in the UAE regulated by the UAE Capital Market Authority.</p>
+        <div class="firms"><span>Harneys</span><span>Al Tamimi &amp; Co</span><span>Trilegal</span><span>Greenstone</span></div>
+      </li>
+      <li class="row" data-in>
+        <span class="n">02</span>
+        <h3>Administration</h3>
+        <p>Fund administration by Formidium, independent of management. Capital is released in tranches against verified milestones.</p>
+        <div class="firms"><span>Formidium</span></div>
+      </li>
+      <li class="row" data-in>
+        <span class="n">03</span>
+        <h3>Audits</h3>
+        <p>Statutory audit by RSM and internal audit by Aneja Associates, with tax and production accounting by EY India.</p>
+        <div class="firms"><span>RSM</span><span>Aneja Associates</span><span>EY</span></div>
+      </li>
+      <li class="row" data-in>
+        <span class="n">04</span>
+        <h3>Tokenisation</h3>
+        <p>Tokenisation architecture and strategy by Blockphrase, with global communications and strategic advisory by Luna PR.</p>
+        <div class="firms"><span>Blockphrase</span><span>Luna PR</span></div>
+      </li>
+      <li class="row" data-in>
+        <span class="n">05</span>
+        <h3>Insurance &amp; Completion Bonds</h3>
+        <p>Production insurance and completion bonds through Howden, protecting each film through to delivery.</p>
+        <div class="firms"><span>Howden</span></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- BAND: one line, one frame -->
+<section class="band-img" aria-label="Creative input informs every decision">
+  <div class="band-media" id="band-media"><img src="img/cinema.webp" alt="A film crew in silhouette against a wall of spectrum light" width="1600" height="900" loading="lazy"></div>
+  <div class="wrap band-copy">
+    <p class="band-line" data-band><span class="w">Creative</span> <span class="w">input</span> <span class="w">informs</span> <span class="w">every</span> <span class="w">decision.</span> <span class="w dim">It</span> <span class="w dim">never</span> <span class="w dim">overrides</span> <span class="w dim">financial</span> <span class="w dim">discipline.</span></p>
+  </div>
+</section>
+
+<!-- 02 PARTNERS -->
+<section class="paper sec" id="partners" aria-labelledby="part-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="part-h" data-lines><span class="ln"><span>Backed by Expertise.</span></span><span class="ln"><span>Built for Trust.</span></span></h2>
+      <p class="intro" style="color:var(--mute-p)" data-in>A new asset class needs established names behind it. Each partner was chosen for the standard it brings to its part of the structure.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter partners" data-in id="filters"></div>
+    <ul class="directory" id="directory"></ul>
+    <div class="notes" data-in>
+      <p>Tokenisation infrastructure partners will be listed once confirmed, with announcements planned from Q1 2027.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="paper sec" id="team" aria-labelledby="team-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="team-h" data-lines><span class="ln"><span>Visionaries. Changemakers.</span></span><span class="ln"><span>Industry Advocates.</span></span></h2>
+      <p class="intro" style="color:var(--mute-p)" data-in>CineNow brings together people who have made films, managed capital and built digital markets. Each group has a distinct role, and none holds every lever.</p>
+    </div>
+    <div class="t-tabs" role="tablist" aria-label="Team groups" id="t-tabs" data-in></div>
+    <ul class="t-grid" id="t-grid" role="tabpanel" aria-labelledby="t-tabs"></ul>
+  </div>
+</section>
+
+
+<!-- 03 STRUCTURE -->
+<section class="dark sec" id="structure" aria-labelledby="str-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="str-h" data-lines><span class="ln"><span>Clear Structure.</span></span><span class="ln"><span>Clear Accountability.</span></span></h2>
+    </div>
+    <div class="struct">
+      <article class="regcard" data-in aria-label="Company registration">
+        <svg class="mark" viewBox="0 0 67 55" fill="currentColor" aria-hidden="true"><use href="#cn-mark"/></svg>
+        <div class="top"><p class="label">Company register</p><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        <dl>
+          <div class="wide"><dt>Entity</dt><dd>CineNow Limited</dd></div>
+          <div><dt>Form</dt><dd>British Virgin Islands business company</dd></div>
+          <div><dt>Company number</dt><dd class="num">2194385</dd></div>
+          <div class="wide"><dt>Registered office</dt><dd>Intershore Chambers, P.O. Box 4342, Road Town, Tortola, British Virgin Islands, VG1110</dd></div>
+        </dl>
+      </article>
+      <div class="offer" data-in>
+        <p>Any offer is made solely through a confidential Private Placement Memorandum to Professional Investors, as defined by the UAE Capital Market Authority, and Professional Clients in the DIFC, and only in jurisdictions where permitted by law.</p>
+        <p>The opportunity has not been approved by the UAE Central Bank, the Capital Market Authority or the Dubai Financial Services Authority.</p>
+        <div class="regs" aria-label="Not approved by"><span>UAE Central Bank</span><span>Capital Market Authority</span><span>DFSA</span></div>
+      </div>
+    </div>
+
+    <article class="doc" id="doc" data-in aria-labelledby="doc-h">
+      <div class="doc-head">
+        <h3 id="doc-h">Disclaimer – Investment Vehicles</h3>
+        <p class="label">Promotion governed by Greenstone</p>
+      </div>
+      <div class="doc-body" id="doc-body">
+        <div class="doc-cols">
+          <p>The information provided is strictly private and confidential and is being provided to a limited number of investors. It must not be provided to any person other than the original recipient, and may not be reproduced, disseminated, distributed or used for any other purpose.</p>
+          <p>The information provided is a summary and is not an offering or a solicitation of an offer. Any such offer or solicitation shall only be made to qualified investors by means of a confidential private offering memorandum as amended or supplemented from time to time, (the “Memorandum”), and related offering materials, and only in those jurisdictions where permitted by law. Such offer or solicitation may only be made by means of delivery of the Memorandum which contains important information (including investment objective, policies, risk factors, fees, tax implications, and accredited investor qualifications) relating to the relevant investment opportunity. Investors should not make an investment unless they are prepared to lose all or a substantial portion of their investment.</p>
+          <p>The fees and expenses charged in connection with this investment include performance fees, may be higher than the fees and expenses of other investment alternatives and may offset profits. There is no guarantee that the investment objective will be achieved. Moreover, the past performance of the investment should not be construed as an indicator of future performance. Deductions for charges and expenses may also be made at the time of initial investment or on the sale of the investment.</p>
+          <p>This document is intended for discussion purposes only and does not create any legally binding obligations on the part of Greenstone Placement Management FZ-LLC or any of its affiliates (collectively, “Greenstone”), CineNow Limited (the “Company”) or CineNow Limited (the “Opportunity”). Without limitation, this document does not constitute an offer, an invitation to offer or a recommendation to enter into any proposed transaction involving Greenstone, the Company or the Opportunity.</p>
+          <p>When making an investment decision, you should rely solely on the Memorandum and final documentation relating to the transaction and not the summary contained herein. The transaction or product(s) mentioned herein may not be suitable for all individuals and/or investors and before entering into any transaction you should take steps to ensure that you fully understand such transaction and obtain an independent professional assessment as to the suitability of such transaction in light of your own objectives and circumstances, including the possible risks and benefits of entering into such transaction.</p>
+          <p>The investment described in this document is speculative, involves a high degree of risk, and is illiquid. It may be difficult to sell or realise the investment, and to obtain reliable information about its value or the extent of the risks to which it is exposed.</p>
+          <p>If you decide to enter into any transaction with either the Company or the Opportunity, you do so in reliance on your own judgment. You should not construe the contents of this document as providing financial, legal, Shari’a, tax, investment or any other advice.</p>
+          <p>By accepting this document, you acknowledge that Greenstone is not acting as your broker, financial advisor, in any other fiduciary capacity or otherwise as your advisor or agent with respect to the transaction. The information contained in this document is based on material received from the Company and/or the Opportunity. Assumptions, estimates and opinions contained in this document constitute information Greenstone received from the Company and/or the Opportunity as of the date of the document and may be subject to change without notice. Neither Greenstone, the Company and the Opportunity, nor any of their respective officers, directors, employees, agents, controlling persons, shareholders and affiliates, makes any representation or warranty, expressed or implied, as to the accuracy or completeness of the information contained in this document, and nothing contained herein is, or shall be relied upon as, a promise or representation, whether as to past or future facts or results.</p>
+          <p>The market analysis, projections, targeted returns, estimates and similar information, including all statements of opinion and/or belief contained in this document (collectively, “forward-looking information”), are subject to inherent uncertainties, contingencies and qualifications and are based on a number of assumptions. Forward-looking information involves significant elements of subjective judgment and analysis that may or may not be correct. You are cautioned that forward-looking information is not a guarantee of future performance or results and involves risks and uncertainties that cannot be predicted or quantified and, consequently, the actual performance of the Opportunity or any entity involved in a transaction may differ materially from that expressed or implied by such forward-looking information. In all cases where historical performance is presented, please note that past performance is not a reliable indicator of future results and should not be relied upon as the basis for making an investment decision. You are cautioned that current rate fluctuations can adversely affect the investment. In particular, where a transaction or product is denominated in a foreign currency, changes in foreign exchange rates may adversely affect the value, price or income of the investment.</p>
+          <p>The information herein is proprietary and confidential, is intended for use by the recipient only, and may not be provided to any third party other than the recipient’s legal, Shari’a, tax, financial and/or accounting advisors for the purpose of evaluating such information. By accepting this document, you agree that you will cause your directors, officers, employees, agents and representatives to use this document and such information only to evaluate an investment and for no other purpose, and that you and they will not divulge any such information to any other party. This document may contain material non-public information. Prior to entering into any transaction, you should determine, without reliance upon Greenstone, the Company and the Opportunity, the economic risks and merits, as well as the financial, legal, Shari’a, tax and accounting characterizations and consequences of the transaction, and independently determine that you are able to assume these risks. In this regard, by acceptance of this document, you acknowledge that: (a) you have been advised that Greenstone, the Company and the Opportunity are not in the business of providing financial, legal, Shari’a, tax or accounting advice; (b) you understand that there may be financial, legal, Shari’a, tax or accounting risks associated with a transaction; (c) you should receive financial, legal, Shari’a, tax and accounting advice from advisors with appropriate expertise to assess relevant risks; and (d) you should apprise senior management in your organization as to the financial, legal, Shari’a, tax and accounting advice (and, if applicable, risks) associated with a transaction and Greenstone’s, the Company’s and the Opportunity’s disclaimers as to these matters.</p>
+          <h4>For Residents of the United Arab Emirates (the “UAE”)</h4>
+          <p>In addition to the foregoing, the following is applicable to investors located in the UAE:</p>
+          <p>The investment opportunity has not been approved by or licensed or registered with the UAE Central Bank, the Capital Market Authority (“CMA”) or any other relevant licensing authorities or governmental agencies in the UAE.</p>
+          <p>This investment opportunity does not constitute, and is not intended to constitute, a public offer in the UAE and accordingly should not be construed as such. This investment opportunity is not for general circulation to the public in the UAE nor will the opportunity be presented to the public in the UAE. The document is for the use of the recipient only and should not be given or shown to any other person (other than employees, agents or consultants in connection with the addressee's consideration thereof).</p>
+          <p>The investment opportunity is only being offered to a limited number of Professional Investors as defined in the CMA Chairman of the Authority’s Board of Directors’ Decision No. 13 of 2021 on the Regulations Manual of the Financial Activities and Status Regularization Mechanisms. By receiving this document, the person or entity to whom it has been issued understands, acknowledges and agrees that neither this document nor the interests have been registered, approved, disapproved or passed on in any way by the Central Bank of the UAE, the CMA or any other authority in the UAE. The CMA accepts no liability in relation to the investment opportunity and is not making any recommendation with respect to an investment in the investment opportunity. Nothing contained in this document is intended to constitute UAE investment, legal, tax, accounting or other professional advice. This document is for the information of prospective investors only and nothing in this document is intended to endorse or recommend a particular course of action. Prospective investors should consult with an appropriate professional for specific advice rendered on the basis of their situation.</p>
+          <p>Promotion of financial products and foreign securities are either distributed or approved by Greenstone Equity Partners Financial Products Promotion LLC, 120th floor, Burj Khalifa, Downtown Dubai, Dubai, United Arab Emirates, authorized and regulated by the CMA under Category Five (Arranging and Advising) with License Number 703050. For any queries or further information regarding financial reports or the subscription, sale, and purchase of interests in the Fund, please contact <a href="mailto:uaepromotion@gsequity.com" style="text-decoration:underline">uaepromotion@gsequity.com</a>.</p>
+          <h4>For Residents of the Dubai International Financial Centre (“DIFC”)</h4>
+          <p>This document relates to an investment opportunity which is not subject to any form of regulation or approval by the Dubai Financial Services Authority (“DFSA”). The DFSA has no responsibility for reviewing or verifying this document or any other documents in connection with this investment opportunity. Accordingly, the DFSA has not approved this document or any other associated documents nor taken any steps to verify the information set out in this document and has no responsibility for it. The interests to which this document relates may be illiquid and/or subject to restrictions on their resale. Prospective purchasers should conduct their own due diligence on the interests. If you do not understand the contents of this document, you should consult an authorised financial adviser.</p>
+          <p>This document is strictly private and confidential and intended for distribution only to Professional Clients and, therefore, must not be delivered to, or relied on by, any person who does not meet the criteria of a Professional Client. This investment opportunity is for the exclusive use of the persons to whom it is addressed and in connection with the subject matter contained therein.</p>
+        </div>
+        <div class="doc-fade"><button class="btn" id="doc-toggle" aria-expanded="false" aria-controls="doc-body">Read the Full Disclaimer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- INVESTOR ACCESS -->
+<section class="dark access" id="access" aria-labelledby="access-h">
+  <div class="access-media" id="access-media"><img src="img/doorway.webp" alt="" width="1600" height="900" loading="lazy"></div>
+  <div class="wrap access-in">
+    <h2 class="head" id="access-h" data-lines><span class="ln"><span>Clarity First.</span></span><span class="ln"><span>Participation Follows.</span></span></h2>
+    <p class="intro" data-in>The full detail of the opportunity is available to professional and qualified investors through the Private Placement Memorandum.</p>
+    <div class="ctas" data-in>
+      <a class="btn btn-solid-l" href="investors.html">Investor Access <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="partner.html">Collaborate With Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- BIO DRAWER -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-name" hidden>
+  <div class="dr-scrim" data-close></div>
+  <aside class="dr-panel" data-lenis-prevent>
+    <button class="dr-close" data-close aria-label="Close bio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="dr-top">
+      <div class="dr-ph"><img id="dr-img" alt=""></div>
+      <div class="dr-id">
+        <p class="label" id="dr-group"></p>
+        <h3 id="dr-name"></h3>
+        <p class="dr-role" id="dr-role"></p>
+      </div>
+    </div>
+    <ul class="dr-heads" id="dr-heads"></ul>
+    <div class="dr-links" id="dr-links"></div>
+    <div class="dr-body" id="dr-body"></div>
+    <div class="dr-nav"><button class="btn" id="dr-prev">Previous</button><button class="btn" id="dr-next">Next</button></div>
+  </aside>
+</div>
+
+<!-- CLOSE + FOOTER -->
+<section class="dark close" aria-label="Brand sign-off and footer">
+  <div class="wrap">
+    <p class="signoff" data-in>When Stories <span class="become">Become</span> Assets</p>
+    <footer class="foot">
+      <nav class="foot-links" aria-label="Footer">
+        <a href="./">Home</a><a href="about.html" aria-current="page">About</a><a href="investors.html">Investors</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+      </nav>
+      <nav class="foot-links" aria-label="Legal" style="font-size:13px">
+        <a href="docs.html">Docs</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a><a href="#">Disclaimer</a><a href="docs/CineNow-Media-Kit.zip" download>Media Kit</a>
+      </nav>
+      <p class="disc">This website is introductory only. It is not an offer or a solicitation. Any offer is made solely to qualified investors through a confidential Private Placement Memorandum, and only where permitted by law. Promotion in the UAE is distributed or approved by Greenstone Equity Partners Financial Products Promotion LLC, regulated by the UAE Capital Market Authority (licence no. 703050).</p>
+      <div class="legal"><span>© 2026 CineNow Limited. A British Virgin Islands business company, no. 2194385.</span><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </footer>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function () {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = !!(window.gsap && window.ScrollTrigger);
+
+  /* ---------- placeholder links (pages not built yet) ---------- */
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href="#"]');
+    if (a) e.preventDefault();
+  });
+
+
+  /* ---------- hero headline: shrink to fit so no line is ever clipped by its frame ---------- */
+  const heroH = document.getElementById('hero-h');
+  function fitHero() {
+    heroH.style.fontSize = '';
+    if (getComputedStyle(heroH.querySelector('.ln > span')).whiteSpace !== 'nowrap') return;
+    let size = parseFloat(getComputedStyle(heroH).fontSize);
+    const lines = Array.from(heroH.querySelectorAll('.ln > span'));
+    const tooWide = () => lines.some(l => l.scrollWidth > l.parentElement.clientWidth + 1);
+    while (tooWide() && size > 30) { size -= 1; heroH.style.fontSize = size + 'px'; }
+  }
+  fitHero();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHero);
+  let fitT; addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(fitHero, 120); });
+
+  /* ---------- mobile menu ---------- */
+  const menu = document.getElementById('menu'), mOpen = document.getElementById('menu-open'), mClose = document.getElementById('menu-close');
+  const closeMenu = () => { menu.hidden = true; mOpen.setAttribute('aria-expanded', 'false'); mOpen.focus(); };
+  mOpen.addEventListener('click', () => { menu.hidden = false; mOpen.setAttribute('aria-expanded', 'true'); mClose.focus(); });
+  mClose.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) closeMenu(); });
+
+  /* ---------- build the glance visuals ---------- */
+  const ticks = document.querySelector('#gauge .ticks');
+  for (let i = 0; i <= 15; i++) ticks.appendChild(document.createElement('i'));
+  const frames = document.getElementById('frames');
+  for (let i = 0; i < 30; i++) frames.appendChild(document.createElement('i'));
+  const waffle = document.getElementById('waffle');
+  const specs = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)', 'var(--s5)'];
+  // Fill bottom-up, column by column, so 60 squares read as a rising level.
+  const cells = [];
+  for (let i = 0; i < 100; i++) { const c = document.createElement('i'); waffle.appendChild(c); cells.push(c); }
+  const order = [];
+  for (let r = 9; r >= 0; r--) for (let c = 0; c < 10; c++) order.push(r * 10 + c);
+  const filled = order.slice(0, 60);
+  filled.forEach((idx, k) => { cells[idx].classList.add('on'); cells[idx].style.setProperty('--c', specs[Math.min(4, Math.floor((idx % 10) / 2))]); });
+  const marks = document.getElementById('marks');
+  for (let i = 0; i < 300; i++) marks.appendChild(document.createElement('i'));
+
+
+  /* ---------- stills reel ---------- */
+  const STILLS = Array.from({ length: 24 }, (_, i) => 'img/h/u' + String(i).padStart(2, '0') + '.webp');
+  [['reel-a', 0], ['reel-b', 12]].forEach(([id, off]) => {
+    const tr = document.getElementById(id);
+    const pick = STILLS.slice(off).concat(STILLS.slice(0, off)).slice(0, 12);
+    pick.concat(pick).forEach(src => { const im = new Image(); im.src = src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; tr.appendChild(im); });
+  });
+
+  /* ---------- partners directory ---------- */
+  const CATS = [
+    ['legal', 'Legal'], ['audit', 'Audit & administration'], ['production', 'Production'],
+    ['distribution', 'Distribution'], ['tokenisation', 'Tokenisation'], ['comms', 'Communications']
+  ];
+  const FIRMS = [
+    ['Harneys', 'BVI', 'legal'], ['Al Tamimi & Co', 'UAE', 'legal'], ['Trilegal', 'India', 'legal'], ['Spencer West', 'UK', 'legal'], ['Arias', 'EU', 'legal'],
+    ['RSM', 'Statutory auditor', 'audit'], ['Aneja Associates', 'Internal audit', 'audit'], ['Formidium', 'Administrator', 'audit'],
+    ['EY India', 'Tax & production accounting', 'production'], ['Howden', 'Production insurance', 'production'],
+    ['Greenstone Equity Partners', 'GCC distribution', 'distribution'],
+    ['Blockphrase', 'Tokenisation architecture & strategy', 'tokenisation'],
+    ['Luna PR', 'Global communications & strategic advisory', 'comms'], ['Blue Ocean IMC', 'India', 'comms']
+  ];
+  const LOGOS = { 'Harneys': ['p_harneys.webp', 34], 'Al Tamimi & Co': ['c_altamimi.svg', 34], 'Trilegal': ['c_trilegal.svg', 26], 'RSM': ['p_rsm.webp', 34], 'Formidium': ['p_formidium.webp', 26], 'EY India': ['p_ey.svg', 40], 'Howden': ['c_howden.svg', 28], 'Blockphrase': ['c_blockphrase.svg', 36], 'Luna PR': ['c_luna.svg', 40], 'Spencer West': ['c_spencerwest.svg', 26], 'Blue Ocean IMC': ['c_blueocean.svg', 34], 'Greenstone Equity Partners': ['c_greenstone.svg', 64], 'Aneja Associates': ['c_aneja.svg', 30], 'Arias': ['c_arias.svg', 34] };
+  const SITES = { 'Harneys': 'https://www.harneys.com/', 'Al Tamimi & Co': 'https://www.tamimi.com/', 'Trilegal': 'https://trilegal.com/', 'Spencer West': 'https://www.spencer-west.com/', 'Arias': 'https://ariasslp.com/en/', 'RSM': 'https://www.rsm.global/', 'Aneja Associates': 'https://anejaassociates.com/', 'Formidium': 'https://formidium.com/', 'EY India': 'https://www.ey.com/en_in', 'Howden': 'https://www.howdengroup.com/', 'Greenstone Equity Partners': 'https://www.gsequity.com/', 'Blockphrase': 'https://www.blockphrase.com/', 'Luna PR': 'https://www.lunapr.com/', 'Blue Ocean IMC': 'https://blueoceanimc.com/' };
+  const catName = Object.assign(Object.fromEntries(CATS), { valuation: 'Valuation' });
+  const dir = document.getElementById('directory');
+  FIRMS.forEach(([name, role, cat]) => {
+    const li = document.createElement('li');
+    li.className = 'firm' + (cat === 'valuation' ? ' unnamed' : ''); li.dataset.cat = cat; li.setAttribute('data-in', '');
+    const lg = LOGOS[name];
+    li.innerHTML = '<div class="cat label"><span>' + catName[cat] + '</span></div><div>' + (lg ? '<div class="logo-ph"><img alt="" loading="lazy"></div><h3 class="vh"></h3>' : '<h3></h3>') + '<p class="role"></p></div><span class="bar" aria-hidden="true"></span>';
+    li.querySelector('h3').textContent = name; li.querySelector('.role').textContent = role;
+    if (lg) { const im = li.querySelector('img'); im.src = 'img/logos/' + lg[0]; im.alt = name; im.style.setProperty('--h', lg[1] + 'px'); }
+    if (SITES[name]) {
+      const a = document.createElement('a'); a.className = 'firm-link'; a.href = SITES[name]; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', name + ', ' + role + ' (opens in a new tab)');
+      while (li.firstChild) a.appendChild(li.firstChild);
+      li.appendChild(a);
+    }
+    dir.appendChild(li);
+  });
+  const filters = document.getElementById('filters');
+  const mkBtn = (key, label, n) => {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.key = key;
+    b.setAttribute('aria-pressed', key === 'all' ? 'true' : 'false');
+    b.innerHTML = '<span></span><small>' + n + '</small>'; b.querySelector('span').textContent = label;
+    filters.appendChild(b);
+  };
+  mkBtn('all', 'All', FIRMS.length);
+  CATS.forEach(([k, l]) => mkBtn(k, l, FIRMS.filter(f => f[2] === k).length));
+  filters.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const key = b.dataset.key;
+    filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    dir.querySelectorAll('.firm').forEach(f => {
+      const hit = key === 'all' || f.dataset.cat === key;
+      f.classList.toggle('is-dim', !hit);
+      f.classList.toggle('is-on', key !== 'all' && hit);
+    });
+  });
+
+
+  /* ---------- team: groups, cards and bio drawer ---------- */
+  const TEAM = {"groups": [{"key": "ic", "name": "Investment Committee", "mandate": "The formal capital approval body. Reviews, challenges and approves every investment.", "members": [["rohit-dalmia", "Chairman, Investment Committee"], ["suresh-menon", "Vice Chairman"], ["sameer-nair", "Investment Committee Member"], ["jaideep-sahni", "Investment Committee Member"], ["neha-kaul", "Investment Committee Member"]]}, {"key": "sa", "name": "Special Advisors", "mandate": "Sovereign, institutional and creative counsel.", "members": [["michael-jacobsen", "Special Advisor: Sovereign and Institutional Affairs"], ["siddharth-roy-kapur", "Principal Advisor"]]}, {"key": "sc", "name": "Strategic Council", "mandate": "Industry insight, and access to producers, talent, distributors and platforms.", "members": [["abhay-sinha", "President, IMPPA"], ["resul-pookutty", "Padma Shri, Oscar-Winning Sound Designer"], ["manoj-abraham-matthew", "Director, Dubai Studios"], ["sanjay-wadhwa", "Managing Partner, AP International Group"]]}, {"key": "st", "name": "Stewardship Council", "mandate": "Advises on capital allocation, structuring, risk, liquidity planning and investor reporting.", "members": [["nikita-sachdev-lord", "Managing Director, Luna PR & Luna Media Corp."], ["gaurang-desai", "Managing Director, Equiti Group"], ["jitendra-nagpal", "Founder/GP, Capinity Partners & Tetration Ventures"], ["raj-kapoor", "Founder, India Blockchain Alliance"]]}, {"key": "ex", "name": "Executive", "mandate": "Directs strategy, capital markets and growth.", "members": [["rohit-dalmia", "Managing Director, Abu Dhabi SPV · Fund Director, BVI Fund"], ["mihir-karlekar", "Strategy, Growth & International Markets"], ["hamed-faqirzai", "Tokenisation & Capital Markets"], ["ashish-homkar", "Tokenisation & Digital Assets Architecture"], ["suresh-menon", "Business Affairs"]]}, {"key": "ld", "name": "Leadership", "mandate": "Runs origination, production, commercial and compliance.", "members": [["radhika-gopal", "Content & IP Origination"], ["reshma-shetty", "Talent & Packaging"], ["deepak-nangalia", "Investment & Slate Finance"], ["aashish-singh", "Production"], ["mini-sarna", "Commercial"], ["yusuf-shaikh", "Exhibition, IPR & Revenue Partnerships"], ["krishna-kumar", "Compliance & Governance"], ["hardik-puri", "Compliance & Governance"], ["rahat-beri", "Communications Counsel"], ["fiona-robertson", "Legal"], ["aditya-patil", "Technology, Data & Analytics"], ["maasoom-shankar", "Business Integration & Programme"], ["kanchan-marathe", "Creative Director"], ["divya-v-rao", "Creative Director"], ["rohit-vedprakash", "Content & Development"], ["zeni-shah", "Distribution & Revenue"]]}], "people": {"rohit-dalmia": {"name": "Rohit Dalmia", "photo": "img/team/rohit.webp", "heads": ["Chairman, Investment Committee", "Managing Director, Abu Dhabi SPV", "Fund Director, BVI Fund"], "bio": ["Rohit is a global entrepreneur and capital strategist focused on transforming how large-scale assets are financed, structured, and monetised. As Director of CineNow Limited (BVI), he leads the development of a $150 million institutional film fund designed to bring structure, transparency, and scalability to the global film industry - a sector historically constrained by fragmented financing models and limited liquidity.", "Central to Rohit’s vision is the integration of tokenisation as a high-value exit mechanism, unlocking liquidity beyond traditional distribution and studio-led models. By leveraging blockchain infrastructure, CineNow expands investor access, introduces secondary market potential, and positions film intellectual property as a scalable, digital-first asset class. This approach not only enhances return potential but also redefines how film assets are owned, traded, and monetised.", "Beyond structuring the fund, Rohit has established strategic partnerships across production houses, distribution networks, and global capital providers, creating a vertically integrated ecosystem that supports the full lifecycle of film assets from development through monetisation. His ability to align creative industries with institutional capital has positioned CineNow as a next-generation platform bridging entertainment and finance.", "Rohit’s broader experience spans over 25 years across technology, media, and investment management. As Founder & CEO of Haitech Solutions, he leads initiatives in blockchain, AI, and digital asset infrastructure, including SolidusQX, a real-world asset tokenisation platform with over $1 billion in signed mandates. Through Seed Factory (Singapore), a Monetary Authority of Singapore-licensed entity, he operates within one of the world’s most rigorous regulatory environments for capital formation and digital securities.", "In parallel, as Co-Founder & Commercial Director of GID Global Media / Blazing Sand Studios, Rohit has built a globally distributed media platform with over 1,000 hours of content, a reach exceeding 350 million viewers, and partnerships across 125 countries providing deep operational insight into the film and content ecosystem that underpins CineNow’s investment strategy.", "At the intersection of capital, technology, and content, Rohit is redefining film not merely as a creative output, but as a structured, institutional-grade asset class. Through CineNow, his objective is clear: to unlock scale, introduce liquidity, and establish a new financial paradigm for the global film industry."], "links": {"linkedin": "https://www.linkedin.com/in/dalmiarohit/"}}, "suresh-menon": {"name": "Suresh Menon", "photo": "img/people/suresh-menon.webp", "heads": ["Director, Business Affairs"], "bio": ["Suresh Menon is a seasoned Indian media and entertainment professional with a career spanning acting, comedy, television, digital content, branded entertainment, production, sales and creative leadership. Over the years, he has built a rare cross-functional understanding of the entertainment business, combining on-screen experience with commercial, operational and content-led responsibilities across multiple formats. He is an Indian actor, comedian, television personality and media professional, with appearances across films, television and digital formats.", "Before moving deeper into the creative and production side of the business, Menon’s career also included exposure to sales, finance and media monetisation. He began in sales with Crompton Greaves, later worked with 20th Century Finance, and then entered media through The Times of India’s Response sales team. This gives him an unusually broad foundation across revenue, client relationships, media operations and creative execution.", "Menon later built significant experience as an entrepreneur and content operator. He was the Co-Founder of One Network Entertainment and Founder of WCV Meridian, reflecting his continued involvement in independent media, content and entertainment ventures. In 2021, MX Player appointed him as Content and Creative Head for MX Studios, its content and creative solutions division designed to help brands tell scripted, audience-relevant stories while also serving advertiser objectives. His MX Studios role is particularly relevant because it required a balance of content judgement, business needs, advertiser expectations, production coordination and platform thinking. MX Player’s ecosystem later became part of Amazon MX Player after Amazon acquired select MX Player assets and merged them with Amazon miniTV, creating a large free streaming service in India.", "As Director of Business Affairs at CineNow, Suresh Menon serves as an organisation-wide operating leader, looking after cross-functional coordination across content, talent, production, partnerships, platform requirements, commercial execution and day-to-day business alignment. He helps ensure that CineNow’s creative, commercial and execution teams remain aligned as the platform scales. His combination of media relationships, production understanding, sales exposure, platform experience and entrepreneurial operating discipline contributes greatly to CineNow by giving the organisation a steady business affairs leader who can translate strategy into execution across departments."], "links": {"linkedin": "https://www.linkedin.com/in/suresh-menon-1715351a/", "wikipedia": "https://en.wikipedia.org/wiki/Suresh_Menon", "imdb": "https://www.imdb.com/name/nm1021919/"}}, "sameer-nair": {"name": "Sameer Nair", "photo": "img/team/sameer.webp", "heads": ["Investment Committee Member, CineNow"], "bio": ["Sameer Nair is one of India’s most respected media and entertainment executives, with a career spanning more than three decades across broadcast television, studio leadership, scripted content, platform strategy, and premium IP development. He brings the rare profile of an operator who has repeatedly helped define new phases of the Indian entertainment market from mass television to format-led programming to streaming-first content studios.", "Sameer’s early industry impact was shaped at Star India, where he rose through senior leadership roles and became one of the key executives behind Star Plus’ transformation into India’s dominant Hindi entertainment network. He is widely associated with the launch and scaling of Kaun Banega Crorepati and the early-2000s Star Plus programming wave that reset Indian prime-time television, including the Balaji Telefilms-led fiction boom. His work at Star established him as a leader capable of aligning content, audience behaviour, network strategy, and commercial scale.", "After Star, Sameer went on to lead NDTV Imagine as CEO, where he helped build a new Hindi entertainment channel with mythology, historical, and reality programming. He later served as Group CEO of Balaji Telefilms, working closely with the company’s leadership to strengthen its content and strategic direction across television and film. This phase reinforced his ability to operate across both creative strategy and commercial execution.", "His most significant recent chapter was at Applause Entertainment, the Aditya Birla Group-backed content and IP creation studio. Sameer led Applause from 2017 until his departure in 2026, helping build it into one of India’s leading premium scripted-content studios. Under his leadership, Applause developed a platform-agnostic model focused on original series, adaptations, and premium storytelling for India’s streaming market. At Applause, Sameer was associated with some of India’s most prominent streaming titles, including Scam 1992, Criminal Justice, Hostages, City of Dreams, Avrodh, Scam 2003, Black Warrant, and The Hunt. Business Today described Applause’s “hub and spoke” model and noted that Scam 1992 became a defining success after a slate that had already included Criminal Justice, Hostages, and City of Dreams.", "As an Independent Committee Member of CineNow, Sameer brings independent judgment, content-market intelligence, platform understanding, and institutional credibility. His role is especially valuable in evaluating whether projects have genuine IP strength, platform relevance, audience pull, production scalability, and long-term monetisation potential. His presence strengthens CineNow’s decision-making framework by adding seasoned, independent oversight from one of India’s most accomplished content executives helping ensure that creative ambition, commercial logic, and investor discipline remain aligned."], "links": {"wikipedia": "https://en.wikipedia.org/wiki/Sameer_Nair", "imdb": "https://www.imdb.com/name/nm4170386/"}}, "jaideep-sahni": {"name": "Jaideep Sahni", "photo": "img/people/jaideep-sahni.webp", "heads": ["Investment Committee Member, CineNow"], "bio": ["Jaideep Sahni is one of India’s most respected screenwriters, lyricists and creative voices, known for building stories that combine strong narrative architecture with deep observation of Indian society. Over a career spanning more than two decades, he has written some of Hindi cinema’s most memorable and culturally resonant films, including Company, Bunty Aur Babli, Khosla Ka Ghosla, Chak De\\! India, Rocket Singh: Salesman of the Year and Shuddh Desi Romance. His work is widely recognised for capturing India’s everyday ambitions, social tensions, institutional pressures and emotional contradictions with rare authenticity.", "Sahni’s strength lies in his ability to read both story and context. His films are rarely built only around plot; they are built around worlds, systems, conflicts and characters that feel sharply rooted in lived reality. Company examined power, ambition and organised crime with unusual restraint; Khosla Ka Ghosla turned a property dispute into a humane and memorable social comedy; Chak De\\! India transformed a sports narrative into a story of leadership, identity and national redemption; and Rocket Singh explored ethics, enterprise and workplace culture through the lens of an ordinary salesman. His body of work reflects a rare balance of creative instinct, audience understanding and structural discipline. Sahni has shown the ability to identify stories that are commercially accessible while retaining originality, intelligence and cultural depth. This makes his judgment especially valuable in an industry where strong scripts, durable characters and audience relevance are central to long-term content value. His writing has also received major industry recognition, including Filmfare honours for Company and Khosla Ka Ghosla, along with an IIFA Award for Best Story for Chak De\\! India.", "Beyond individual credits, Sahni represents a generation of Indian screenwriters who helped move Hindi cinema toward more grounded, screenplay-led storytelling. His work demonstrates a deep understanding of how ideas become cinematic assets: through strong premise, world-building, emotional stakes, character clarity and audience connection. His continued relevance across feature films and long-form content also reflects his ability to evaluate stories beyond trend cycles and identify material with lasting creative and commercial potential.", "As an Independent Investment Committee Member at CineNow, Jaideep Sahni contributes greatly by bringing elite script- reading ability, story evaluation discipline and a creator’s understanding of durable IP. His perspective helps the committee assess projects beyond star value or production packaging, focusing instead on screenplay strength, narrative originality, cultural relevance, audience longevity and monetisation potential. For a platform seeking to institutionalise investment in film IP, his judgment would be invaluable in identifying stories with both creative integrity and long-term asset value."], "links": {"wikipedia": "https://en.wikipedia.org/wiki/Jaideep_Sahni", "imdb": "https://www.imdb.com/name/nm1156290/"}}, "neha-kaul": {"name": "Neha Kaul", "photo": "img/people/neha-kaul.webp", "heads": ["Investment Committee Member, CineNow"], "bio": ["Over two decades, Neha Kaul has built a career at the intersection of filmmaking, audience strategy and global distribution, working across production, marketing, publicity and distribution and long tail revenue strategy. Her experience with leading studios and platforms including Disney Studios India, UTV Motion Pictures and Netflix in addition to her roles as an independent Film Producer and Impact Strategist has given her a rare understanding of the complete lifecycle of a film and its economic and cultural sustainability across its creative positioning and first audience encounter to its theatrical, streaming, international, festival and awards journey. She has played a part in bringing more than 300 films and campaigns to audiences, including All We Imagine As Light (Cannes Grand Prix Winner), Sabar Bonda(Best Dramatic Film, Sundance Winner), The Elephant Whisperers (Academy Award Winner), Delhi Crime (Emmy Winner), Sacred Games (Netflix), P.K. (UTV), The Jungle Book (Disney) and Dangal (Disney). Her work is rooted in a simple conviction: that great stories deserve not only to be made, but to be found, understood and carried meaningfully to audiences. Neha’s strength lies in her ability to combine creative instinct with market architecture. She understands how to position a film for visibility, how to build campaign narratives across cultures, how to work with studios, streamers and go-to-market teams, and how to design release strategies that support both prestige and commercial outcomes. Her career reflects the modern reality of filmed entertainment: success is shaped not only by the quality of the film, but by timing, audience mapping, market entry, festival credibility, platform strategy, earned media, distribution leverage and long-tail perception. Her association with Dangal is particularly significant. The film became one of India’s strongest global box-office case studies, generating approximately US$303.7 million worldwide, including approximately US$193.1 million from China alone. She led both Marketing and International Distribution for the film, whose cross-border performance remains a landmark example of how Indian stories, when positioned and distributed intelligently, can travel far beyond their domestic base and unlock major international value. As a Producer & Campaign Strategist, her recent work includes Stolen (Venice 2023, Amazon Prime Video), Sabar Bonda (Sundance 2025 Winner – Best Drama), Shadowbox (Berlinale Panorama 2025), The Ink Stained Hand and the Missing Thumb (Karlovy Vary 2026). She is currently developing and engaged on projects in partnership with notable filmmakers and creative production outfits including, Richie Mehta, Tiger Baby Productions (Zoya Akhtar & Reema Kagti), Roy Kapur Films, Spirit Media (Rana Daggubati), Rock Honey Films, Karan Tejpal to champion South Asian stories across global platforms. As an Investment Committee Member at CineNow, Neha contributes greatly by bringing a powerful commercial and critical lens to film evaluation, especially around marketability, distribution pathways, audience reach, festival potential, global positioning and long-term IP value. Her experience across studio-scale films, Oscar, Emmy, Cannes and Sundance-recognised projects, streaming platforms and international campaigns helps CineNow assess not only whether a film can be made, but whether it can travel, scale, monetise and endure as a valuable entertainment asset."], "links": {"imdb": "https://www.imdb.com/name/nm1599130/"}}, "michael-jacobsen": {"name": "Michael Jacobsen", "photo": "img/people/michael-jacobsen.webp", "heads": ["Chairman, Jacobsen Office", "Special Advisor: Sovereign and Institutional Affairs"], "bio": ["Michael Jacobsen is an internationally respected cultural strategist, entertainment entrepreneur and government advisor operating at the intersection of culture, tourism, entertainment, media, real estate and the creative economy. He is Chairman of Jacobsen Office, a strategic advisory and investment office focused on culture, tourism, entertainment destination development, government relations, institutional relations and UAE market entry. Michael advises governments, cities, sovereign entities, family offices, institutional investors and international enterprises on how cultural IP, entertainment infrastructure and the experience economy can drive economic growth, tourism, destination value and global influence. He currently serves as Advisor to the Leadership of the Department of Culture and Tourism – Abu Dhabi, advising on strategy across performing arts, music, gaming, immersive experiences, culture, entertainment and the broader experience economy. Over a 25-year career spanning entertainment, media, leisure and cultural infrastructure, Michael has developed, owned, operated and advised on major destination assets across Asia-Pacific, Europe, the United States and the Gulf region. His portfolio has included convention centres, arenas, theatres, entertainment districts and experience-led assets that have become catalysts for tourism, urban regeneration, investment attraction and long-term precinct development. Jacobsen Office cites a legacy impact of US$50+ billion in estimated economic contribution, 75+ million visitors, 60,000+ events, 150,000+ jobs supported and 50+ million overnight stays across its international destination and entertainment portfolio. Michael’s track record includes landmark projects and venues such as the Capitol Theatre Sydney, Sydney Convention & Exhibition Centre, Sydney Entertainment Centre, Spark Arena Auckland, Brisbane Convention & Exhibition Centre, Singapore Sports Hub, Branson Missouri Convention & Exhibition Centre and Putrajaya Convention Centre. Many of these assets were developed or operated in partnership with governments, city authorities or public-sector counterparties, giving him deep experience in public-private alignment, long-term concessions, institutional stakeholder management and government-linked commercial execution. He is also recognised for his role in major entertainment IP. Since the Jacobsen Family Office acquired rights from Lionsgate Films in 2004, Dirty Dancing became one of the highest- grossing live entertainment productions globally, with Michael serving as co-founder, owner and producer. The production has reportedly generated more than US$2 billion in lifetime gross and played in over 30 cities internationally. As Special Advisor: Sovereign and Institutional Affairs at CineNow, Michael Jacobsen supports CineNow UAE in navigating government relations, sovereign engagement and institutional positioning across the region.", "His deep knowledge of Abu Dhabi’s cultural and tourism ecosystem, combined with his experience advising governments, developing destination assets, structuring public-private partnerships and translating entertainment IP into economic value helps CineNow align with UAE priorities around creative economy growth, film-tech, tourism, cultural infrastructure, investment attraction and global soft-power development."], "links": {"linkedin": "https://www.linkedin.com/in/michaeljacobsen123/", "web": "https://www.michaeljacobsenofficial.com/"}}, "siddharth-roy-kapur": {"name": "Siddharth Roy Kapur", "photo": "img/team/siddharth.webp", "heads": ["Indian Film Producer", "Principal Advisor to the CineNow Founding Team"], "bio": ["Siddharth Roy Kapur is one of India’s most respected film producers, studio leaders, and entertainment industry statesmen, with a career spanning content creation, studio management, platform strategy, producer advocacy, and global industry representation. He is the Founder and Managing Director of Roy Kapur Films and has previously served as Managing Director of The Walt Disney Company India and CEO of UTV Motion Pictures, placing him at the centre of some of the most important transitions in modern Indian entertainment.", "His studio career is closely associated with the rise of professionally managed, commercially ambitious Indian cinema. At UTV Motion Pictures and later Disney India, he was linked to a powerful slate of acclaimed and commercially successful films across genres, including Rang De Basanti, Taare Zameen Par, Jodhaa Akbar, A Wednesday\\!, Dev.D, Kaminey, Wake Up Sid, Paan Singh Tomar, Barfi\\!, Kai Po Che\\!, The Lunchbox, Chennai Express, and Dangal. This body of work reflects his ability to back films that combine creative strength, audience relevance, commercial scale, and long-term cultural value. In 2017, he founded Roy Kapur Films, building an independent content studio focused on premium films and series for theatrical and streaming markets. The company’s work includes The Sky Is Pink, which premiered at the Toronto International Film Festival, the Netflix film Yeh Ballet, the Netflix crime thriller series Aranyak, and the acclaimed SonyLIV series Rocket Boys. He was also associated with Last Film Show (Chhello Show), India’s official submission to the Academy Awards, which reached the international feature shortlist.", "Siddharth’s industry leadership extends well beyond production. He served as President of the Producers Guild of India from 2017 to 2022 and was elected for multiple consecutive terms, reflecting deep trust from the producer community. He has also served as Co-Chair of the FICCI Media & Entertainment Committee and Co-Chairman of the CII National Committee on Media & Entertainment, contributing to industry dialogue around policy, growth, AVGC, international markets, and the changing economics of Indian entertainment. In 2023, he was invited to join the Academy of Motion Picture Arts and Sciences under the Producers Branch and has been recognised by Variety among the most influential people in global entertainment.", "As a Principal Advisor to the CineNow Founding Team, Siddharth brings exceptional value through his understanding of studio economics, IP development, platform relationships, producer interests, audience behaviour, and institutional content strategy. His presence strengthens CineNow’s ability to assess film assets at a portfolio level, align creative ambition with commercial logic, build credibility with producers and platforms, and position CineNow as a serious, access- led, professionally governed film investment ecosystem."], "links": {"wikipedia": "https://en.wikipedia.org/wiki/Siddharth_Roy_Kapur", "imdb": "https://www.imdb.com/name/nm3032965/"}}, "abhay-sinha": {"name": "Abhay Sinha", "photo": "img/people/abhay-sinha.webp", "heads": ["President - IMPAA", "President - FFI", "Vice President FIAPF", "Founding Member, CineNow Strategic Council"], "bio": ["Abhay Sinha is a senior institutional leader in the Indian film industry, currently serving as President of the Indian Motion Picture Producers’ Association (IMPPA), President of the Film Federation of India (FFI), and Vice President of the International Federation of Film Producers Associations (FIAPF). His profile brings together national producer representation, apex-level Indian industry leadership, and international producer-network access making him a highly strategic figure for CineNow’s film investment and ecosystem-building mandate.", "As President of IMPPA, one of India’s oldest and most important producer associations, Abhay Sinha represents a large and influential producer community across the Indian motion picture ecosystem. His leadership gives him direct visibility into the challenges producers face across financing, rights, production, certification, distribution, theatrical access, OTT transition, and industry representation. For CineNow, this experience is highly valuable because the platform’s success depends on building trust with producers and aligning capital with the realities of film creation.", "His election as President of the Film Federation of India further strengthens his national-level relevance. FFI is described as the apex body representing producers, distributors, exhibitors, studios, and allied film associations across India, and also plays a role in policy advocacy, industry development, global representation, and selection of India’s official entry to the Academy Awards. This gives Abhay Sinha a broader ecosystem perspective beyond production alone covering the complete value chain of Indian cinema.", "Internationally, his appointment as Vice President of FIAPF places him within a global federation of producer associations, representing film producers across more than 30 countries. This gives CineNow access to a wider international producer network and strengthens its ability to explore cross-border relationships, co-production visibility, festival-market positioning, and global industry alignment.", "While his production background through Yashi Films provides practical grounding in content creation and regional cinema, his primary relevance to CineNow is his institutional reach. His roles across IMPPA, FFI, and FIAPF position him as a bridge between Indian producers, national industry bodies, international film organisations, and the broader film value chain.", "As a Founding Member of CineNow’s Strategic Council, Abhay Sinha brings more than reputation. He brings producer trust and international connectivity, policy visibility, association-level access and global credibility."], "links": {"imdb": "https://www.imdb.com/name/nm5673977/"}}, "resul-pookutty": {"name": "Dr. Resul Pookutty", "photo": "img/people/resul-pookutty.webp", "heads": ["Padma Shri - Oscar-Winning Sound Designer", "Founding Member, CineNow Strategic Council"], "bio": ["Dr. Resul Pookutty is one of India’s most internationally celebrated sound designers and a respected global ambassador of Indian cinema. He is best known for Danny Boyle’s Slumdog Millionaire, for which he received the Academy Award®, BAFTA Award, and Cinema Audio Society Award — becoming the first Asian to win all three major honours in sound.", "He has also been conferred the Padma Shri by the Government of India for his extraordinary contribution to cinema. A National Award winner with multiple state honours, Dr. Resul has worked on over 100 films across Indian and international cinema and is widely recognised as a pioneer of sync sound in India.", "At CineNow, Dr. Resul’s role on the Strategic Council is highly valuable because sound and music are not merely creative elements in Indian cinema, they are major commercial assets. Songs, background scores, sound design, dubbing quality, theatrical mix, and audio identity can influence audience recall, marketing power, platform value, music rights, regional adaptability, and international presentation.", "His presence gives CineNow strategic insight into how audio can strengthen the full commercial lifecycle of a film from script and production design to post-production, theatrical experience, OTT delivery, music-led promotion, and rights monetisation.", "Beyond his creative achievements, Dr. Resul is also a philanthropist, educator, innovator, and institution-builder through his work in sound technology, education, and the Resul Pookutty Foundation.", "As a Founding Member of CineNow’s Strategic Council, Dr. Resul brings global credibility, technical mastery, and a deep understanding of cinema’s audio economy. His guidance strengthens CineNow’s ability to evaluate, package, and elevate film assets with world-class sound standards while recognising the commercial importance of music and audio in Indian cinema’s value chain."], "links": {"wikipedia": "https://en.wikipedia.org/wiki/Resul_Pookutty", "imdb": "https://www.imdb.com/name/nm1017076/"}}, "manoj-abraham-matthew": {"name": "Manoj Abraham Matthew", "photo": "img/people/manoj-abraham-matthew.webp", "heads": ["Director, Dubai Studios", "Advisor, CEO’s office of Dubai Media Inc."], "bio": ["Manoj Abraham Mathew is a senior media, entertainment and content business leader with over 25 years of experience across broadcast, digital, OTT, distribution, monetisation, brand development and strategic partnerships. He currently serves as Director of Studios & Events at Dubai Studios, part of Dubai Media, where he leads studio and event-led initiatives focused on content creation, commercial partnerships and audience-facing media experiences. His role places him at the centre of Dubai’s rapidly expanding media and entertainment ecosystem, with a mandate that combines production infrastructure, regional storytelling, international collaboration and stakeholder value creation. At Dubai Studios, Manoj has been closely involved in building strategic partnerships and deploying content investments with regional and international producers. He also plays an advisory role within Dubai Media’s Excellence, Governance & Strategy function, giving him a broader institutional perspective on media transformation, governance, ecosystem development and long-term positioning. His work sits at the intersection of content, technology, distribution and business strategy, areas that are increasingly defining the future of entertainment platforms across the wider MENA region.", "Before joining Dubai Media, Manoj spent 19 years with Zee Entertainment Enterprises, where he held several senior leadership positions, including Executive Vice President and Territory Head for the Americas, MENA, Pakistan and Turkey. During his tenure, he managed multiple product verticals across pay television, free-to-air channels, digital assets and streaming platforms. He was also instrumental in launching Zee’s Arabic channels, helping the network deepen its relevance in regional markets and build stronger cultural and commercial bridges between Indian, South Asian and Middle Eastern audiences. Manoj’s expertise spans content production, licensing, distribution, revenue management, marketing, advertising, project appraisal, investment strategy, business restructuring and technology-led media growth. Over the years, he has built a strong network across broadcasters, producers, platforms, government-linked media entities, creative businesses, event ecosystems and regional entertainment stakeholders. His experience in MENA is particularly relevant given the region’s growing importance as a global content, capital and production hub. He has consistently advocated for strategic distribution, localisation, data-led audience segmentation and cross-border partnerships as key drivers of MENA content’s global expansion. His industry standing is further reflected in recognitions such as Broadcast Executive of the Year in 2021 and his inclusion among the GCC’s 100 Most Powerful Indians in 2014. He is also a Fellow of the Chartered Institute of Marketing and a member and juror of the International Academy of Television Arts & Sciences, reinforcing his credibility across both business and creative dimensions of the global media sector. As a Strategic Council Member of CineNow, Manoj brings valuable MENA market access and deep regional relationships. As CineNow builds its UAE subsidiary, his experience supports regional positioning, strategic partnerships, co-production opportunities, distribution alliances and cross-border ecosystem development, helping CineNow connect Indian film IP with the commercial, institutional and creative infrastructure of the Gulf."], "links": {"linkedin": "https://www.linkedin.com/in/mamathew/"}}, "sanjay-wadhwa": {"name": "Sanjay Wadhwa", "photo": "img/people/sanjay-wadhwa.webp", "heads": ["CEO & Co-Founder, AP International", "Founding Member, CineNow Strategic Council"], "bio": ["Sanjay Wadhwa is a veteran business leader, third-generation entrepreneur and film-industry operator with more than four decades of experience across film financing, distribution, production, digital rights, music, international syndication and media investment. An MBA from the University of Scranton, Pennsylvania, he has built his long-standing career in the Indian and international entertainment landscape.", "Since 1992, Sanjay has served as Managing Partner of the AP International Group in Chennai, one of South India’s long- established film businesses, with activities spanning film financing, acquisition, distribution, digital rights and global content exploitation. The company was established in 1958 and has financed over 1,000 films, acquired copyrights of over 1,500 movies and 500+ movie audio tracks, and distributed more than 1,000 films globally.", "His career reflects a rare command of both traditional and digital entertainment markets. Sanjay has also been active in production and platform-led expansion. In partnership with Reliance Entertainment and YNOT Studios, he founded YNOT Films LLP, a film production company. He is also a Partner at Music Master Audio Video LLP, Director of Phonographic Digital Limited and former Director at Recorded Music Performance Ltd., reflecting his broader exposure to music, rights and content monetisation.", "Beyond film operations, Sanjay has participated in entrepreneurial and capital-market platforms. He has been an active member of Entrepreneurs’ Organisation Chennai since 2001, served on the Global Board of Entrepreneurs’ Organisation from 2014 to 2017, and acted as Standing Finance Chair for Entrepreneurs’ Organisation in 2016–17.", "As a Founding Member of CineNow’s Strategic Council, Sanjay contributes greatly by bringing deep South Indian film- industry access, international distribution intelligence, rights monetisation experience, producer relationships, music and digital-content knowledge, and a proven understanding of how regional Indian cinema travels across global markets. His counsel helps CineNow evaluate film IP with sharper commercial judgment, strengthen access to credible producers and libraries, identify international revenue pathways, and build a more connected, market-aware platform for Indian entertainment investment."], "links": {"imdb": "https://www.imdb.com/name/nm3171281/"}}, "nikita-sachdev-lord": {"name": "Nikita (Sachdev) Lord", "photo": "img/people/nikita-sachdev-lord.webp", "heads": ["Managing Director, Luna PR & Luna Media Corp.", "Founding Member, CineNow Stewardship Council"], "bio": ["Nikita Sachdev Lord is a globally recognised blockchain entrepreneur, investor and strategic adviser whose work has helped advance the institutional understanding and mainstream adoption of Web3, digital assets and tokenisation. Since entering the cryptocurrency sector in 2017 through her work with Huobi Exchange, now HTX, she has developed a multidisciplinary career spanning emerging technology, capital markets, strategic communications, media and venture investment. Her ability to interpret complex blockchain propositions and position them for regulators, institutions, investors and wider markets has established her as an influential bridge between decentralised innovation and traditional business ecosystems. As Founder and Chief Executive Officer of Luna PR and Luna Media Corporation, Nikita has built one of the most prominent global platforms serving blockchain, fintech, artificial intelligence and emerging-technology companies. Luna PR has grown into an eight-figure, independently funded enterprise that has supported more than 750 companies through a multidisciplinary team operating across four continents. Her leadership extends beyond conventional public relations: she advises technology businesses on market positioning, institutional credibility, regulatory-sensitive narratives, stakeholder confidence and the strategic foundations required for mainstream and public-market acceptance. This experience has given her extensive exposure to the commercial, reputational and governance considerations surrounding digital-asset ventures.", "Nikita has also built significant authority at the intersection of blockchain technology and tokenised capital. She regularly participates in international discussions concerning real-world asset tokenisation, digital-market infrastructure, institutional adoption, regulatory alignment and the convergence of traditional and decentralised finance. Her appearances have included the Gamma Prime Tokenised Capital Summit, Blockchain Futurist Conference, global blockchain congresses and forums examining the infrastructure of trust required to move tangible and intangible assets on-chain. Through these platforms, she has contributed to conversations extending beyond cryptocurrency speculation towards asset structuring, capital efficiency, liquidity, ownership democratisation and the responsible integration of tokenisation into established financial markets. Her authority is reinforced by direct entrepreneurial, investment and governance experience. Through her private investment activities, Nikita has deployed more than US$10 million into blockchain, Web3 and emerging- technology ventures. In January 2026, she was appointed an Independent Director of KRAKacquisition Corp, a Nasdaq- listed, Kraken-backed special purpose acquisition company that completed an upsized US$345 million initial public offering. She also serves as Chair of its Compensation Committee, placing her within a board comprising senior leaders from digital-asset infrastructure, venture capital and global financial markets. Nikita has additionally contributed to the Forbes Business Council, developed major blockchain-focused media platforms and hosted or moderated conversations with prominent technology, financial and policy leaders."], "links": {"linkedin": "https://www.linkedin.com/in/nikitasachdev/", "web": "https://nikilord.com/"}}, "gaurang-desai": {"name": "Gaurang Desai", "photo": "img/people/gaurang-desai.webp", "heads": ["Managing Director, Equiti Group", "Founding Member, CineNow Stewardship Council"], "bio": ["Gaurang is the Managing Director of Strategy at Equiti Group, where he leads the development of institutional investment and fundraising strategies with a regulation-first mindset. With over 25 years of global experience in capital markets, he is recognised as a leading expert in capital raising, financial infrastructure development, and investment strategy. Gaurang has managed and established regulated exchanges and clearing houses across the MENA region, working closely with financial regulators to ensure robust regulatory frameworks and sustainable market growth.", "He was a founding member and later Chief Executive Officer of the Dubai Gold & Commodities Exchange (DGCX), helping to establish one of the Middle East’s leading derivatives markets and demonstrating his entrepreneurial drive in building new market infrastructure. Gaurang has also served as the Chairman of the Dubai Digital Asset Association (D2A2), where he championed the integration of digital assets into mainstream finance under rigorous regulatory frameworks, ensuring the sector’s growth aligns with international best practices.", "Additionally, he is an Advisor to the UAE’s Securities & Commodities Authority (SCA), collaborating with regulators to strengthen financial market infrastructure and regulatory policies in the UAE’s capital markets. Across these leadership roles, Gaurang emphasises institutional investment opportunities, effective fundraising strategy, and strong governance in every initiative he leads. Widely respected for balancing innovative growth with rigorous compliance, Gaurang is a trusted authority in the capital markets and digital assets sectors."], "links": {}}, "jitendra-nagpal": {"name": "Jitendra Nagpal", "photo": "img/people/jitendra-nagpal.webp", "heads": ["Founder/GP, Capinity Partners & Tetration Ventures", "Founding Member, CineNow Stewardship Council"], "bio": ["Jitendra Nagpal is a seasoned finance leader, capital markets operator, and startup CFO with a strong track record of building, funding, scaling, and professionalising high-growth businesses. His professional pedigree is anchored in the rare combination of investment banking experience, corporate finance discipline, fundraising execution, operational finance, and cash-flow control making him a finance leader who understands both capital formation and business sustainability.", "He is widely recognised for his role in building and scaling some of India’s most prominent high-growth companies. Public profiles identify him as having played key finance leadership roles across PharmEasy, Country Delight, and Zepto, three major Indian startup journeys that required institutional capital, rapid scaling, financial control, and investor confidence. He is a finance leader who contributed to building three unicorns with experience in raising over $8 billion in equity and debt.", "Jitendra’s career is particularly notable because he has not operated only as a transaction-side fundraiser. He has worked inside companies during critical phases of growth, where capital strategy must be matched by working-capital control, unit economics, budgeting discipline, treasury management, reporting systems, and a path toward profitability. This is the profile of a CFO who does not merely raise money, he knows how to make capital work inside a business.", "His experience also includes investment banking and broader capital markets exposure. Currently heading Capinity Partners and Tetration Ventures, he has worked with ICICI, IDFC, and Macquarie, in addition to his operating roles at Zepto, Country Delight, and PharmEasy. He is famously regarded by founders as a “cashflow wizard.”", "For CineNow, Jitendra brings precisely the financial lens required to make a film investment platform institutionally credible: capital markets discipline, cash-flow mastery, fundraising experience, debt-equity structuring, working-capital control, and investor-grade financial thinking. His contribution is especially valuable in designing how capital is deployed across the slate, how cash flows are monitored project-by-project, how recycled capital is governed, how liquidity is planned, and how investor confidence is maintained through transparent financial architecture. In a film ecosystem where creative ambition often outruns financial discipline, Jitendra’s value to CineNow is his ability to make capital movement structured, measurable, and defensible."], "links": {"linkedin": "https://www.linkedin.com/in/jitendranagpal/"}}, "raj-kapoor": {"name": "Raj Kapoor", "photo": "img/people/raj-kapoor.webp", "heads": ["Founder, India Blockchain Alliance", "Certified Bitcoin Professional, Blockchain Solution Architect, and Global Tokenisation Expert", "Founding Member, CineNow Stewardship Council"], "bio": ["Raj Kapoor is a prominent blockchain, tokenisation, Web3, AI and emerging technology advocate, best known as the Founder of the India Blockchain Alliance, an Indian technology think tank focused on advancing responsible blockchain adoption across industry and government. The India Blockchain Alliance describes its mission as encouraging the responsible use of blockchain technology as a means to drive innovation in service delivery across sectors, positioning Kapoor at the centre of India’s blockchain policy, education, enterprise adoption and ecosystem-building conversation. Kapoor’s work spans blockchain strategy, cryptocurrency education, fintech, digital assets, AI, Web3 and tokenisation.", "He is listed by the Council for Inclusive Capitalism as the Founder of India Blockchain Alliance, an Advisory Board Member to more than 90 Web3 companies, a Certified Bitcoin Professional, a Blockchain Solution Architect. He is also associated with companies including Integra, Zoniqx, Kula and nGRND, reflecting his broad advisory exposure across technology-led ventures and digital innovation ecosystems.", "Over the years, Kapoor has built a reputation as an educator, speaker and ecosystem connector in emerging technologies. A global blockchain, cryptocurrency and fintech educator, as well as protem Chairman of the Organisation of Blockchain Technology Users, his work has extended into advisory roles, enterprise blockchain implementation, technology forums and Web3 adoption initiatives, giving him practical exposure to both the conceptual and executional sides of distributed ledger technology.", "Kapoor’s relevance also comes from his ability to translate complex technologies into boardroom-level strategy. Blockchain and tokenisation are often misunderstood as purely technical or speculative subjects; his work has consistently focused on adoption, governance, education, use cases and institutional credibility. That combination is particularly important for industries exploring asset tokenisation, where technology design must align with regulation, investor protection, transparency, rights management and long-term trust.", "As a member of CineNow’s Stewardship Council focused on technology and tokenisation, Raj Kapoor contributes greatly by helping shape the platform’s approach to blockchain-enabled tokenisation, digital asset structuring, smart-contract frameworks, and transparency. His experience across Web3 advisory, blockchain education, digital assets and emerging technology governance helps CineNow evaluate tokenisation not as a marketing layer, but as a disciplined infrastructure layer for investor access, rights tracking, reporting, liquidity pathways and long-term trust in film IP as an investable asset class."], "links": {"linkedin": "https://www.linkedin.com/in/indieblock/"}}, "mihir-karlekar": {"name": "Mihir Karlekar", "photo": "img/people/mihir-karlekar.webp", "heads": ["Director, Strategy, Growth & International Markets"], "bio": ["Mihir Karlekar is a Dubai-based senior media, entertainment and investment-led ventures executive with over 16 years of experience across international markets, branded intellectual property, strategic partnerships, content monetisation, cross-border growth and commercial market entry. He has built his career at the intersection of content, capital, culture, global brands and strategic expansion, with senior leadership experience across leading media and entertainment groups including Zee Entertainment, Keshet International, Eros Investments and Penske Media Corporation. His work has focused on originating, structuring and executing high-value partnerships across emerging and developed markets. Most recently, Mihir served as Senior Director, International Markets at Penske Media Corporation, where he was responsible for expanding some of the world’s most influential media, entertainment, luxury and lifestyle brands into international markets. His portfolio included iconic global properties such as the Golden Globes, Billboard, Rolling Stone, Variety, The Hollywood Reporter, Dick Clark Productions, WWD and Robb Report. His mandate covered international expansion, market entry, licensing, strategic partnerships, events, consumer products, branded experiences and non-media sector extensions.", "Previously, Mihir was Business Head of Media and Entertainment at Eros Investments, a diversified investment holding company with interests across media, entertainment, technology, blockchain, sports, gaming, digital commerce and Web3. In this role, he operated as a studio and commercial executive, overseeing content strategy, film and entertainment investments, commercial development, partnerships and monetisation across the group’s media and entertainment verticals. He was closely involved in evaluating film and content opportunities, commercial strategy, talent relationships, production partnerships, distribution and global exploitation.", "For CineNow, Mihir plays a key role in strategy, growth and international market development. His mandate is global in nature, helping CineNow build alliances with studios, production companies, distributors, streaming platforms, technology partners, regional media groups, family offices, strategic investors, government-linked ecosystem players and international entertainment platforms. His experience is especially relevant to markets such as the UAE, Saudi Arabia and the wider GCC, where capital, production infrastructure, policy support, tourism, culture and global content ambitions are increasingly converging. He brings practical understanding of how media and entertainment businesses scale beyond domestic boundaries into global commercial ecosystems. As CineNow scales from an India-origin film IP investment platform into a broader global media and entertainment platform, Mihir’s commercial experience, studio exposure, strategic relationship network and cross-border market access are expected to support international growth, co- investment structures, market entry, monetisation partnerships and long-term platform value creation."], "links": {"linkedin": "https://www.linkedin.com/in/mihir-karlekar-0ec772e9/"}}, "hamed-faqirzai": {"name": "Hamed Faqirzai", "photo": "img/team/hamed.webp", "heads": ["Director, Tokenisation & Capital Markets"], "bio": ["Hamed Faqirzai is an emerging-technology, Web3 and digital-assets growth leader with a strong operating footprint across blockchain, fintech, token launches, institutional investment narratives and global market development. He is currently Vice President of Global Development at Luna PR, a global communications and strategic advisory agency specialising in Web3 and emerging technology. Before Luna PR, Hamed was one of the first five employees at Pathos Communications, where he built the company's commercial infrastructure and global sales function during its formative years before its eventual listing on the London Stock Exchange. He began his career in finance at Legrand (Fortune 500 Europe), providing a foundation in traditional financial markets before transitioning into blockchain and digital assets.", "Hamed’s relevance to tokenisation comes from his work at the intersection of digital assets, capital formation, market positioning and ecosystem development. He has advised founders, funds and institutions on positioning, market entry and ecosystem expansion, and has been instrumental in launching tokens, supporting capital raises and aligning projects with global regulatory and institutional frameworks. This gives him a practical understanding of tokenisation not merely as a technical issuance process, but as a capital-markets exercise involving trust, timing, investor education, liquidity narrative, regulatory alignment and institutional adoption.", "He has spoken or moderated at 20+ leading global conferences. At the Global Blockchain Congress in Dubai, he moderated the panel “Crypto’s Next Chapter: From Hype to Fundamentals,” focused on real-world utility, sustainable models and regulatory clarity in digital assets. He has also moderated institutional digital-asset conversations at the DAT Summit Abu Dhabi, where discussion centred on how institutions choose, hold and manage digital assets, and how productive blockchain assets may support capital deployment, liquidity and on-chain business creation. Through Luna Media’s Tech It Or Leave It, he has hosted discussions on decentralised trading, DeFi privacy, agentic AI and market infrastructure, further positioning him within the live conversation around Web3 adoption and financial-market transformation.", "As Director, Tokenisation and Capital Markets at CineNow, Hamed Faqirzai contributes greatly by helping translate CineNow’s film-IP thesis into a credible tokenisation and capital-markets narrative. His experience across token launches, institutional positioning, Web3 stakeholder networks, capital-raise support, global market entry and regulatory-facing communication helps CineNow build confidence among investors, technology partners and ecosystem participants as it prepares to position film IP as a structured, tokenisation-ready alternative asset class."], "links": {"linkedin": "https://www.linkedin.com/in/hamed-faqirzai22/"}}, "ashish-homkar": {"name": "Ashish Homkar", "photo": "img/people/ashish-homkar.webp", "heads": [], "bio": [], "links": {}}, "radhika-gopal": {"name": "Radhika Gopal", "photo": "img/people/radhika-gopal.webp", "heads": ["Content & IP Origination"], "bio": ["Radhika Gopal is a senior Indian media and entertainment professional with deep expertise across talent representation, script development, writers’ ecosystems, creative packaging and content strategy. She was the Head – Writers and Directors at Tulsea, a strategic talent and content management company representing India’s leading storytellers across film, television, digital content, gaming and global content markets. Tulsea represents India’s leading writers, directors, actors, producers and production companies, giving Radhika direct exposure to the creative engine behind India’s premium content economy.", "Radhika was one of the earliest talent agents to join Tulsea in 2014 and has since worked closely with its writers and directors division. She played an instrumental role in building Tulsea’s India team alongside founding partners Datta Dave and Chaitanya Hegde, while developing deep relationships across the Indian media and entertainment industry. Her work has focused on helping creators realise their creative and strategic goals, while also connecting talent with platforms, producers, studios and global buyers.", "Her strengths sit at the intersection of creative judgment and industry access. Radhika has been closely involved in packaging premium projects and identifying creative talent for leading platforms, producers and studios in India. Shs has been instrumental in packaging acclaimed series such as Sacred Games and Paatal Lok for platforms including Netflix and Amazon, as well as fostering cross-border collaboration between the entertainment industries of Los Angeles and Mumbai.", "Radhika’s experience also extends into strategic consultation and IP awareness. Film Bazaar notes that she has been involved in strategic consultation initiatives offered by Tulsea to key partners, including consultation for Saregama India during the launch of Yoodlee Films in 2017. She has also participated in industry conversations around intellectual property rights, writer credits, creator recognition and the evolving structure of India’s screenwriting ecosystem.", "Leading the Content & IP at CineNow, Radhika contributes greatly by bringing disciplined script-screening ability, creator access and a structured first-filter process to CineNow’s content pipeline. Her role is central to reviewing incoming scripts, assessing their creative strength, market potential and IP viability, and escalating qualified projects into the formal greenlighting process. By involving Tulsea to manage script volume, she helps CineNow build an institutional-grade content evaluation system capable of handling scale without compromising judgment, quality or creative integrity."], "links": {}}, "reshma-shetty": {"name": "Reshma Shetty", "photo": "img/people/reshma-shetty.webp", "heads": ["Talent & Packaging"], "bio": ["Reshma Shetty founded India’s first model agency, Models Plus (1994) and followed it up by founding India’s first full- service celebrity management company, Matrix (2001). Matrix is India’s leading, most respected talent agency. Reshma has featured six times on the Fortune list of 50 Most Powerful Women in Indian business. Matrix represents some of India’s top movie stars manages business portfolios across movies, TV, streaming, endorsements, events, digital, celebrity private labels, celebrity private equity and celebrity philanthropy. From India’s first celebrity clothing brand, Being Human to India’s first and biggest celebrity beauty brand, Kay Beauty in partnership with Katrina Kaif and Nykaa, to India’s first celebrity clothing brand for children, Ed-a-Mamma in partnership with Alia Bhatt and Reliance Retail, Matrix has led several pioneering initiatives in the Indian entertainment industry.", "What distinguishes Reshma is that her work goes beyond booking talent. Her career reflects deep understanding of how stars are positioned, protected, monetised, and aligned with films, brands, platforms, public image, and long-term career architecture. She understands talent value not only as popularity, but as a commercial asset that can influence financing confidence, OTT interest, theatrical value, brand partnerships, media heat, and distribution leverage.", "For CineNow, Reshma brings exactly the kind of relationship capital and packaging intelligence required to make film projects more financeable, saleable, and market-ready. In the Talent & Packaging function, her value lies in helping CineNow access high-quality actors, directors, creators, and managers; shape projects around commercially meaningful attachments; avoid overpaying for vanity names; and build packages that increase buyer confidence, investor credibility, and downstream monetisation potential."], "links": {}}, "deepak-nangalia": {"name": "Deepak Nangalia", "photo": "img/people/deepak-nangalia.webp", "heads": ["Investment & Slate Finance, Vice Chair of CineNow IC"], "bio": ["Deepak Nangalia is a seasoned financial strategist and film industry operator with over 15 years of experience across finance, governance, and media, including more than a decade at the intersection of film production and structured financing. His career is defined by a rare combination: institutional-grade financial discipline paired with hands-on execution across the full lifecycle of film projects.", "Deepak began his career in audit and financial controls, working with established corporates across sectors, where he developed a strong foundation in compliance, due diligence, and financial systems. This early exposure to audit rigor, MIS reporting, and operational financial analysis shaped his approach to risk management and capital protection, principles that continue to underpin his work in film finance.", "He later transitioned into leadership roles in finance and accounts, culminating in his tenure as Chief Financial Officer at Landmarc Films. In this capacity, he oversaw the entire finance, compliance, and audit ecosystem, working directly with boards, regulators, and audit bodies while driving business planning and execution. He was responsible for financial structuring, regulatory compliance, capital allocation, and governance across multiple verticals, including film production. Within the film industry, Deepak has been directly involved in the financial and operational structuring of over a dozen projects, spanning documentaries, regional cinema, and Hindi films. His work includes: Documentaries: Memoirs of Prem Ratan Dhan Payo, Vidyoday Marathi Cinema: Vazandar, Ringan, Gachchi, Redu, Pipsi, Nashibvaan, Medium Spicy, Respect Hindi Films: IPC 420, Gandhi Talks Across these projects, Deepak has played multi-dimensional roles across finance, production, legal, and presentation, often simultaneously. He has led feasibility assessments, structured budgets, managed cash flows, coordinated with studios and talent, overseen compliance, and supported distribution and monetisation strategies. His involvement has consistently extended from pre-production through to release, ensuring financial discipline is embedded at every stage of execution.", "As Associate Producer and Finance Head at Kyoorius Group, Deepak further strengthened his ability to bridge creative ambition with commercial viability. He worked closely with promoters, studios, and talent to secure project approvals, align stakeholders, and ensure delivery timelines and budget integrity while simultaneously managing legal frameworks, regulatory approvals, and multi-business operations.", "What distinguishes Deepak is his ability to operate at both strategic and executional levels. He is equally comfortable building investment theses and negotiating financial structures as he is managing on-ground production realities, aligning cross-functional teams, and resolving operational bottlenecks. He understands where film projects typically fail - unclear rights, weak financial planning, cost overruns, delayed execution, and misaligned incentives, and builds systems to mitigate these risks proactively.", "Deepak’s approach is rooted in a simple principle: creative ambition must be matched with financial discipline. He ensures that every project is not only creatively compelling but also structurally sound, commercially viable, and aligned with investor expectations."], "links": {"linkedin": "https://www.linkedin.com/in/deepak-nangalia-2b961a144/"}}, "aashish-singh": {"name": "Aashish Singh", "photo": "img/team/aashish.webp", "heads": ["Production"], "bio": ["Aashish Singh is a senior Indian film executive and producer with more than two decades of experience across studio production, content creation, original films, budgeting, co-productions, acquisitions, international production incentives, and large-scale execution. His career has placed him in leadership roles at some of the most respected companies in Indian entertainment, including Yash Raj Films, Balaji Motion Pictures / Balaji Telefilms, Netflix India, Lyca Productions, and Red Chillies Entertainment. This combination gives him rare institutional credibility across Hindi cinema, South Indian cinema, OTT originals, and superstar-led studio production.", "Aashish’s most defining production experience was at Yash Raj Films, where he served as Vice President – Production from 2005 to 2018. Public As production head at YRF, he worked on major films including Tiger Zinda Hai, Sultan, Dhoom 3, Chak De\\! India, and Jab Tak Hai Jaan. His responsibilities extended beyond physical production into budgets, co-productions, acquisitions, international shooting incentives, and production-related legal matters, precisely the type of multi-layered production oversight required for large, capital-intensive film slates.", "His filmography reflects direct association with some of the most commercially significant Hindi films of the last two decades including Chak De\\! India, Sultan, Dhoom 3, Ek Tha Tiger, Jab Tak Hai Jaan, Gunday, Aaha Kalyanam, Qaidi Band, Bank Chor, and Ram Setu. This body of work demonstrates deep exposure to high-budget productions, star-led projects, franchise filmmaking, multi-location shoots, and studio-grade delivery discipline.", "After Yash Raj Films, Aashish was appointed CEO of Balaji Motion Pictures, the film arm of Balaji Telefilms, at a time when the company was looking to scale its movie business. He then moved into the streaming ecosystem as Director – Original Film at Netflix India, giving him direct exposure to platform-led content commissioning, OTT delivery expectations, and the evolving economics of premium digital films.", "He later joined Lyca Productions as CEO, bringing his studio and OTT experience into one of India’s major South-led production companies with a presence across Tamil, Hindi and Telugu cinema. Most recently, Red Chillies Entertainment announced his appointment as Producer, where he has undertaken the responsibility for content creation at the Shah Rukh Khan-owned production house.", "At CineNow, Aashish Singh oversees production execution across studio partnerships and financed projects. His role is central to ensuring that every greenlit project is delivered with disciplined budgeting, schedule control, legal and production readiness, cross-studio coordination, vendor accountability, completion oversight, and delivery reliability.", "For institutions evaluating CineNow, Aashish brings the credibility of having operated inside India’s leading production ecosystems and the practical experience required to protect capital at the stage where film investments are most exposed: execution."], "links": {"linkedin": "https://www.linkedin.com/in/aashish-singh-b01a189b/", "imdb": "https://www.imdb.com/name/nm0802088/", "wikipedia": "https://en.wikipedia.org/wiki/Aashish_Singh"}}, "mini-sarna": {"name": "Mini Sarma", "photo": "img/people/mini-sarma.webp", "heads": ["Commercial"], "bio": ["Mini Sarma is a UAE-based film production and commercial executive with deep experience at the intersection of Indian cinema, government-facing production support, line production, location facilitation and large-scale shoot execution in the UAE. Over the past decade, she has become one of the recognised bridges between Indian producers and the UAE production ecosystem, helping films navigate locations, permissions, local crews, incentives, logistics and execution requirements across Dubai, Abu Dhabi, Sharjah & Ras Al Khaimah.", "Mini’s profile combines entrepreneurial production experience with institutional exposure. She was the CEO / General Manager of 7 Media, a UAE production company involved in major Indian film shoots, and later as Head of Indian Production at the Abu Dhabi Film Commission & Strategic Head of Creative Media Authority (CMA Abu Dhabi). The Abu Dhabi Film Commission is part of Abu Dhabi’s Creative Media Authority, which supports the emirate’s creative sector and offers production support including scouting, permits, visas, customs clearance and production rebates starting from 35%.", "Her association with Indian cinema is extensive. Through 7 Media, several major Bollywood projects, including Pathaan, Happy New Year, Airlift, Laxmmi Bomb, Raees, Zero, Take Off, Koode, were line produced. And other projects in collaboration with the Abu Dhabi Film Commission, which were War 2, BMCM 2, Bloody Daddy, Vikram Vedha, Dishoom, Baby, Tiger Zinda Hai, Bunty Aur Babli 2, Bharat, Saaho, Race 3, etc.", "Mini’s value as a production professional lies in her ability to understand both sides of a film’s requirements: the producer’s need for efficiency, cost control and creative flexibility, and the host jurisdiction’s need for compliance, permissions, local spend, reputational protection and operational discipline. Her career reflects practical knowledge of budgeting realities, local supplier ecosystems, location economics, government coordination, rebate-linked planning, production scheduling and the commercial sensitivities that determine whether an international shoot is viable.", "Mini Sarma contributes greatly by bringing senior UAE production access, government-facing credibility and line- production intelligence into CineNow’s producer negotiations. Her role would be instrumental in engaging with producers whose films have been greenlit, pressure-testing proposed budgets, negotiating fair and justifiable production costs, identifying UAE-linked efficiencies, and ensuring that production economics remain commercially disciplined without compromising creative ambition. For CineNow, this would directly strengthen cost control, producer accountability, execution confidence and the commercial integrity of each approved film investment."], "links": {"linkedin": "https://www.linkedin.com/in/mini-sarma-5a08313/", "imdb": "https://www.imdb.com/name/nm13569259/"}}, "yusuf-shaikh": {"name": "Yusuf Shaikh", "photo": "img/people/yusuf-shaikh.webp", "heads": ["Exhibition, IPR & Revenue Partnerships"], "bio": ["Yusuf Shaikh is a veteran film industry professional with over 25 years of experience across film distribution, exhibition, production, acquisition, IPR management, and revenue strategy. His career has been built around a practical understanding of how films move from producers to audiences — across theatres, territories, rights windows, platforms, and commercial partners.", "Yusuf began his journey in the distribution and exhibition ecosystem, where he developed deep market knowledge of theatrical release mechanics, territory behaviour, exhibitor relationships, audience access, screen allocation, pricing, and revenue recovery. Over the years, he has distributed more than 85 films, produced multiple projects, and built a reputation for understanding both the commercial and operational realities of Indian film monetisation.", "He later founded Yen Movies, expanding his work across production, marketing, distribution, and exhibition. This gave him full-stack exposure to the film lifecycle, from acquisition and packaging through release planning, rights exploitation, and revenue realisation. His experience is especially valuable in an industry where monetisation depends not only on content quality, but also on timing, access, rights control, distribution leverage, and channel strategy.", "As Head of Distribution & IPR at Percept Pictures, Yusuf led acquisition, distribution, and rights-management initiatives across multiple projects. This strengthened his expertise in structuring monetisation pathways across theatrical, satellite, digital, and ancillary rights. His work across mainstream and unconventional projects, including experimental formats such as Sabki Bajegi Band, reflects his willingness to explore new commercial models within the theatrical and non-theatrical ecosystem.", "Beyond conventional distribution, Yusuf has demonstrated an infrastructure-first approach to solving one of Indian cinema’s core challenges: limited screen access. Through Janta Cinema, he has focused on expanding exhibition possibilities by converting underutilised spaces into cinema venues, helping unlock new audience demand across underserved markets. His involvement with industry bodies and forums such as IMPPA and FFI further places him close to producer concerns, distribution trends, and wider industry discussions.", "At CineNow, Yusuf’s role strengthens monetisation beyond standard distribution channels. His value lies in building exhibition partnerships, alternative release opportunities, IPR monetisation structures, satellite and ancillary revenue routes, regional access, and long-tail rights strategies. He helps CineNow ensure that each film is not only financed and produced, but positioned to extract maximum value across every available revenue window."], "links": {"linkedin": "https://www.linkedin.com/in/yusuf-shaikh-7a30297/", "imdb": "https://www.imdb.com/name/nm5630856/"}}, "krishna-kumar": {"name": "Krishna Kumar", "photo": "img/people/krishna-kumar.webp", "heads": ["Compliance and Governance"], "bio": ["Krishna Kumar is a senior QHSE, Business Excellence, governance, and management systems professional with extensive experience in building standards-led operating environments across diversified business groups. His strongest professional profile is anchored in his long tenure with Al Shirawi Group, where he was publicly identified as General Manager – QHSE & Business Excellence and played a central role in embedding ISO-based systems, process discipline, quality frameworks, and continuous improvement across multiple group companies.", "At Al Shirawi, Krishna was closely associated with major standards and certification milestones. He was involved in Al Shirawi Facilities Management’s achievement of ISO 41001 certification, with BSI describing Al Shirawi FM as a regional facilities management provider whose ISO 41001 implementation improved monitoring, measurement, client alignment, and supported 8–10% revenue growth through stronger relationship management and performance tracking. Krishna was also recognised as the QHSE & Business Excellence leader connected to this certification journey, reinforcing his experience in driving standards-based organisational maturity.", "His work extended beyond a single certification. Across Al Shirawi group entities, Krishna was linked to ISO and business excellence initiatives involving quality, environmental performance, sustainability, and process improvement. In relation to Al Shirawi Interiors’ ISO 14001 and ISO 9001 framework, he articulated the group’s “triple bottom line” approach measuring performance across people, planet, and profit, demonstrating his ability to connect compliance frameworks with broader corporate strategy. In another Al Shirawi contracting certification announcement, he positioned certification as a way to scrutinise existing processes, improve client satisfaction, and strengthen organisational standards.", "Krishna’s profile is therefore not merely that of a compliance administrator. He is a systems builder: someone experienced in translating standards, audits, documentation, measurement, risk controls, and governance expectations into practical organisational discipline. His background with BSI-led certification environments is especially relevant for organisations seeking ISO-style operating credibility, audit readiness, and repeatable control systems.", "At CineNow, Krishna leads Compliance & Governance, covering internal governance, company secretarial coordination, compliance calendars, policy frameworks, committee protocols, council documentation, conflict-of-interest registers, investment committee records, partner onboarding controls, and verification inputs for investor reporting. His role ensures that CineNow is run as a standards-led, audit-ready organisation where directors, councils, management, external partners, and investor communications operate through documented procedures, clear controls, and institutionally defensible governance.", "For CineNow, his value is the ability to convert a relationship-driven film investment platform into a professionally governed, ISO-style operating ecosystem with the process discipline expected by serious investors."], "links": {}}, "hardik-puri": {"name": "Hardik Puri", "photo": "img/people/hardik-puri.webp", "heads": ["Compliance and Governance"], "bio": ["Hardik Pratipal Puri is a legal, secretarial, contracts and compliance professional with approximately thirteen years of experience, including four years in the UAE. His profile combines corporate governance, company secretarial practice, contract review, compliance management, due diligence, civil and commercial litigation, trademark matters, AML compliance and legal documentation. He is a qualified Company Secretary from the Institute of Company Secretaries of India and holds an LL.B. from G.J. Advani Law College, Mumbai University.", "Hardik’s career spans regulated, operationally complex and documentation-heavy environments across real estate, construction, travel, finance and aviation. Having worked with the DAMAC Group of Companies as Assistant Manager – Contracts & Compliances, his work has included compliance automation, contract management alignment, high-value contract negotiation and cross-functional training on contract compliance and risk mitigation. He enabled automation of compliance alerts, reducing manual tracking errors by 90%, and contributed to internal contract management systems and compliance controls.", "Before DAMAC, he served as Manager – Contracts & Legal at Roofings Middle East FZC, where he worked across litigation, contractual workflows, settlements and operational documentation. His achievements included defending multi-million- dirham litigation before the Court of First Instance and Appeal, standardising pre and post-sales documentation, resolving legacy disputes, introducing SOPs and developing a Contract Execution Form system to track revisions and interdepartmental inputs.", "Hardik has also held legal and secretarial roles with Kesari Tours Limited, Maheshwari Investors Private Limited, S. B. Charity Trust and Kingfisher Airlines Limited. His experience includes NCLT matters, well-known trademark recognition for “KESARI,” RBI-related periodic compliances, maintenance of statutory records and registers, court appearances, stock exchange compliances, stakeholder meetings, rights issue processes, private placement of shares, employee stock option plans and listing-related documentation.", "His technical grounding is particularly strong in contract review, covenant monitoring, compliance registers, compliance management software, power of attorney documentation, reporting to executive management, statutory registers, board and audit committee preparation, minutes, resolutions, stock exchange liaison, RBI filings, investor correspondence, trademark compliance, forex due diligence and client documentation.", "As Manager, Compliance and Governance at CineNow, Hardik contributes greatly by bringing disciplined legal, secretarial and compliance execution into CineNow’s institutional framework. His experience across UAE contracts, corporate records, regulatory filings, litigation support, compliance registers, meeting documentation and stakeholder coordination helps CineNow maintain clean approval trails, structured records, audit-ready governance files and reliable internal controls across the fund, Investment Committee, councils, management team and external advisors."], "links": {"linkedin": "https://www.linkedin.com/in/hardik-puri-70a323167/"}}, "rahat-beri": {"name": "Rahat Beri", "photo": "img/people/rahat-beri.webp", "heads": ["Communications Counsel"], "bio": ["Rahat Beri is a senior communications leader with nearly three decades of experience across public relations, corporate communications, brand positioning, crisis communications, reputation management, media strategy, and integrated marketing communications. Her career has been built around shaping public perception for companies, personalities, institutions, and high-visibility brands operating in competitive and reputation-sensitive sectors.", "Rahat’s strongest corporate communications foundation comes from her long tenure at Percept Profile, the public relations arm of Percept Limited, one of India’s leading entertainment, media, and communications groups. She served as Chief Operating Officer of Percept Profile, where she helped build and scale one of India’s recognised PR businesses. Under her leadership, Percept Profile was featured among India’s top PR organisations, reinforcing her credibility as an operator who understands both strategy and execution at agency scale.", "Her association with Percept is particularly relevant to the Indian film and entertainment ecosystem. Percept Profile serviced clients across media, entertainment, hospitality, real estate, consumer brands, education, and lifestyle, with account wins including Contiloe Films and Bharatbala Productions, giving Rahat direct exposure to entertainment-sector communications, production-linked narratives, and stakeholder-driven PR. Percept Profile also operated nationally across major Indian cities including Mumbai, Delhi, Kolkata, Chennai, Bangalore, Hyderabad, and Pune, giving her experience in multi-market communications management.", "Her experience at Percept extended beyond standard press outreach. She worked across brand communication, crisis communication, financial communication, corporate communication, strategy planning, product launches, public relations, and media relations. Her responsibilities included formulating long-term tactical PR objectives, supporting marketing goals, and planning PR initiatives around corporate affairs, financial affairs, CSR programmes, and organisational reputation. This makes her profile especially strong for roles requiring message discipline, stakeholder sensitivity, narrative control, and reputational judgment.", "She is also the Founder and Managing Partner of Blue Ocean IMC, an integrated communications and growth consultancy focused on public relations, reputation management, brand positioning, content, digital marketing, and business communications. Blue Ocean’s own positioning emphasises reputation, growth, public relations, content, brand communication, and crisis communication. At CineNow, however, Rahat serves in her personal leadership capacity, bringing her experience and judgment directly into the company’s communications function.", "At CineNow, Rahat owns the corporate narrative of the platform as a structured, access-led, technology-enabled film investment company. Her value lies in translating a complex film-finance model into a credible institutional story for investors, media, regulators, creators, talent, councils, and distribution partners. She strengthens CineNow’s public positioning, manages sensitive announcements, builds trust signals around the fund, and ensures that every communication supports reputation, industry access, investor confidence, and long-term brand authority."], "links": {"linkedin": "https://www.linkedin.com/in/rahatberi/"}}, "fiona-robertson": {"name": "Fiona Robertson", "photo": "img/people/fiona-robertson.webp", "heads": ["Legal Affairs"], "bio": ["Fiona Robertson is a highly respected media, entertainment and technology lawyer with more than 25 years of experience across broadcast, film, digital media, music, advertising, content regulation, intellectual property and commercial legal affairs. She is best known in the region for her work as General Counsel at OSN, one of the Middle East’s leading entertainment platforms, and for her deep command of the legal and commercial issues that shape the UAE and wider regional media ecosystem.", "Fiona’s career combines strong in-house capability with leading private-practice experience. Before OSN, she joined Cedar White Bradley in Dubai to establish its Media and Technology practice, after serving at Al Tamimi & Company as Senior Counsel and Head of Media. Her work includes advising broadcasters, local and international producers, global content platforms, music platforms and entities operating across all levels of the media industry.", "Her regional experience is particularly valuable. Fiona moved to Dubai in 2008 and has advised on major film, television, digital media and music matters in the UAE. Earlier in her career in Australia, she worked as an in-house lawyer for Grundy, including on the long-running television series Neighbours, where her responsibilities included script clearance. This gives her a rare dual perspective: understanding legal risk not only from the contract table, but from within the production process itself.", "Fiona’s expertise extends across content clearance, production contracts, broadcaster and platform agreements, advertising regulation, IP protection, reputational risk, defamation, regional content sensitivities, rights exploitation and the practical realities of doing business in the Middle East media sector. She has also been recognised publicly as an internationally experienced media lawyer with insights into the legal and commercial aspects of media, creative, advertising, sports and entertainment industries.", "What distinguishes Fiona is her ability to combine technical legal depth with commercial pragmatism. Media and entertainment law requires more than document review; it requires judgment, speed, cultural sensitivity, deal awareness and the ability to protect the company while enabling creative and commercial execution. Her background across in-house legal, private practice, broadcasting, production and digital platforms positions her as a senior legal operator who understands both risk and opportunity.", "As In-House Head of Legal at CineNow, Fiona Robertson contributes greatly by giving the platform senior legal leadership across film IP, production contracts, rights acquisition, chain-of-title review, platform licensing, distribution arrangements, advertising, regulatory sensitivities and reputational risk. Her UAE media-law expertise and entertainment-sector relationships helps CineNow operate with stronger legal control, cleaner documentation, better rights protection and greater confidence as it scales an institutional film IP investment platform from the UAE into regional and global markets."], "links": {"linkedin": "https://www.linkedin.com/in/fionarobertson00/"}}, "aditya-patil": {"name": "Aditya Patil", "photo": "img/people/aditya-patil.webp", "heads": ["Technology, Data and Analytics"], "bio": ["Aditya Patil is a full-stack blockchain developer, project manager, and technology lead with over 10 years of cumulative software development experience and more than 4 years of intensive blockchain specialisation. His background spans enterprise-grade decentralised applications, backend micro services, smart contract architecture, tokenisation systems, Web3 integrations, secure data pipelines, and scalable cloud infrastructure. His technical profile covers Solidity, Web3.js, Ethers.js, Ethereum, Polygon, BSC, Hyperledger, ERC protocols, Node.js, NestJS, TypeScript, MongoDB, PostgreSQL, AWS, Docker, CI/CD pipelines, and smart contract security tooling.", "Although Aditya’s experience is strongly blockchain-led, his skillset is directly relevant to CineNow’s Technology, Data & Analytics function, which requires more than conventional IT support. CineNow needs a technology leader capable of building a transparent operating infrastructure across project tracking, rights management, production status, revenue monitoring, investor dashboards, IP asset registry, tokenisation support, and data-led decision-making across the film investment lifecycle.", "Aditya has already worked on technology use cases highly aligned with CineNow’s future platform requirements. He has built tokenomics simulation and stress-testing tools using scenario modelling and dashboard visualisation, giving him relevant experience in turning complex financial structures into transparent, trackable digital systems.", "His wider experience includes building exchange infrastructure, NFT marketplaces, smart contract ecosystems, document verification systems, account abstraction protocols, token vesting, staking, voting mechanisms, WhatsApp automation systems, admin panels, API architectures, and secure backend platforms. This combination makes him valuable not only as a blockchain developer, but as a systems architect who can connect Web2 operations with Web3-enabled transparency.", "At CineNow, Aditya’s role is to build the digital backbone of the platform: internal dashboards, investor-facing reporting interfaces, IP and rights registries, document workflows, approval systems, production and revenue tracking tools, and data infrastructure that connects the company’s departments into one operating intelligence layer. He also supports tokenisation and digital participation models where legally and commercially viable, while maintaining strong focus on cybersecurity, access control, system reliability, and data governance.", "Aditya’s value to CineNow lies in his ability to convert the company’s film-finance model into a scalable technology platform, one where scripts, talent, production milestones, rights, capital deployment, revenue events, valuations, and investor reporting can be tracked with transparency, security, and institutional discipline."], "links": {"linkedin": "https://www.linkedin.com/in/aditya-patil-910934150/"}}, "maasoom-shankar": {"name": "Maasoom Shankar", "photo": "img/people/maasoom-shankar.webp", "heads": ["Business Integration & Programme"], "bio": ["Maasoom Shankar is a media and entertainment professional with over fifteen years of experience across feature films, television, reality programming, digital media, branded content, live events, celebrity management and production leadership. Her career has developed across both creative and operational functions, giving her a strong understanding of how entertainment projects move from concept and packaging to production, promotion, delivery and commercial execution.", "Having worked across diverse formats and production environments, Maasoom brings a practical, on-ground understanding of the entertainment value chain. She has collaborated with leading production houses and media companies including Dharma Productions, Endemol India, Illuminati Films, Colosceum Media, B.A.G. Films, Miditech, Shri Ashtavinayak Films, Filminati Entertainment, NVBF / Bhagnani Films, Balaji Films and Aagaman Films. This exposure has given her the ability to work across large-format productions, independent projects, branded campaigns, talent-led formats and fast-moving television and digital environments.", "Her body of work includes association with films and shows such as Rockstar, Agent Vinod, Band Baaja Baaraat, Vicky Donor, Gippi, Gaandhigiri, Roadies X2, Fear Factor: Khatron Ke Khiladi, Emotional Atyachaar, Dare 2 Date, India Investigates, Box Cricket League and Indian Fan Squad, along with national advertising campaigns for brands including Tata Salt, Havells Cables, Nestlé Munch, Kurkure, Muthoot Finance and Max Mobiles. This combination of film, television, reality, branded content and advertising experience gives her a wide commercial and audience-facing perspective.", "Currently operating across the responsibilities of a Creative and Executive Producer, Maasoom leads projects from concept through delivery. Her responsibilities include creative development, production strategy, budgeting, investor presentations, stakeholder coordination and execution oversight. Alongside her production work, her experience as a South Indian actress and media-facing personality adds an important layer to her profile, strengthening her understanding of performance, public image, audience behaviour, brand perception and storytelling from both behind and in front of the camera.", "Maasoom is also the Co-Founder and Strategist of Hustling Crew, an initiative focused on building meaningful collaborations between talent, creators and businesses. Through this platform, she has continued to build her strength in partnerships, talent networks, creator-led opportunities and commercially responsible entertainment ventures.", "As Business Integration & Programme Manager at CineNow, Maasoom contributes greatly by acting as a practical bridge between creative teams, production houses, talent, marketing, partnerships and internal business functions. Her cross- format experience, industry relationships, production discipline, PR and marketing exposure, and understanding of both creative and commercial execution helps CineNow integrate projects smoothly across departments and convert strategic opportunities into coordinated, execution-ready outcomes."], "links": {"linkedin": "https://www.linkedin.com/in/masoom-shankar-6a40b01a1/", "imdb": "https://www.imdb.com/name/nm9135843/"}}, "kanchan-marathe": {"name": "Kanchan Marathe", "photo": "img/people/kanchan-marathe.webp", "heads": [], "bio": [], "links": {"linkedin": "https://www.linkedin.com/in/kanchan-marathe-02327916b/", "imdb": "https://www.imdb.com/name/nm6195926/"}}, "divya-v-rao": {"name": "Divya V Rao", "photo": "img/people/divya-v-rao.webp", "heads": [], "bio": [], "links": {"imdb": "https://www.imdb.com/name/nm2910561/"}}, "rohit-vedprakash": {"name": "Rohit Vedprakash", "photo": "img/people/rohit-vedprakash.webp", "heads": [], "bio": [], "links": {"imdb": "https://www.imdb.com/name/nm1798514/"}}, "zeni-shah": {"name": "Zeni Shah", "photo": "img/people/zeni-shah.webp", "heads": [], "bio": [], "links": {}}}};
+  const tTabs = document.getElementById('t-tabs'), tGrid = document.getElementById('t-grid');
+  const groupsOf = slug => TEAM.groups.filter(g => g.members.some(m => m[0] === slug));
+  const allList = []; const seen = new Set();
+  TEAM.groups.forEach(g => g.members.forEach(([slug, role]) => { if (!seen.has(slug)) { seen.add(slug); allList.push([slug, role, g]); } }));
+  const tabs = [{ key: 'all', name: 'All', mandate: 'Six groups. Distinct roles. No single hand on every lever.', list: allList }]
+    .concat(TEAM.groups.map(g => ({ key: g.key, name: g.name, mandate: g.mandate, list: g.members.map(([s, r]) => [s, r, g]) })));
+  let current = tabs[0], bioOrder = [];
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function renderGrid(tab, animate) {
+    current = tab; bioOrder = tab.list.filter(([s]) => TEAM.people[s].bio.length).map(([s]) => s);
+    tGrid.innerHTML = '';
+    tab.list.forEach(([slug, role, g]) => {
+      const p = TEAM.people[slug], li = document.createElement('li'); li.className = 'pc';
+      const hasBio = p.bio.length > 0;
+      li.innerHTML = '<button type="button"><div class="ph"><img loading="lazy" decoding="async" alt=""><span class="more">' + (hasBio ? 'Read more ' + arrow : '') + '</span></div><h3></h3><p class="role"></p></button>';
+      const img = li.querySelector('img'); img.src = p.photo; img.alt = 'Portrait of ' + p.name;
+      li.querySelector('h3').textContent = p.name;
+      li.querySelector('.role').textContent = role || '';
+      if (!role) li.querySelector('.role').remove();
+      const btn = li.querySelector('button');
+      if (hasBio) { btn.setAttribute('aria-label', p.name + (role ? ', ' + role : '') + '. Read bio'); btn.addEventListener('click', () => openBio(slug, role)); }
+      else { btn.style.cursor = 'default'; btn.querySelector('.more').remove(); btn.setAttribute('tabindex', '-1'); }
+      tGrid.appendChild(li);
+    });
+    if (animate && window.gsap && !reduce) gsap.fromTo(tGrid.children, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .7, stagger: .03, ease: 'expo.out', clearProps: 'transform,opacity,visibility' });
+  }
+  tabs.forEach((t, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.innerHTML = '<span></span><small>' + t.list.length + '</small>'; b.querySelector('span').textContent = t.name;
+    b.addEventListener('click', () => {
+      tTabs.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false'));
+      renderGrid(t, true);
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+    tTabs.appendChild(b);
+  });
+  renderGrid(tabs[0], false);
+
+  const ICONS = {
+    linkedin: ['LinkedIn', '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'],
+    wikipedia: ['Wikipedia', '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.09 13.12 9.4 18.94c-.06.14-.18.21-.34.21-.16 0-.27-.07-.34-.21L4.6 9.33c-.38-.85-.8-1.43-1.25-1.73-.45-.3-1.04-.46-1.77-.48v-.5h5.73v.5c-.65.03-1.1.13-1.36.3-.26.17-.3.47-.13.88l3.21 7.62 2.27-4.9-1.68-3.83c-.33-.73-.67-1.22-1.02-1.46-.35-.24-.85-.37-1.5-.4v-.5h5.04v.5c-.56.02-.95.1-1.17.24-.22.14-.24.4-.06.78l1.13 2.62 1.18-2.5c.2-.42.2-.72 0-.88-.2-.16-.62-.25-1.27-.27v-.5h3.95v.5c-.61.04-1.08.18-1.4.42-.32.24-.66.75-1 1.52l-1.54 3.3 2.08 4.69 3.22-7.67c.15-.38.13-.66-.06-.85-.2-.19-.6-.31-1.22-.36v-.5h4.4v.5c-.63.05-1.13.23-1.5.54-.37.31-.72.86-1.05 1.65l-4.26 9.98c-.06.14-.17.21-.34.21-.16 0-.28-.07-.34-.21l-2.47-5.83z"/></svg>'],
+    imdb: ['IMDb', '<svg class="imdb" viewBox="0 0 64 32" aria-hidden="true"><rect width="64" height="32" rx="5" fill="#F5C518"/><text x="32" y="23.5" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="19" letter-spacing="-0.5" fill="#000">IMDb</text></svg>'],
+    web: ['Website', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>']
+  };
+  const drawer = document.getElementById('drawer'), drPanel = drawer.querySelector('.dr-panel');
+  let openSlug = null, lastFocus = null;
+  function fillBio(slug, role) {
+    const p = TEAM.people[slug]; openSlug = slug;
+    const img = document.getElementById('dr-img'); img.src = p.photo; img.alt = 'Portrait of ' + p.name;
+    document.getElementById('dr-name').textContent = p.name;
+    const r = role || (current.list.find(x => x[0] === slug) || [])[1] || '';
+    document.getElementById('dr-role').textContent = r;
+    document.getElementById('dr-group').textContent = groupsOf(slug).map(x => x.name).join(' · ');
+    const hd = document.getElementById('dr-heads'); hd.innerHTML = '';
+    p.heads.filter(h => h !== r).forEach(h => { const li = document.createElement('li'); li.textContent = h; hd.appendChild(li); });
+    const lk = document.getElementById('dr-links'); lk.innerHTML = '';
+    Object.entries(p.links || {}).forEach(([kind, url]) => {
+      if (!url || !ICONS[kind]) return;
+      const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', p.name + ' on ' + ICONS[kind][0] + ' (opens in a new tab)');
+      a.innerHTML = ICONS[kind][1] + (kind === 'imdb' ? '' : '<span>' + ICONS[kind][0] + '</span>'); if (kind === 'imdb') a.classList.add('is-imdb'); lk.appendChild(a);
+    });
+    const body = document.getElementById('dr-body'); body.innerHTML = '';
+    p.bio.forEach((t, i) => { const el = document.createElement('p'); el.textContent = t; if (i === 0 && t.length < 520) el.className = 'lead'; body.appendChild(el); });
+    drPanel.scrollTop = 0;
+  }
+  function openBio(slug, role) {
+    lastFocus = document.activeElement; fillBio(slug, role);
+    drawer.hidden = false; document.documentElement.style.overflow = 'hidden';
+    if (window.__lenis) window.__lenis.stop();
+    if (window.gsap && !reduce) { gsap.fromTo(drPanel, { xPercent: 100 }, { xPercent: 0, duration: .7, ease: 'expo.out' }); gsap.fromTo('.dr-scrim', { autoAlpha: 0 }, { autoAlpha: 1, duration: .4 }); }
+    drawer.querySelector('.dr-close').focus();
+  }
+  function closeBio() {
+    const done = () => { drawer.hidden = true; document.documentElement.style.overflow = ''; if (window.__lenis) window.__lenis.start(); if (lastFocus) lastFocus.focus(); };
+    if (window.gsap && !reduce) { gsap.to(drPanel, { xPercent: 100, duration: .45, ease: 'power3.in' }); gsap.to('.dr-scrim', { autoAlpha: 0, duration: .4, onComplete: done }); } else done();
+  }
+  drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeBio));
+  document.addEventListener('keydown', e => {
+    if (drawer.hidden) return;
+    if (e.key === 'Escape') closeBio();
+    if (e.key === 'Tab') { const f = drPanel.querySelectorAll('button'); const a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
+  const step = d => { const i = bioOrder.indexOf(openSlug); if (i < 0) return; fillBio(bioOrder[(i + d + bioOrder.length) % bioOrder.length]); };
+  document.getElementById('dr-prev').addEventListener('click', () => step(-1));
+  document.getElementById('dr-next').addEventListener('click', () => step(1));
+
+  /* ---------- disclaimer expand ---------- */
+  const doc = document.getElementById('doc'), docBtn = document.getElementById('doc-toggle');
+  docBtn.addEventListener('click', () => {
+    const open = !doc.classList.contains('open');
+    doc.classList.toggle('open', open);
+    docBtn.setAttribute('aria-expanded', String(open));
+    docBtn.firstChild.textContent = open ? 'Show Less ' : 'Read the Full Disclaimer ';
+    if (!open) doc.scrollIntoView({ block: 'start' });
+    if (hasGsap) ScrollTrigger.refresh();
+  });
+
+  /* ---------- slate timecode ---------- */
+  const tcEl = document.getElementById('tc'), t0 = performance.now();
+  const pad = n => String(n).padStart(2, '0');
+  const tick = () => {
+    if (!tcEl) return;
+    const f = Math.floor((performance.now() - t0) / (1000 / 24)), s = Math.floor(f / 24);
+    tcEl.textContent = 'TC ' + pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60) + ':' + pad(f % 24);
+    if (!reduce) requestAnimationFrame(tick);
+  };
+  tick();
+
+  if (!hasGsap || reduce) return;
+
+  /* =====================  MOTION  ===================== */
+  root.classList.add('js-motion');
+  gsap.registerPlugin(ScrollTrigger);
+  const EASE = 'expo.out';
+
+  const lenis = window.Lenis ? new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true }) : null;
+  if (lenis) { window.__lenis = lenis; lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+
+  // Nav tucks away when reading down, returns when scrolling up.
+  const nav = document.getElementById('nav'); let lastY = 0;
+  addEventListener('scroll', () => { nav.classList.toggle('is-hidden', scrollY > lastY && scrollY > 500 && menu.hidden); lastY = scrollY; }, { passive: true });
+  gsap.to('.progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+  // Arrival: the spectrum shutter, then the headline rises and the frame opens like an aperture.
+  gsap.timeline({ defaults: { ease: 'expo.inOut' } })
+    .from('.shutter i', { scaleY: 0, duration: .55, stagger: .05 })
+    .set('.shutter-bg', { autoAlpha: 0 })
+    .to('.shutter i', { yPercent: -100, duration: .75, stagger: .05 }, '+=.04')
+    .set('.shutter', { display: 'none' })
+    .fromTo('#hero-frame', { clipPath: 'inset(0% 46% 0% 46%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5 }, '-=.55')
+    .fromTo('#hero-frame img', { scale: 1.25 }, { scale: 1, duration: 2, ease: EASE }, '<')
+    .from('#hero-h .ln > span', { yPercent: 110, duration: 1.3, stagger: .1, ease: EASE }, '<.1')
+    .from('#hero [data-in]', { y: 22, autoAlpha: 0, duration: 1, stagger: .07, ease: EASE }, '<.25');
+  gsap.to('#hero-frame img', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  // Generic reveals: headlines rise line by line, content follows.
+  document.querySelectorAll('main > section:not(#hero)').forEach(s => {
+    const tl = gsap.timeline({ paused: true });
+    const lines = s.querySelectorAll('[data-lines] .ln > span');
+    const ins = Array.from(s.querySelectorAll('[data-in]')).filter(el => !el.classList.contains('firm'));
+    if (lines.length) tl.from(lines, { yPercent: 110, filter: 'blur(8px)', duration: 1.2, stagger: .1, ease: EASE }, 0);
+    if (ins.length) tl.from(ins, { y: 30, autoAlpha: 0, duration: 1, stagger: .07, ease: EASE }, .15);
+    ScrollTrigger.create({ trigger: s, start: 'top 75%', once: true, onEnter: () => tl.play() });
+  });
+
+  // Route: the line draws from BVI to India, the nodes light in turn.
+  const routeTl = gsap.timeline({ paused: true })
+    .from('#route-fill', { scaleX: innerWidth > 760 ? 0 : 1, scaleY: innerWidth > 760 ? 1 : 0, duration: 1.6, ease: 'expo.inOut' })
+    .from('[data-node]', { y: 26, autoAlpha: 0, duration: 1, stagger: .28, ease: EASE }, .1);
+  ScrollTrigger.create({ trigger: '#route', start: 'top 80%', once: true, onEnter: () => routeTl.play() });
+
+  // At a glance: each figure counts up while its picture fills in.
+  const glTl = gsap.timeline({ paused: true, delay: .3 });
+  document.querySelectorAll('.g-num').forEach((el, i) => {
+    const target = +el.dataset.count, pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+    const o = { v: 0 };
+    const show = v => { el.textContent = pre + Math.round(v).toLocaleString('en-US') + suf; };
+    glTl.fromTo(o, { v: 0 }, { v: target, duration: 1.8, ease: 'power3.out', onUpdate: () => show(o.v), onComplete: () => show(target) }, i * .12);
+  });
+  const tickEls = Array.from(ticks.children);
+  glTl.from('#gauge .track b', { scaleX: 0, duration: 1.8, ease: 'power3.out' }, 0)
+      .add(() => {}, 0);
+  tickEls.forEach((t, i) => glTl.add(() => t.classList.add('on'), i * .1));
+  glTl.from('#frames i', { scaleY: 0, autoAlpha: 0, transformOrigin: 'bottom', duration: .5, stagger: { each: .035, from: 'start' }, ease: 'back.out(2)' }, .12)
+      .from(filled.map(i => cells[i]), { scale: 0, duration: .4, stagger: .014, ease: 'back.out(2)' }, .24)
+      .from('#marks i', { scale: 0, duration: .3, stagger: { each: .004, from: 'random' }, ease: 'power2.out' }, .36);
+  ScrollTrigger.create({ trigger: '#glance .glance-grid', start: 'top 80%', once: true, onEnter: () => glTl.play() });
+
+  // Governance: the four roles start as one block and pull apart as you scroll. Separation, made visible.
+  gsap.fromTo('#split', { '--gap': '0px', '--r': '0px' }, { '--gap': '14px', '--r': '16px', ease: 'none',
+    scrollTrigger: { trigger: '#split', start: 'top 85%', end: 'top 40%', scrub: 1 } });
+  gsap.from('#split .party', { y: 40, autoAlpha: 0, duration: 1, stagger: .1, ease: EASE, scrollTrigger: { trigger: '#split', start: 'top 85%', once: true } });
+
+
+  // Stills: two rows drift in opposite directions; scrolling nudges them along.
+  document.querySelectorAll('.reel').forEach(r => {
+    const tr = r.querySelector('.reel-track'), dir = +r.dataset.dir;
+    const loop = gsap.fromTo(tr, { xPercent: dir < 0 ? 0 : -50 }, { xPercent: dir < 0 ? -50 : 0, duration: 70, ease: 'none', repeat: -1 });
+    ScrollTrigger.create({ trigger: r, start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive ? loop.play() : loop.pause(),
+      onUpdate: self => { loop.timeScale(1 + Math.min(6, Math.abs(self.getVelocity()) / 300)); gsap.to(loop, { timeScale: 1, duration: 1.2, overwrite: true }); } });
+  });
+  // Image band: the frame drifts; the line lights word by word as it scrolls through.
+  gsap.fromTo('#band-media img', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.band-img', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.band-line .w', { opacity: .12 }, { opacity: (i, el) => el.classList.contains('dim') ? .6 : 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: '.band-img', start: 'top 70%', end: 'center 45%', scrub: 1 } });
+
+  gsap.fromTo('#access-media img', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#access', start: 'top bottom', end: 'bottom top', scrub: true } });
+  // Partners: cards cascade in.
+  const dirTl = gsap.timeline({ paused: true }).fromTo('#directory .firm', { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9, stagger: .045, ease: EASE, clearProps: 'transform,opacity,visibility' });
+  ScrollTrigger.create({ trigger: '#directory', start: 'top 85%', once: true, onEnter: () => dirTl.play() });
+
+  // Fonts can shift layout; measure again once they are in.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

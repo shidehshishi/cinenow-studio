@@ -1,0 +1,1492 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CineNow Homepage v3</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAFEElEQVR42u2WWWyVVRDHZ+acb7lLW9pCLVuBpkrBioARWcISEjQVYhTlwRCgCRFTwUSQaCAxKDEQExNIFDSGBPBBiQQwJIBJbTBI0AIWAhUoWwtdKBTobW+/e++3nDM+VC6XvTwYX5jHk+/M75zzzf8/g5HXV8KtQIZAYtElt981P5CIDAgQIOb47qhYu0aEjMiKdEnpM/csMrAB9hWIXgA2ADj9GcF/HE8Ajwz56CMIEkwkiAEAEIBZc+YHiIhEAIKJ+LEAQpBWursrCQknEXdYEGsmQWbYup2d0Eu4ynVZS4rGrfC/h3g0QAjqiiVCYXPK9JGTJpaMGpobLcjxk97JvUd+/+YXREJCP+UVlj1T/vnizqarXiKVX1LYULvvt6/XWtEs1vqBAERAxFiHM2PWmEXLykc8V9Sz3nD47L41P8WabuCthzLDduvxM5dr6qYtnQcA1xvrjyzfZIRCzA/RAQIAON2p5avfXLf53XR25QeRvGhr3eW2M00kb+9i5vqqP7RSWqkLfx6MtbYKw4KHAIgo3pn8cNXsisoZvq8AoO5YY/3pFmHIgpIBS/asMiO2ChTeUjUiCtsgIUgIaVlkYGb2uwEkKNGZmD5z9Nz3Z/i+EoK6u5LL39n0ycLvPCelAjV4dPHbGyqTcQcpY2O6qJjvyn43QLG2DblsSTkDMDAR/rBp/6VLN9pON297b6OQInD98fOnv/LRW10dMTJEOm2vhCYIE0lvwsihY4oHsmbTkG7K37vjsG2bkfzooe+rqtfvlpYReMEbayuenzneud4lpHgkgTL1wn4wYUQRAARKAUDD+baWyzdNSypfRbKzd368uX7/CWlKZq7YuvSpEYNT3UkS4nGsAnH4oIIe9wWA9rZOz/UJkZmRkARtWbCuo+U6IkTzs+Zu+VRalgoCvNPGHwhgBkAM22a6WElgejMrbYasWPONrQvWs2blBf3Lnp791QrPSfb2BogAWl++ejP9pIUD8+yQoTX3AHWgInnRU9W1u1ZsFaYMXK/stWlTl87rbu/o3Q0AgKj2QisiCCJmGDKsoKi4wHV9IrwlN5WVm1P15c4j2w5Iy1R+UL56cWn5JD+ZgkwDui9Aa22FzOrj56/HHSIMlJKGmDVnXMJxSWScQ7MdDf9QuaG1rlEYUpjGyysXoUAAwPuV0x3/wDZkW3vs220HEJGZmXnO/CnPji6KdyaEIdPeIAzhO+6PCz9z493ATIRCyl5VkVLazglv3lh17OBZ05C+F4Qi1poNFTl9wk6nIwyJRICglbayIm1153Z98AUSaaV7OgSzvkPhPfIySydnThUsKeumX7O9tnTskCHFBQDQr1/2S5NLGw6dutbYzB4jIglirbNyRfPRE0Y4NGzi6MD1kLC94dyxHdvt7HDaq+8BAGiEfIfFDXfPz0cDPygpHRAKW3n9c6dWvpo7oK+f8nSgvIQLAKaRsqNm/a81g14YWTB8KBIVDi/raDp35dRxad421HsAhNmxINsFFniw+u+q3bWNF68lOx0zmSoaWzLkxRKU1FhzFpEswxWSmeHigb9Y66ajp1tO1gZBR8vJWmEYaQA+ZPCSRJ7rxxN+n8Adl+xgQVppADBsMz14AZAOVCreDWyw1SxyL9nRPGbdq56slDYM2SfPzPGlwY4CkCYCQmbTZ2aSItK3D7ABdpLDMVb8GFMFMyulldLMDIjMfK+cmJkDDUwQKNDq7h7zZLL73wH/ALosiodUl68+AAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: eight full-screen "frames" that alternate black and paper; one section per scroll on desktop, natural scroll below.
+   Brand rules: black and white first, one spectrum signal; Newsreader regular for ideas, Plus Jakarta Sans for data and labels. */
+:root{
+  color-scheme: dark;
+  --black:#0C0C0C; --charcoal:#2A2A2A; --paper:#F8F7F4;
+  --paper-2:#EFEDE8; --line-p:#D9D6CF; --line-d:#2E2E2E;
+  --mute-d:#A9A69F; --mute-d2:#7F7C76; --mute-p:#57544E; --mute-p2:#76736C;
+  --s1:#16A0F4; --s2:#7041E0; --s3:#E01CAB; --s4:#FF3787; --s5:#FF5B1F;
+  --spectrum: linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5));
+  --serif:'Newsreader','Iowan Old Style',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  /* type scale (web translation of the brand scale) */
+  --t-display: clamp(42px, min(6.2vw, 10.5vh), 108px);
+  --t-head: clamp(32px, min(4vw, 7vh), 64px);
+  --t-state: clamp(18px, min(1.55vw, 2.8vh), 24px);
+  --t-stat: clamp(40px, min(4.8vw, 8.6vh), 84px);
+  --t-body: 16px; --t-small: 14px; --t-label: 12px;
+  --gutter: clamp(20px, 4.4vw, 72px);
+  --nav-h: 84px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+html{background:var(--black)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--black);color:var(--paper);font-family:var(--sans);font-size:var(--t-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--s1);outline-offset:4px}
+h1,h2,h3{font-weight:400;text-wrap:balance}
+p{text-wrap:pretty}
+
+.wrap{width:100%;max-width:1520px;margin:0 auto;padding-inline:var(--gutter)}
+.label{margin:0;font-size:var(--t-label);font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.4}
+.serif{font-family:var(--serif)}
+.head{margin:0;font-family:var(--serif);font-size:var(--t-head);line-height:1.02;letter-spacing:-.018em}
+.state{margin:0;font-family:var(--serif);font-size:var(--t-state);line-height:1.35}
+.lede{margin:0;font-size:var(--t-body);max-width:46ch}
+.ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.ln > span{display:inline-block}
+.spec{display:flex}
+.spec i{flex:1}
+.spec i:nth-child(1){background:var(--s1)}.spec i:nth-child(2){background:var(--s2)}.spec i:nth-child(3){background:var(--s3)}.spec i:nth-child(4){background:var(--s4)}.spec i:nth-child(5){background:var(--s5)}
+.arrow{display:inline-block;width:22px;height:22px}
+
+/* buttons: one spectrum signal, as a thin bar on hover */
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;font-size:15px;font-weight:500;border:1px solid currentColor;transition:background-color .4s var(--ease),color .4s var(--ease)}
+.btn svg{width:16px;height:16px;transition:transform .45s var(--ease)}
+.btn::after{content:"";position:absolute;left:-1px;right:-1px;bottom:-1px;height:3px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.btn:hover::after,.btn:focus-visible::after{transform:scaleX(1)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-solid-l{background:var(--paper);color:var(--black);border-color:var(--paper)}
+.btn-solid-l:hover{background:#fff}
+.btn-solid-d{background:var(--black);color:var(--paper);border-color:var(--black)}
+.btn-solid-d:hover{background:var(--charcoal)}
+.btn:active{transform:scale(.98)}
+.link{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:500;position:relative}
+.link::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:1px;background:currentColor;transform-origin:right;transition:transform .5s var(--ease)}
+.link:hover::after{transform:scaleX(0);transform-origin:left}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);color:var(--paper);transition:color .5s var(--ease),transform .6s var(--ease),background-color .5s}
+.nav.on-paper{color:var(--black)}
+.nav.is-hidden{transform:translateY(-110%)}
+.nav.is-scrolled{background:rgba(12,12,12,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav.is-scrolled.on-paper{background:rgba(248,247,244,.86)}
+.nav-in{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:inline-flex;align-items:center}
+.logo svg{width:136px;height:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:32px;font-size:14px;font-weight:500}
+.nav-links a:not(.btn){opacity:.62;transition:opacity .3s}
+.nav-links a:not(.btn):hover,.nav-links a[aria-current]{opacity:1}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14px}
+.menu-btn{display:none;min-height:44px;min-width:44px;padding:0 16px;background:transparent;color:inherit;border:1px solid currentColor;cursor:pointer;font-size:14px;font-weight:500}
+@media (max-width:960px){.nav-links{display:none}.menu-btn{display:inline-flex;align-items:center}}
+.menu{position:fixed;inset:0;z-index:70;background:var(--black);color:var(--paper);padding:calc(var(--nav-h) + 24px) var(--gutter) 40px;display:flex;flex-direction:column;justify-content:space-between}
+.menu[hidden]{display:none}
+.menu nav{display:flex;flex-direction:column;gap:6px}
+.menu nav a{font-family:var(--serif);font-size:44px;line-height:1.2}
+.menu .close-btn{position:absolute;top:calc(20px + env(safe-area-inset-top,0px));right:var(--gutter)}
+
+/* progress + rail */
+.progress{position:fixed;left:0;top:0;right:0;height:2px;z-index:60;background:var(--spectrum);transform-origin:left;transform:scaleX(0)}
+.rail{position:fixed;right:calc(var(--gutter) * .45);top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:6px;color:var(--paper);transition:color .5s}
+.rail.on-paper{color:var(--black)}
+html.wide .rail{display:flex}
+.rail button{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:24px;padding:0;background:none;border:0;color:inherit;cursor:pointer}
+.rail .tk{width:14px;height:1px;background:currentColor;opacity:.35;transition:width .5s var(--ease),opacity .4s}
+.rail .nm{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateX(6px);transition:opacity .4s,transform .5s var(--ease)}
+.rail button[aria-current="true"] .tk{width:34px;opacity:1}
+.rail button:hover .nm,.rail button:focus-visible .nm{opacity:1;transform:none}
+html.wide .wrap{padding-right:calc(var(--gutter) + 36px)}
+html.wide .hero-copy{padding-right:calc(var(--gutter) + 36px)}
+
+/* intro shutter (the one full-spectrum ground) */
+.shutter,.shutter-bg{position:fixed;inset:0;z-index:100;pointer-events:none;display:none}
+.shutter-bg{z-index:99;background:var(--black)}
+html.js-motion .shutter,html.js-motion .shutter-bg{display:flex}
+.shutter i{flex:1 1 0;margin-right:-1px;transform-origin:bottom}.shutter i:last-child{margin-right:0}
+.shutter i:nth-child(1){background:var(--s1)}.shutter i:nth-child(2){background:var(--s2)}.shutter i:nth-child(3){background:var(--s3)}.shutter i:nth-child(4){background:var(--s4)}.shutter i:nth-child(5){background:var(--s5)}
+
+/* frames */
+.fp{position:relative;overflow:hidden}
+.fp-in{width:100%}
+.dark{background:var(--black);color:var(--paper)}
+.paper{background:var(--paper);color:var(--black)}
+.frame-pad{padding-block:clamp(64px,10vw,112px) clamp(64px,10vw,112px)}
+html.wide #exploremodel{min-height:100vh;min-height:100svh;display:flex;align-items:center}
+html.wide .frame-pad{padding-block:clamp(72px,10vh,112px) clamp(72px,10vh,112px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px 72px;align-items:end}
+.sec-head .label{grid-column:1/-1}
+@media (max-width:900px){.sec-head{grid-template-columns:minmax(0,1fr)}}
+
+/* 0 HERO: the archive and the aperture. Stories sit in the dark; one beam of light picks them out. */
+.hero{position:relative;min-height:100svh;display:flex}
+.hstage{position:absolute;inset:0;z-index:0;overflow:hidden;--ax:75%;--aw:300px;background:var(--black)}
+.archive{position:absolute;inset:-6% -1%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:100%;gap:10px}
+.acol{position:relative;overflow:hidden;height:100%}
+.acol > .track{position:absolute;left:0;right:0;top:0;display:block;will-change:transform}
+.track img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;margin-bottom:10px;background:#161616}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,12,.95),rgba(12,12,12,.9) 48%,rgba(12,12,12,.84));
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(var(--ax) - var(--aw) / 2),transparent calc(var(--ax) - var(--aw) / 2),transparent calc(var(--ax) + var(--aw) / 2),#000 calc(var(--ax) + var(--aw) / 2));
+  mask-image:linear-gradient(90deg,#000 calc(var(--ax) - var(--aw) / 2),transparent calc(var(--ax) - var(--aw) / 2),transparent calc(var(--ax) + var(--aw) / 2),#000 calc(var(--ax) + var(--aw) / 2))}
+.hstage::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--nav-h) + 40px);background:linear-gradient(180deg,rgba(12,12,12,.92),rgba(12,12,12,0));pointer-events:none}
+.aperture{position:absolute;top:0;bottom:0;left:calc(var(--ax) - var(--aw) / 2);width:var(--aw);border-inline:1px solid rgba(248,247,244,.3);pointer-events:none}
+.aperture .spec{position:absolute;left:-1px;right:-1px;bottom:0;height:3px}
+.aperture .tc{position:absolute;left:10px;right:10px;bottom:16px;display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);font-variant-numeric:tabular-nums;white-space:nowrap}
+.aperture .tc span{background:rgba(12,12,12,.74);padding:4px 7px}
+.hero-copy{position:relative;z-index:1;width:100%;max-width:1520px;margin:0 auto;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(24px,4vh,48px);padding:calc(var(--nav-h) + clamp(12px,4vh,56px)) var(--gutter) clamp(24px,4.5vh,56px)}
+.hero-copy > *{max-width:52%}
+.hero-copy .kicker{display:flex;align-items:center;gap:14px;color:var(--mute-d)}
+.hero-copy .kicker .spec{width:46px;height:8px}
+.display{margin:clamp(20px,4vh,40px) 0 0;font-family:var(--serif);font-size:var(--t-display);line-height:.98;letter-spacing:-.025em}
+.hero-sub{margin:clamp(20px,3.6vh,36px) 0 0;max-width:30ch;font-size:clamp(18px,min(1.5vw,2.7vh),22px);line-height:1.45;font-weight:400;color:var(--paper)}
+.hero-p{margin:14px 0 0;max-width:46ch;color:var(--mute-d);font-size:var(--t-small)}
+.ctas{margin-top:clamp(24px,4vh,40px);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.tracked{margin:0;padding:0;list-style:none;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mute-d);line-height:1.9}
+.scroll-cue{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d)}
+.scroll-cue svg{animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%,100%{transform:translate(0,0)}50%{transform:translate(4px,4px)}}
+@media (max-width:1023px){
+  .hero{display:flex;flex-direction:column;min-height:0}
+  .hstage{position:relative;inset:auto;order:2;height:min(108vw,600px)}
+  .archive{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .acol:nth-child(n+5){display:none}
+  .track img{margin-bottom:8px}
+  .shade{background:rgba(12,12,12,.86)}
+  .hero-copy{gap:40px;min-height:0}
+  .hero-copy > *{max-width:none}
+}
+
+/* 1 FOUNDATION */
+.watermark{position:absolute;right:-6vw;top:50%;transform:translateY(-50%);width:min(70vw,980px);color:var(--paper-2);pointer-events:none;z-index:0}
+.watermark svg{width:100%;height:auto;display:block}
+.foundation .wrap{position:relative;z-index:1}
+.pillars{margin-top:clamp(24px,4.5vh,72px);border-top:1px solid var(--line-p);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(20px,2.4vw,40px)}
+.pillar{padding-top:clamp(18px,2.6vh,32px);display:flex;flex-direction:column;gap:12px}
+.pillar .ph{aspect-ratio:16/9;max-height:min(20vh,250px);width:100%;overflow:hidden;background:var(--paper-2)}
+.pillar .ph img{width:100%;height:116%;margin-top:-8%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.pillar:hover .ph img{transform:scale(1.05)}
+.pillar .row{display:flex;justify-content:space-between;gap:12px;color:var(--mute-p2)}
+.pillar h3{margin:0;font-family:var(--serif);font-size:clamp(22px,min(2vw,3.6vh),32px);line-height:1.1}
+.pillar p{margin:0;font-size:var(--t-small);color:var(--mute-p);max-width:36ch}
+@media (max-width:900px){.pillars{grid-template-columns:minmax(0,1fr);gap:32px}.pillar .ph{max-height:none}}
+
+/* 2 OPPORTUNITY */
+.opp .sec-head .head .muted{color:var(--mute-d2)}
+.stats{margin:clamp(40px,8vh,96px) 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px clamp(20px,2.4vw,40px)}
+.stat{position:relative;padding-top:clamp(18px,3vh,28px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.stat .bar{position:absolute;left:0;right:0;top:0;height:3px;transform-origin:left}
+.stat dd{margin:0;order:1;font-family:var(--serif);font-size:var(--t-stat);line-height:.95;letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.stat dt{order:2;font-size:var(--t-small);line-height:1.5;color:#C8C5BE;max-width:28ch}
+.stat dt span{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d2)}
+@media (max-width:1100px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 3 HOW */
+.stages{list-style:none;margin:clamp(28px,5.5vh,80px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 clamp(12px,1.4vw,24px);align-items:start}
+.stage{display:flex;flex-direction:column;gap:14px;min-width:0}
+.stage .col{height:clamp(90px,18vh,240px);display:flex;align-items:flex-end}
+.stage .fill{width:100%;height:var(--h);transform-origin:bottom}
+.stage .meta{border-top:1px solid var(--black);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+.stage .n{color:var(--mute-p2)}
+.stage h3{margin:0;font-family:var(--serif);font-size:clamp(22px,min(2vw,3.6vh),30px);line-height:1}
+.stage p{margin:0;font-size:var(--t-small);color:var(--mute-p)}
+.how-foot{margin-top:clamp(20px,4vh,56px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.how-foot p{margin:0;font-size:13px;color:var(--mute-p2)}
+@media (max-width:900px){
+  .stages{grid-template-columns:minmax(0,1fr);gap:22px}
+  .stage{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+  .stage .col{height:8px;display:block;background:var(--paper-2)}
+  .stage .fill{height:8px;width:var(--h);transform-origin:left}
+  .stage .meta{border-top:0;padding-top:0}
+}
+
+/* 4 TOKENISATION */
+.tok{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:48px clamp(48px,6vw,112px);align-items:center}
+.tok .state{margin-top:clamp(20px,4vh,36px);max-width:26ch}
+.tok .lede{margin-top:16px;color:#C8C5BE}
+.chip{margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid var(--charcoal);font-size:13px;color:#C8C5BE}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--s5);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.stack{margin:0}
+.layers{display:flex;flex-direction:column;gap:8px}
+.layer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 22px;font-family:var(--serif)}
+.layer small{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.l-tok{position:relative;height:clamp(52px,8vh,68px);border:1px dashed #8C8983;font-size:clamp(20px,1.8vw,26px)}
+.l-tok small{color:var(--mute-d)}
+.l-tok .spec{position:absolute;left:-1px;right:-1px;bottom:-1px;height:3px}
+.l-mon{height:clamp(64px,10vh,92px);background:var(--charcoal);font-size:clamp(22px,2vw,28px)}
+.l-gov{height:clamp(76px,12vh,112px);background:#55524D;font-size:clamp(24px,2.2vw,32px)}
+.l-rig{height:clamp(96px,16vh,150px);background:var(--paper);color:var(--black);font-size:clamp(28px,2.6vw,38px)}
+.stack figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:12px;color:var(--mute-d2)}
+@media (max-width:960px){.tok{grid-template-columns:minmax(0,1fr)}}
+
+/* 5 REVENUE */
+.rev{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px clamp(48px,6vw,112px);align-items:center}
+.rev .head{margin-top:24px}
+.rev .lede{margin-top:20px;color:var(--mute-p)}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-p);border-left:1px solid var(--line-p)}
+.tile{position:relative;min-height:clamp(110px,19vh,190px);padding:clamp(16px,1.6vw,24px);border-right:1px solid var(--line-p);border-bottom:1px solid var(--line-p);display:flex;flex-direction:column;justify-content:space-between;gap:16px;isolation:isolate;overflow:hidden;transition:color .45s var(--ease)}
+.tile::before{content:"";position:absolute;inset:0;background:var(--black);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);z-index:-1}
+.tile .spec{position:absolute;left:0;right:0;bottom:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease) .05s}
+.tile .top{display:flex;justify-content:space-between;align-items:flex-start;color:var(--mute-p2);transition:color .45s}
+.tile svg{width:28px;height:28px;color:var(--black);transition:color .45s,transform .6s var(--ease)}
+.tile span.nm{font-family:var(--serif);font-size:clamp(19px,min(1.7vw,3vh),26px);line-height:1.1}
+@media (hover:hover){
+  .tile:hover{color:var(--paper)}
+  .tile:hover::before{transform:scaleY(1)}
+  .tile:hover .spec{transform:scaleX(1)}
+  .tile:hover .top,.tile:hover svg{color:var(--paper)}
+  .tile:hover svg{transform:translateY(-3px)}
+}
+@media (max-width:1023px){.rev{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:112px}}
+
+/* 6 PRESS + PATHS */
+.paths-sec .fp-in{display:flex;flex-direction:column;gap:clamp(24px,4vh,44px)}
+.press{display:grid;grid-template-columns:minmax(180px,auto) minmax(0,1fr) auto;gap:14px 40px;align-items:center;padding-bottom:clamp(16px,2.6vh,28px);border-bottom:1px solid var(--line-d)}
+.press-id p{margin:6px 0 0;font-family:var(--serif);font-size:18px;color:#C8C5BE}
+.press-logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.press-logos a{display:flex;align-items:center;justify-content:center;height:clamp(48px,7vh,64px);border:1px solid var(--line-d);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--mute-d2);transition:border-color .3s,color .3s}
+.press-logos a:hover{border-color:var(--paper);color:var(--paper)}
+.backed{grid-column:1/-1;display:flex;align-items:center;gap:28px;min-width:0}
+.backed > .label{flex:none;color:var(--mute-d2)}
+.marquee{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.marquee ul{list-style:none;margin:0;padding:0 24px 0 0;display:flex;gap:48px;font-size:17px;font-weight:500;color:#C8C5BE;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.path{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);min-height:0}
+.path-a{background:var(--charcoal)}
+.path-b{background:var(--paper);color:var(--black)}
+.path .ph{overflow:hidden;position:relative;min-height:clamp(180px,30vh,360px)}
+.path .ph img{width:100%;height:116%;margin-top:-8%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.path:hover .ph img{transform:scale(1.05)}
+.path .tx{padding:clamp(22px,2.4vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.path h3{margin:12px 0 0;font-family:var(--serif);font-size:clamp(26px,min(2.4vw,4.4vh),40px);line-height:1.05}
+.path p{margin:14px 0 0;font-size:var(--t-small)}
+.path-a .label{color:var(--mute-d)}.path-a p{color:#C8C5BE}
+.path-b .label{color:var(--mute-p2)}.path-b p{color:var(--mute-p)}
+@media (max-width:1199px){.path{grid-template-columns:minmax(0,1fr)}.path .ph{min-height:clamp(180px,26vh,300px)}}
+@media (max-width:1023px){.paths{grid-template-columns:minmax(0,1fr)}.press{grid-template-columns:minmax(0,1fr)}.press-logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px) and (min-width:601px){.path{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}}
+@media (max-width:600px){.path .ph{min-height:220px}.press-logos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* PROLOGUE: a slit of light opens into a cinemascope frame; subtitles sit in the letterbox bars */
+.scene{position:relative;background:var(--black);color:var(--paper)}
+.scene-pin{position:relative;width:100%;height:100vh;height:100svh;overflow:hidden}
+.scene-media{position:absolute;inset:0;overflow:hidden;clip-path:inset(20% 0% 20% 0%)}
+.scene-media img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.scene-line{position:absolute;margin:0;font-family:var(--serif);font-size:clamp(28px,min(4vw,6.6vh),60px);line-height:1.05;letter-spacing:-.015em;max-width:min(80vw,1100px)}
+.scene-line .w{display:inline-block;opacity:.14;transition:none}
+.l1{left:var(--gutter);top:calc(20% - 18px);transform:translateY(-100%)}
+.l2{right:calc(var(--gutter) + 36px);bottom:calc(20% - 18px);transform:translateY(100%);text-align:right}
+.scene-tag{position:absolute;right:calc(var(--gutter) + 36px);top:calc(20% - 18px);transform:translateY(-100%);color:var(--mute-d);display:flex;gap:16px}
+.scene-tc{position:absolute;left:var(--gutter);bottom:calc(20% - 18px);transform:translateY(100%);color:var(--mute-d);font-variant-numeric:tabular-nums}
+@media (max-width:1023px), (max-height:639px){
+  .scene-pin{height:auto;display:flex;flex-direction:column;gap:24px;padding:clamp(72px,14vw,120px) var(--gutter)}
+  .scene-media{position:relative;inset:auto;aspect-ratio:2.39/1;clip-path:none}
+  .scene-line,.scene-tag,.scene-tc{position:static;transform:none;max-width:none}
+  .l2{text-align:left}
+  .scene-line .w{opacity:1}
+}
+/* FINALE: the archive returns as an end-credits strip */
+.strip{overflow:hidden;height:clamp(130px,24vh,300px)}
+.strip-track{display:flex;gap:10px;height:100%;width:max-content;will-change:transform}
+.strip-track img{height:100%;width:auto;aspect-ratio:4/5;object-fit:cover;background:#161616}
+
+/* 7 CLOSE + FOOTER */
+.close .fp-in{display:flex;flex-direction:column;gap:clamp(20px,3.4vh,36px)}
+.close-media{position:relative;height:clamp(140px,26vh,380px);overflow:hidden;background:#111}
+.close-media img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;object-position:50% 52%}
+.signoff{margin:0;font-family:var(--serif);font-size:clamp(40px,min(6vw,9.6vh),112px);line-height:1;letter-spacing:-.03em}
+.signoff .w{display:inline-block}
+.signoff .become{background:linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s5),var(--paper) 62%,var(--paper));background-size:260% 100%;background-position:100% 50%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:start;padding-top:clamp(18px,3vh,28px);border-top:1px solid var(--line-d)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:var(--t-small)}
+.foot-links a{color:#C8C5BE;transition:color .3s}
+.foot-links a:hover{color:var(--paper)}
+.foot .disc{grid-column:1/-1;margin:0;max-width:110ch;font-size:12px;line-height:1.6;color:var(--mute-d2)}
+.foot .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--mute-d2)}
+.foot .legal .spec{width:56px;height:5px;align-self:center}
+@media (max-width:760px){.foot{grid-template-columns:minmax(0,1fr)}}
+
+/* compact tier for shorter laptop screens in one-section mode */
+@media (max-height: 820px){
+  html.wide{--nav-h:72px}
+  html.wide .pillar .ph{max-height:16vh}
+  html.wide .pillar{gap:9px}
+  html.wide .stage .col{height:13vh}
+  html.wide .stage p{font-size:13px}
+  html.wide .how-foot{margin-top:2.6vh}
+  html.wide .path .ph{min-height:25vh}
+  html.wide .path .tx{padding:20px 24px}
+  html.wide .press-logos a{height:42px}
+  html.wide .close-media{height:21vh}
+  html.wide .foot .disc{font-size:11px}
+}
+@media (prefers-reduced-motion: reduce){
+  .mq-track,.chip i,.scroll-cue svg{animation:none}
+  *{transition-duration:.01ms!important}
+}
+
+/* ================= ITERATION 2 · Apple-inspired layer =================
+   Floating glass chrome, centred compositions, tighter display tracking, pill controls with
+   instant press feedback, rounded UI tiles. Photography keeps square crops (brand rule). */
+:root{
+  --t-display: clamp(44px, min(7vw, 12vh), 124px);
+  --t-head: clamp(36px, min(5.2vw, 8.4vh), 84px);
+  --t-body: 17px;
+  --r-tile: 22px;
+}
+.display{letter-spacing:-.035em;line-height:.95}
+.head{letter-spacing:-.03em;line-height:1}
+.label{letter-spacing:.12em}
+
+/* glass nav pill: one dark material, always legible on paper and on black */
+.nav{top:calc(12px + env(safe-area-inset-top,0px));padding-top:0;pointer-events:none;color:var(--paper)}
+.nav.on-paper{color:var(--paper)}
+.nav.is-scrolled,.nav.is-scrolled.on-paper{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav.is-hidden{transform:translateY(-140%)}
+html body .nav .nav-in{pointer-events:auto;max-width:min(1200px,calc(100% - 2 * var(--gutter)));height:60px;margin:0 auto;padding:0 8px 0 22px;border-radius:999px;
+  background:rgba(20,20,20,.58);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid rgba(255,255,255,.09);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 14px 40px rgba(0,0,0,.22)}
+.nav .logo svg{width:118px}
+.nav-links{gap:28px;font-size:14px}
+.nav-links a:not(.btn){opacity:.72}
+.nav .btn{background:var(--paper);color:var(--black);border:0;min-height:44px;padding:0 20px}
+.nav .btn:hover{background:#fff}
+.menu-btn{border-radius:999px;border-color:rgba(255,255,255,.3)}
+.rail,html.wide .rail{display:none!important}
+html.wide .wrap{padding-right:var(--gutter)}
+
+/* pill controls, feedback on press */
+.btn{border-radius:999px;border:1px solid currentColor;transition:background-color .25s ease,color .25s ease,transform .12s ease-out}
+.btn-solid-l,.btn-solid-d{border-color:transparent}
+.btn::after{display:none}
+.btn:active{transform:scale(.97)}
+.chip{border-radius:999px}
+
+/* centred section intros */
+.sec-head{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;max-width:1000px;margin-inline:auto;gap:18px}
+.sec-head .state,.sec-head .lede{margin-inline:auto;max-width:44ch}
+@media (max-width:900px){.sec-head{grid-template-columns:minmax(0,1fr)}}
+
+/* HERO: centred statement over a screen that opens to full bleed */
+.hero{flex-direction:column}
+.hero-copy{min-height:0;justify-content:flex-start;align-items:center;text-align:center}
+.hero-copy > *{max-width:none}
+.hero-copy .kicker{justify-content:center}
+.hero-copy .ctas{justify-content:center}
+.hero-sub{margin-inline:auto;max-width:34ch}
+.hero-p{margin-inline:auto}
+html.wide .hero{height:100vh;height:100svh;min-height:0}
+html.wide .hero-copy{position:relative;z-index:2;padding:calc(var(--nav-h) + clamp(24px,6vh,80px)) var(--gutter) 0}
+/* one-line headline as a flex row: no inline line-box strut, so no phantom gap below it in any browser */
+html.wide #hero-h{display:flex;flex-wrap:wrap;justify-content:center;column-gap:.24em;font-size:clamp(48px,min(6.1vw,10.5vh),112px)}
+html.wide #hero-h .ln{display:block}
+/* one rhythm, kicker to buttons */
+html.wide .hero-copy .display{margin-top:clamp(18px,2.6vh,28px)}
+html.wide .hero-sub{margin-top:clamp(22px,3.2vh,34px)}
+html.wide .hero-p{margin-top:10px}
+html.wide .hero-copy .ctas{margin-top:clamp(26px,3.8vh,40px)}
+html.wide .hero-sub{max-width:44ch}
+html.wide .hstage{clip-path:inset(var(--clipTop,58%) var(--side,var(--gutter)) 0px var(--side,var(--gutter)))}
+
+/* rounded UI tiles (no photography inside) */
+.stats{gap:12px}
+.stat{background:#151515;border-radius:var(--r-tile);padding:34px 24px 30px;overflow:hidden;align-items:center;text-align:center}
+.stat dt{margin-inline:auto}
+.tiles{border:0;gap:12px}
+.tile{border:0;background:#fff;border-radius:var(--r-tile)}
+.layer{border-radius:16px}
+.l-tok{overflow:hidden}
+.press-logos a{border-radius:14px}
+
+@media (prefers-reduced-transparency: reduce){html body .nav .nav-in{background:#161616;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media (prefers-contrast: more){html body .nav .nav-in{background:#0C0C0C;border-color:rgba(255,255,255,.55)}}
+
+/* REVENUE · the prism: one asset (white light) refracts into nine revenue streams (the spectrum) */
+html.wide #r-h{display:flex;flex-wrap:wrap;justify-content:center;column-gap:.24em}
+html.wide #r-h .ln{display:block}
+.prism{position:relative;margin:clamp(28px,5vh,56px) 0 0;background:var(--black);color:var(--paper);border-radius:28px;overflow:hidden;
+  height:clamp(400px,56vh,620px);display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,300px);align-items:stretch;
+  padding:clamp(28px,4vh,48px) clamp(24px,4vw,64px) clamp(28px,4vh,48px) 0}
+.prism-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.prism-src{position:relative;z-index:1;align-self:center;justify-self:start;margin-left:18%;width:clamp(206px,22vw,316px);display:flex;flex-direction:column;gap:12px}
+.prism-src .ph{aspect-ratio:16/10;overflow:hidden;background:#161616;box-shadow:0 0 0 1px rgba(248,247,244,.22),0 0 80px rgba(248,247,244,.10)}
+.prism-src img{width:100%;height:100%;object-fit:cover}
+.prism-src .label{color:var(--mute-d)}
+.streams{position:relative;z-index:1;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;justify-content:space-between}
+.streams li{display:flex;align-items:center;gap:12px;min-height:30px;cursor:default;transition:opacity .3s ease}
+.streams .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 14px var(--c)}
+.streams .ix{flex:none;width:22px;color:var(--mute-d2)}
+.streams .nm{font-family:var(--serif);font-size:clamp(18px,min(1.5vw,2.6vh),23px);line-height:1.1}
+.prism-cap{position:absolute;z-index:1;left:clamp(22px,3vw,40px);bottom:clamp(18px,3vh,28px);color:var(--mute-d2)}
+.rays path{fill:none;stroke-width:1.5;stroke-linecap:round;transition:opacity .3s ease,stroke-width .3s ease}
+.rays path.beam{stroke-width:2}
+.glow path{fill:none;stroke-width:7;opacity:.4;transition:opacity .3s ease}
+.flows path{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:.004 .05;opacity:.6;animation:prism-flow 3.4s linear infinite;transition:opacity .3s ease}
+.prism.paused .flows path{animation-play-state:paused}
+@keyframes prism-flow{to{stroke-dashoffset:-.054}}
+.prism.has-hot .streams li:not(.hot) > *{opacity:.3}
+.streams li > *{transition:opacity .3s ease}
+.prism.has-hot .rays path:not(.hot):not(.beam),.prism.has-hot .glow path:not(.hot):not(.beam),.prism.has-hot .flows path:not(.hot){opacity:.1}
+.rays path.hot{stroke-width:2.8}
+.glow path.hot{opacity:.8}
+@media (max-width:760px){
+  .prism{height:auto;min-height:440px;grid-template-columns:minmax(0,1fr) auto;padding:28px 18px 64px 0;border-radius:22px}
+  .prism-src{margin-left:10px;width:100px}
+  .prism-src .label{display:none}
+  .streams{gap:6px}
+  .streams .nm{font-size:16px}
+  .streams .ix{display:none}
+}
+@media (prefers-reduced-motion: reduce){.flows path{animation:none;opacity:0}}
+
+/* ================= ITERATION 3 · new sections ================= */
+/* bands: compact strips between full frames */
+.band{position:relative;padding-block:clamp(40px,7vh,72px)}
+.band.paper{background:var(--paper);color:var(--black)}
+.band.dark{background:var(--black);color:var(--paper)}
+.band-in{display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3vh,28px);text-align:center}
+.band-label{margin:0;color:var(--mute-d2)}
+.band.paper .band-label{color:var(--mute-p2)}
+.marks{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px clamp(28px,5vw,72px);
+  font-family:var(--sans);font-weight:700;font-size:clamp(17px,1.6vw,22px);letter-spacing:.08em;color:#9C9993}
+.marks li,.marks span{transition:color .3s ease}
+.marks li:hover{color:var(--paper)}
+.band.paper .marks{color:#5E5B55;letter-spacing:.02em;font-weight:600}
+.marks-link:hover span{color:var(--black)}
+#backed{border-top:1px solid #1C1C1C}
+#featured .press-logos{width:100%;max-width:1100px}
+.band-link{color:var(--paper)}
+/* team */
+.people{list-style:none;margin:clamp(32px,6vh,64px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.6vw,24px)}
+.person{display:flex;flex-direction:column;gap:6px;min-width:0}
+.person .ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);margin-bottom:12px}
+.person .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.person:hover .ph img{transform:scale(1.04)}
+.person h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.5vw,23px);line-height:1.15}
+.person .label{margin:0;color:var(--mute-p2);font-weight:600;letter-spacing:.06em;text-transform:none;font-size:13px}
+.team-foot{margin-top:clamp(24px,4vh,40px);display:flex;justify-content:center}
+@media (max-width:1100px){.people{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* tokenisation */
+.rights-intro{max-width:62ch;margin:clamp(28px,5vh,48px) auto 0;text-align:center;display:flex;flex-direction:column;gap:10px}
+.rights-intro .label{margin:0;color:var(--mute-d2)}
+.rights-intro p:last-child{margin:0;color:#C8C5BE;font-size:var(--t-small);line-height:1.6}
+#tokenisation .prism{margin-top:clamp(20px,3vh,32px);background:#111;box-shadow:0 0 0 1px rgba(255,255,255,.07) inset}
+.tok-notes{margin-top:clamp(24px,4vh,40px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(32px,5vw,80px);color:#C8C5BE;font-size:var(--t-small);line-height:1.65}
+.tok-notes p{margin:0;max-width:56ch}
+.tok-notes .chip{margin-top:18px}
+@media (max-width:860px){.tok-notes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.prism-cap{display:none}}
+/* paths: two cards, no longer a full-screen frame */
+html.wide #paths{min-height:0}
+/* Foundation: equal space above the headline and below the pillars (top trimmed for the serif's built-in leading) */
+
+
+/* Tokenisation: generous, equal breathing room above and below */
+
+
+html.wide #paths .frame-pad{padding-block:clamp(72px,10vh,120px) clamp(36px,5vh,56px)}
+/* Backed by: official logos, optically balanced heights */
+.logos{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px clamp(40px,6vw,96px)}
+.logos li{display:flex;align-items:center}
+.logos img{display:block;height:var(--h);width:auto;max-width:100%;opacity:.82;transition:opacity .3s ease}
+.logos li:hover img{opacity:1}
+@media (max-width:640px){.logos{gap:28px 36px}.logos img{height:calc(var(--h) * .74)}}
+.logos-ink{gap:28px clamp(28px,3.2vw,52px)}
+.logos-ink img{opacity:.72}
+/* footer: compact, content-height (no longer a full-screen frame) */
+html.wide #close{min-height:0}
+#close .frame-pad,html.wide #close .frame-pad{padding-block:clamp(36px,5vh,56px) clamp(28px,4vh,40px)}
+.logos a{display:flex;align-items:center;min-height:44px;border-radius:6px}
+.logos a:focus-visible{outline:2px solid var(--s1);outline-offset:6px}
+.logos li:hover img,.logos a:focus-visible img{opacity:1}
+.logos a img{transition:opacity .3s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.logos a:hover img,.logos a:focus-visible img{transform:translateY(-2px)}
+
+/* As featured in: continuous marquee, white marks, soft fade at both edges */
+.press-marquee{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 3%,#000 11%,#000 89%,rgba(0,0,0,.35) 97%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 3%,#000 11%,#000 89%,rgba(0,0,0,.35) 97%,transparent 100%)}
+.press-track{display:flex;width:max-content;--pad:clamp(40px,8vw,120px);padding-left:var(--pad);animation:press-scroll 110s linear infinite;animation-play-state:paused;will-change:transform}
+.press-marquee.run .press-track{animation-play-state:running}
+.press-marquee.run:hover .press-track,.press-marquee.run:focus-within .press-track{animation-play-state:paused}
+@keyframes press-scroll{to{transform:translateX(calc(-50% + var(--pad) / 2))}}
+.press-item{flex:none;display:flex;align-items:center;min-height:56px;padding:0 clamp(22px,2.8vw,44px);color:rgba(248,247,244,.66);
+  font-family:var(--sans);font-weight:700;font-size:clamp(16px,1.35vw,19px);letter-spacing:.01em;white-space:nowrap;transition:color .3s ease}
+.press-item:hover,.press-item:focus-visible{color:#fff}
+.press-item img{display:block;height:var(--h,28px);width:auto;max-width:none;opacity:.72;transition:opacity .35s ease,transform .35s ease}
+.press-item:hover img,.press-item:focus-visible img{opacity:1;transform:translateY(-1px)}
+.press-text span{font-size:20px;letter-spacing:-.005em}
+@media (max-width:640px){.press-item img{height:calc(var(--h,28px)*.8)}}
+@media (prefers-reduced-motion: reduce){.press-track{animation:none}.press-marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
+
+/* hero kicker: the spectrum bar breathes like a light meter, one segment after another */
+/* hero kicker bar: a still spectrum line; a soft glint of light passes through it now and then */
+#hero .kicker .spec{position:relative;overflow:hidden;height:5px;gap:0;border-radius:0}
+#hero .kicker .spec i{height:100%}
+#hero .kicker .spec::after{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-110%);animation:spec-glint 5.2s cubic-bezier(.45,0,.25,1) 1.8s infinite}
+@keyframes spec-glint{0%{transform:translateX(-110%)}38%,100%{transform:translateX(200%)}}
+@media (prefers-reduced-motion: reduce){#hero .kicker .spec::after{animation:none;opacity:0}}
+
+/* nav CTA: lifts slightly and a spectrum line draws under the label */
+.nav .btn{transition:background-color .25s ease,transform .3s var(--ease),box-shadow .3s ease}
+.nav .btn::after{display:block;left:20px;right:20px;bottom:9px;height:2px;border-radius:2px}
+.nav .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(248,247,244,.16)}
+.nav .btn:active{transform:scale(.97)}
+/* round 15: stroke buttons, partner slider, team rotator */
+section .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle){background:none}
+.dark .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover,.band.dark .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--paper);color:var(--black);border-color:var(--paper)}
+.paper .btn:not(.btn-solid-l):not(.btn-solid-d):not(.btn-ghost):not(#doc-toggle):hover{background:var(--black);color:var(--paper);border-color:var(--black)}
+.band-link.btn{color:var(--paper)}
+.pslide{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pslide-track.logos{flex-wrap:nowrap;justify-content:flex-start;width:max-content;gap:0;animation:pslide 55s linear infinite}
+.pslide-track li{padding:0 clamp(28px,3.4vw,52px)}
+.pslide:hover .pslide-track{animation-play-state:paused}
+.pslide-track img{filter:grayscale(1) contrast(1.1);opacity:.7;transition:opacity .3s ease}
+.pslide-track li:hover img{opacity:1}
+@keyframes pslide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.pslide-track.logos{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pslide-track li[aria-hidden],.pslide-track li:nth-child(n+15){display:none}}
+.person[data-rotate] .ph{position:relative}
+.person[data-rotate] .ph img{position:absolute;inset:0;transition:opacity .8s cubic-bezier(.4,0,.2,1),transform 1.1s var(--ease)}
+.person[data-rotate] .ph img.out{opacity:0}
+.person[data-rotate] .ph img.in{transform:scale(1.04)}
+.person[data-rotate] .tx{position:relative;min-height:calc(1.15em * 1 + 6px + 2 * 1.45 * 13px)}
+.person[data-rotate] h3{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person[data-rotate] .label{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45;min-height:calc(2 * 1.45em)}
+.person[data-rotate] h3,.person[data-rotate] .label{transition:opacity .4s ease,transform .4s ease}
+.person.swap h3,.person.swap .label{opacity:0;transform:translateY(4px)}
+
+.menu-btn{width:44px;height:44px;min-width:44px;padding:0!important;justify-content:center;border-radius:999px}
+.menu-btn svg{display:block}
+/* type consistency: one intro size for every paragraph under a heading, one size for serif lead lines */
+.intro{margin:0 auto;font-family:var(--sans);font-size:17px;line-height:1.65;max-width:60ch}
+.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:17px!important;line-height:1.65}
+.hero-sub,.ins-sub,.d-sub,.p-lead,.c-sub,.feat .state{font-size:var(--t-state)!important;line-height:1.4}
+@media (max-width:640px){.intro,.lede,.lib-sub,.enq-sub,.sub-sub,.faq-sub,.ins-p,.hero-p,.dg-head p,.desk-d,.p-note{font-size:16px!important}}
+/* mobile menu: opens as a circle growing from the menu button, links rise in one after another */
+.menu{display:flex!important;visibility:hidden;pointer-events:none;clip-path:circle(0px at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .65s cubic-bezier(.7,0,.25,1),visibility 0s linear .65s}
+.menu:not([hidden]),.menu.is-open{visibility:visible;pointer-events:auto;clip-path:circle(150vmax at calc(100% - var(--gutter) - 22px) 42px);transition:clip-path .8s cubic-bezier(.65,0,.2,1),visibility 0s}
+.menu nav a,.menu > .btn{opacity:0;transform:translateY(28px);transition:opacity .3s ease,transform .3s ease}
+.menu:not([hidden]) nav a,.menu:not([hidden]) > .btn,.menu.is-open nav a,.menu.is-open > .btn{opacity:1;transform:none;transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) nav a:nth-child(1){transition-delay:.18s}.menu:not([hidden]) nav a:nth-child(2){transition-delay:.24s}.menu:not([hidden]) nav a:nth-child(3){transition-delay:.3s}.menu:not([hidden]) nav a:nth-child(4){transition-delay:.36s}.menu:not([hidden]) nav a:nth-child(5){transition-delay:.42s}.menu:not([hidden]) > .btn{transition-delay:.5s}
+.menu .close-btn{opacity:0;transform:rotate(-90deg);transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1)}
+.menu:not([hidden]) .close-btn,.menu.is-open .close-btn{opacity:1;transform:none;transition-delay:.2s}
+html:has(.menu:not([hidden])){overflow:hidden}
+@media (prefers-reduced-motion:reduce){.menu,.menu:not([hidden]){clip-path:none;transition:none}.menu nav a,.menu > .btn,.menu .close-btn{transition:none!important}}
+</style>
+
+<div class="shutter-bg" aria-hidden="true"></div>
+<div class="shutter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="progress" aria-hidden="true"></div>
+
+<!-- logo symbol (official horizontal lockup) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cn-logo" viewBox="0 0 258 55"><path d="M214.386 38.4465L212.613 38.4382C206.988 38.0676 202.434 33.852 201.939 28.3481C201.442 22.8194 205.156 17.7867 210.76 16.5576C217.304 15.1212 223.809 18.9721 224.955 25.4174C225.744 29.8532 223.788 34.2084 220 36.6158C218.246 37.7313 216.366 38.2748 214.386 38.4453V38.4465ZM218.341 32.4642C221.057 29.8389 221.179 25.5168 218.779 22.7092C216.075 19.5464 211.001 19.5262 208.277 22.6666C205.881 25.4268 205.97 29.653 208.51 32.3008C211.106 35.0089 215.589 35.1262 218.341 32.4654V32.4642Z"/><path d="M253.199 16.265H258L252.815 38.0865L247.743 38.0877L243.088 22.8881L238.438 38.0829L233.364 38.0853L228.183 16.2686L233.152 16.2578L236.341 31.0555L240.922 16.265L245.458 16.2638L250.013 30.9655L253.199 16.265Z"/><path d="M195.355 38.0697L191.097 38.0865L179.159 23.5049L179.145 38.0841L174.555 38.0817V16.2626L179.171 16.2578L190.818 30.3764L190.833 16.2602H195.355V38.0697Z"/><path d="M143.129 38.0697L138.87 38.0865L126.933 23.5049L126.919 38.0841L122.329 38.0817V16.2626L126.944 16.2578L138.592 30.3764L138.606 16.2602H143.128L143.129 38.0697Z"/><path d="M163.194 28.9665L154.518 28.9689V34.1619L167.786 34.1607L167.789 38.0805H149.668V16.2578H167.66L167.658 20.1801L154.518 20.1789V25.1678L163.182 25.1666L163.194 28.9665Z"/><path d="M100.909 31.7913L104.092 34.7261C102.034 36.8534 99.2936 38.2261 96.2019 38.598C95.0589 38.736 93.8296 38.6916 92.6828 38.604C91.3055 38.4996 90.0544 38.0701 88.8316 37.5422C84.8646 35.8276 82.3083 32.2952 82.0432 28.229C81.7291 23.42 84.5995 19.0934 89.3555 17.2216C93.1758 15.7182 97.5109 15.9906 101.123 17.9199C102.326 18.5763 103.325 19.3298 104.23 20.3424L100.937 23.3444C99.2898 21.4367 97.0102 20.3892 94.4591 20.3928C90.3453 20.3928 87.1609 23.3408 86.9936 27.1443C86.8558 30.2603 88.7222 33.0152 91.8667 34.1142C95.0846 35.1761 98.5677 34.3422 100.91 31.7901L100.909 31.7913Z"/><path d="M115.612 16.2578H110.762V38.0805H115.612V16.2578Z"/><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+    <symbol id="cn-mark" viewBox="0 0 67 55"><path d="M6.10352e-05 28.8745V27.5085L0.0567051 26.4329C0.637067 16.698 6.36868 8.16233 15.0683 3.61754C21.5488 0.232167 28.9745 -0.579944 36.0809 1.08029L36.0761 2.3719C33.3159 2.69977 30.7031 3.45692 28.2227 4.61444L28.2343 4.69641L34.4056 12.564L41.5053 21.2741L48.5517 29.942L54.4734 37.5438C54.507 37.6073 54.556 37.5665 54.5493 37.4836L54.3976 7.48858C54.3899 5.9757 54.3232 4.31547 53.2565 3.23234C52.6973 2.67892 52.0113 2.33968 51.2534 2.0805L51.2524 0.00236905L58.8869 0.903557L66.5045 0V2.07245C66.0096 2.25344 65.5574 2.45339 65.1139 2.7301C64.3353 3.23897 63.8135 3.97669 63.597 4.88451C63.4246 5.60802 63.3469 6.33769 63.3469 7.11048L63.3411 43.6398V46.4908C63.3411 47.301 63.4669 48.0667 63.7098 48.83C64.1082 50.2073 65.1307 51.2203 66.5055 51.6515L66.5031 54.0395L55.4393 54.0419L43.0856 38.4185L32.5123 24.895L20.7241 9.97419C15.6089 15.224 13.0474 22.0398 13.6441 29.3071C14.2028 35.8352 17.2587 41.9763 22.1417 46.3984C26.0083 49.9003 30.8596 52.1168 36.0785 52.7237L36.0799 54.0172C28.8377 55.8722 21.1518 55.1089 14.511 51.6619C6.17571 47.3341 0.576103 39.2344 0.0571852 29.9003L6.10352e-05 28.8745Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#hero" aria-label="CineNow home"><svg role="img" aria-label="CineNow" fill="currentColor"><use href="#cn-logo"/></svg></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#hero" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="investors.html">Investors</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="partner.html">Collaborate With Us</a>
+    </nav>
+    <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <button class="menu-btn close-btn" id="menu-close" style="display:inline-flex" aria-label="Close menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <nav aria-label="Mobile">
+    <a href="#hero">Home</a><a href="about.html">About</a><a href="investors.html">Investors</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-solid-l" href="partner.html" style="align-self:flex-start">Collaborate With Us</a>
+</div>
+
+<nav class="rail" id="rail" aria-label="Sections"></nav>
+
+<main>
+<!-- 0 · HERO -->
+<section class="fp dark" id="hero" data-label="Home" data-theme="dark" aria-labelledby="hero-h">
+  <div class="fp-in hero">
+    <div class="hstage" id="stage" aria-hidden="true">
+      <div class="archive" id="archive"></div>
+      <div class="shade"></div>
+      <div class="aperture" id="aperture">
+        <div class="tc"><span id="tc">TC 00:00:00:00</span><span id="fr">FR 0000</span></div>
+        <span class="spec"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <div>
+        <p class="label kicker" data-in><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Capital · Technology · Entertainment</p>
+        <h1 class="display" id="hero-h"><span class="ln"><span>When Stories</span></span><span class="ln"><span>Become Assets</span></span></h1>
+        <p class="hero-sub" data-in>An industry of extraordinary scale. A new framework for investment. CineNow connects Indian film IP with institutional capital.</p>
+        <div class="ctas" data-in>
+          <a class="btn btn-solid-l" href="investors.html">Investor Access <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#exploremodel">Explore the Model <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACKED BY -->
+<section class="band dark" id="backed" aria-labelledby="backed-h">
+  <div class="wrap band-in">
+    <h2 class="label band-label" id="backed-h" data-in>Backed By</h2>
+    <ul class="logos" data-in>
+      <li><a href="https://www.investwithabudhabi.com/" target="_blank" rel="noopener" aria-label="ADIO, Abu Dhabi Investment Office (opens in a new tab)"><img src="img/logos/adio.webp" alt="ADIO, Abu Dhabi Investment Office" style="--h:34px" width="900" height="119"></a></li>
+      <li><a href="https://www.adgm.com/" target="_blank" rel="noopener" aria-label="ADGM, Abu Dhabi Global Market (opens in a new tab)"><img src="img/logos/adgm.svg" alt="ADGM, Abu Dhabi Global Market" style="--h:50px" width="154" height="52"></a></li>
+      <li><a href="https://www.cma.gov.ae/" target="_blank" rel="noopener" aria-label="Creative Media Authority, Abu Dhabi (opens in a new tab)"><img src="img/logos/cma.webp" alt="Creative Media Authority, Abu Dhabi" style="--h:56px" width="622" height="210"></a></li>
+      <li><a href="https://www.cma.gov.ae/initiatives/abu-dhabi-film-commission" target="_blank" rel="noopener" aria-label="Abu Dhabi Film Commission, Creative Media Authority (opens in a new tab)"><img src="img/logos/adfc.svg" alt="Abu Dhabi Film Commission, Creative Media Authority" style="--h:38px" width="266" height="42"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROLOGUE -->
+<section class="fp scene" id="scene" data-label="Prologue" data-theme="dark" aria-label="Stories move the world. Now they also move markets.">
+  <div class="scene-pin" id="scene-pin">
+    <p class="scene-line l1" data-words>Stories move the world.</p>
+    <div class="scene-media" id="scene-media"><img src="img/castle.webp" alt="A woman in a sari stands before a wall of spectrum light, a palace at dusk beyond the arch"></div>
+    <p class="scene-line l2" data-words>Now they also move markets.</p>
+  </div>
+</section>
+
+<!-- 1 · FOUNDATION -->
+<section class="fp paper foundation" id="foundation" data-label="Foundation" data-theme="paper" aria-labelledby="f-h">
+  <div class="watermark" aria-hidden="true"><svg viewBox="0 0 67 55" fill="currentColor"><use href="#cn-mark"/></svg></div>
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="f-h" data-lines><span class="ln"><span>Culture, Structured</span></span><span class="ln"><span>as Capital.</span></span></h2>
+      <p class="state" style="color:var(--mute-p)" data-in>CineNow brings capital, technology and entertainment into one investment ecosystem.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar" data-in>
+        <div class="ph" data-img><img src="img/cinema.webp" alt="A film crew in silhouette against a wall of spectrum light" loading="lazy"></div>
+        <div class="row label"><span>01 · Entertainment</span></div>
+        <h3>Stories Become IP.</h3>
+        <p>Every film carries rights that earn commercial value.</p>
+      </article>
+      <article class="pillar" data-in>
+        <div class="ph" data-img><img src="img/finance.webp" alt="A black and white concrete stairway cut by light" loading="lazy"></div>
+        <div class="row label"><span>02 · Capital</span></div>
+        <h3>IP Becomes an Asset.</h3>
+        <p>Smart, tradable capital. Deployed with discipline, held as a portfolio.</p>
+      </article>
+      <article class="pillar" data-in>
+        <div class="ph" data-img><img src="img/tech.webp" alt="A hand holding a phone showing a spectrum-lit stairway" loading="lazy"></div>
+        <div class="row label"><span>03 · Technology</span></div>
+        <h3>Assets Become Accessible.</h3>
+        <p>Tokenisation, built to bring tradability to film IP.</p>
+      </article>
+    </div>
+  </div></div>
+</section>
+
+<!-- AS FEATURED IN -->
+<section class="band dark" id="featured" aria-labelledby="featured-h">
+  <div class="wrap band-in">
+    <h2 class="label band-label" id="featured-h" data-in>As Featured In</h2>
+    <div class="press-marquee" data-in>
+      <div class="press-track">
+          <a class="press-item" href="#featured" aria-label="The Economic Times, CineNow coverage"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Hindustan Times, CineNow coverage"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Business Standard, CineNow coverage"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Mint, CineNow coverage"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:27px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Financial Express, CineNow coverage"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:23px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Fortune India, CineNow coverage"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:23px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="CNBC Awaaz, CineNow coverage"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:32px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Gulf News, CineNow coverage"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:24px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Moneycontrol, CineNow coverage"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:27px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Business Today, CineNow coverage"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="The Week, CineNow coverage"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:25px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="ThePrint, CineNow coverage"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:24px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="PTI News, CineNow coverage"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:30px" decoding="async"></a>
+          <a class="press-item press-text" href="#featured" aria-label="Outlook Business, CineNow coverage"><span>Outlook Business</span></a>
+          <a class="press-item press-text" href="#featured" aria-label="BW Businessworld, CineNow coverage"><span>BW Businessworld</span></a>
+          <a class="press-item" href="#featured" aria-label="Zawya, CineNow coverage"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Entrepreneur Middle East, CineNow coverage"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Enterprise, CineNow coverage"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="CIO&amp;Leader, CineNow coverage"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Business Review, CineNow coverage"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:19px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Exchange4Media, CineNow coverage"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:31px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="BroadcastPro Middle East, CineNow coverage"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="Estate Magazine, CineNow coverage"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-label="The Core, CineNow coverage"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:34px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/economic-times.webp" alt="" width="1833" height="160" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/hindustan-times.webp" alt="" width="458" height="50" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/business-standard.webp" alt="" width="378" height="47" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/mint.webp" alt="" width="165" height="60" style="--h:27px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/financial-express.webp" alt="" width="1373" height="160" style="--h:23px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/fortune-india.webp" alt="" width="675" height="160" style="--h:23px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/cnbc-awaaz.webp" alt="" width="241" height="160" style="--h:32px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/gulf-news.webp" alt="" width="1103" height="160" style="--h:24px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/moneycontrol.webp" alt="" width="220" height="35" style="--h:27px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/business-today.webp" alt="" width="527" height="59" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/the-week.webp" alt="" width="245" height="62" style="--h:25px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/theprint.webp" alt="" width="400" height="75" style="--h:24px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/pti.webp" alt="" width="119" height="81" style="--h:30px" decoding="async"></a>
+          <a class="press-item press-text" href="#featured" aria-hidden="true" tabindex="-1"><span>Outlook Business</span></a>
+          <a class="press-item press-text" href="#featured" aria-hidden="true" tabindex="-1"><span>BW Businessworld</span></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/zawya.webp" alt="" width="474" height="160" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/entrepreneur-me.webp" alt="" width="652" height="154" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/enterprise-am.webp" alt="" width="1113" height="160" style="--h:21px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/cio-leader.webp" alt="" width="562" height="160" style="--h:30px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/business-review.webp" alt="" width="718" height="69" style="--h:19px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/exchange4media.webp" alt="" width="288" height="160" style="--h:31px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/broadcastpro-me.webp" alt="" width="981" height="160" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/estate.webp" alt="" width="529" height="119" style="--h:22px" decoding="async"></a>
+          <a class="press-item" href="#featured" aria-hidden="true" tabindex="-1"><img src="img/press/the-core.webp" alt="" width="85" height="86" style="--h:34px" decoding="async"></a>
+      </div>
+    </div>
+    <a class="btn band-link" href="insights.html" data-in>Explore Insights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- TEAM TEASER -->
+<section class="fp paper" id="team" data-label="Team" data-theme="paper" aria-labelledby="team-h">
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="team-h" data-lines><span class="ln"><span>The People Behind CineNow.</span></span></h2>
+      <p class="lede" style="color:var(--mute-p)" data-in>CineNow brings together leaders across cinema, finance, investment, technology and capital markets combining creative judgment with the institutional expertise required to identify strong opportunities, deploy capital responsibly and build long-term value.</p>
+    </div>
+    <ul class="people" id="people">
+      <li class="person" data-in data-rotate>
+        <div class="ph" data-img><img src="img/team/rohit.webp" alt="Portrait of Rohit Dalmia" loading="lazy" width="800" height="1000"></div>
+        <div class="tx"><h3>Rohit Dalmia</h3><p class="label">Chairman &amp; Managing Director</p></div>
+      </li>
+      <li class="person" data-in data-rotate>
+        <div class="ph" data-img><img src="img/team/sameer.webp" alt="Portrait of Sameer Nair" loading="lazy" width="800" height="1000"></div>
+        <div class="tx"><h3>Sameer Nair</h3><p class="label">Investment Committee</p></div>
+      </li>
+      <li class="person" data-in data-rotate>
+        <div class="ph" data-img><img src="img/team/hamed.webp" alt="Portrait of Hamed Faqirzai" loading="lazy" width="800" height="1000"></div>
+        <div class="tx"><h3>Hamed Faqirzai</h3><p class="label">Tokenisation &amp; Capital Markets</p></div>
+      </li>
+      <li class="person" data-in data-rotate>
+        <div class="ph" data-img><img src="img/team/aashish.webp?v=3" alt="Portrait of Aashish Singh" loading="lazy" width="800" height="1000"></div>
+        <div class="tx"><h3>Aashish Singh</h3><p class="label">Production</p></div>
+      </li>
+      <li class="person" data-in data-rotate>
+        <div class="ph" data-img><img src="img/team/siddharth.webp" alt="Portrait of Siddharth Roy Kapur" loading="lazy" width="800" height="1000"></div>
+        <div class="tx"><h3>Siddharth Roy Kapur</h3><p class="label">Principal Advisor</p></div>
+      </li>
+    </ul>
+    <div class="team-foot" data-in><a class="btn" href="about.html#team">Meet the People Behind CineNow <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div></div>
+</section>
+
+<!-- 2 · OPPORTUNITY -->
+<section class="fp dark opp" id="opportunity" data-label="Opportunity" data-theme="dark" aria-labelledby="o-h">
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="o-h" data-lines><span class="ln"><span>Institutional Scale.</span></span><span class="ln"><span class="muted">Structured Capital.</span></span></h2>
+      <div data-in>
+        <p class="state">Demand is not the constraint. Structure is.</p>
+        <p class="lede" style="margin-top:12px;color:#C8C5BE">India’s entertainment market is growing at nearly twice the global rate, supported by a deeply established ecosystem of relationships and capital. The opportunity is to bring greater structure to these capital pools, creating a pathway toward smart, tradable capital. CineNow was built to enable that transition.</p>
+      </div>
+    </div>
+    <dl class="stats" id="stats">
+      <div class="stat"><span class="bar" style="background:var(--s1)"></span><dt>India's entertainment and media market by 2029 <span>PwC</span></dt><dd data-count="47.2" data-dec="1" data-pre="$" data-suf="B">$47.2B</dd></div>
+      <div class="stat"><span class="bar" style="background:var(--s2)"></span><dt>Films released in India in 2025 <span>FICCI-EY</span></dt><dd data-count="1500" data-dec="0" data-pre="" data-suf="+">1,500+</dd></div>
+      <div class="stat"><span class="bar" style="background:var(--s3)"></span><dt>Gross box office in 2025, the largest year on record <span>Ormax Media</span></dt><dd data-count="1.4" data-dec="1" data-pre="~$" data-suf="B">~$1.4B</dd></div>
+      <div class="stat"><span class="bar" style="background:var(--s5)"></span><dt>Annual growth, nearly twice the global average <span>PwC</span></dt><dd data-count="7.8" data-dec="1" data-pre="" data-suf="%">7.8%</dd></div>
+    </dl>
+  </div></div>
+</section>
+
+<!-- 3 · HOW IT WORKS -->
+<section class="fp paper" id="exploremodel" data-label="How it works" data-theme="paper" aria-labelledby="h-h">
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="h-h" data-lines><span class="ln"><span>From Idea to Asset.</span></span></h2>
+      <div data-in><p class="state" style="color:var(--mute-p)">A film is a bundle of rights that grows clearer and more valuable at every stage.</p>
+      <p class="lede" style="margin-top:12px;color:var(--mute-p)">CineNow enters early, helping projects secure the structure and capital needed to move from development to release. Capital is deployed against verified milestones, with every position built to be valued, managed and realised over time.</p></div>
+    </div>
+    <ol class="stages" id="stages">
+      <li class="stage"><div class="col" aria-hidden="true"><div class="fill" style="--h:22%;background:var(--s1)"></div></div><div class="meta"><span class="label n">01</span><h3>Develop</h3><p>Concept, script and title rights secured.</p></div></li>
+      <li class="stage"><div class="col" aria-hidden="true"><div class="fill" style="--h:40%;background:var(--s2)"></div></div><div class="meta"><span class="label n">02</span><h3>Package</h3><p>Talent attached, budget locked and financing structured.</p></div></li>
+      <li class="stage"><div class="col" aria-hidden="true"><div class="fill" style="--h:58%;background:var(--s3)"></div></div><div class="meta"><span class="label n">03</span><h3>Produce</h3><p>Capital deployed against verified production milestones.</p></div></li>
+      <li class="stage"><div class="col" aria-hidden="true"><div class="fill" style="--h:78%;background:var(--s4)"></div></div><div class="meta"><span class="label n">04</span><h3>Release</h3><p>Certification, distribution and platform deals.</p></div></li>
+      <li class="stage"><div class="col" aria-hidden="true"><div class="fill" style="--h:100%;background:var(--s5)"></div></div><div class="meta"><span class="label n">05</span><h3>Monetise</h3><p>Every right, in every channel, over time.</p></div></li>
+    </ol>
+    <div class="how-foot" data-in>
+      <p>Bars are illustrative. Each stage makes the rights, and their value, clearer.</p>
+      <a class="btn btn-solid-d" href="investors.html">Explore the Investment Model <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div></div>
+</section>
+
+<!-- 4 · TOKENISATION -->
+<section class="fp dark" id="tokenisation" data-label="Tokenisation" data-theme="dark" aria-labelledby="t-h">
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="sec-head">
+      <h2 class="head" id="t-h" data-lines><span class="ln"><span>The Asset Comes First.</span></span></h2>
+      <div data-in>
+        <p class="state">Tokenisation does not create value. The underlying IP does.</p>
+        <p class="lede" style="margin-top:12px;color:#C8C5BE">CineNow structures a portfolio of film rights and revenue interests first, then builds the fund structure around those assets.</p>
+      </div>
+    </div>
+    <div class="rights-intro" data-in>
+      <p class="label">Rights that create value</p>
+      <p>Each film can generate value across multiple rights and channels, including theatrical box office, OTT and streaming, satellite and television, music, international distribution, dubbing, remakes, sequels, merchandising and gaming.</p>
+    </div>
+    <figure class="prism" id="prism">
+      <svg class="prism-svg" id="prism-svg" aria-hidden="true">
+        <defs><filter id="prism-glow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+        <g class="glow" filter="url(#prism-glow)"></g><g class="rays"></g><g class="flows"></g>
+      </svg>
+      <div class="prism-src" id="prism-src">
+        <div class="ph"><img src="img/reel.webp" alt="A film reel lit by spectrum light" loading="lazy"></div>
+        <p class="label">One film · One asset</p>
+      </div>
+      <ol class="streams" id="streams" aria-label="Rights that create value">
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">01</span><span class="nm">Theatrical</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">02</span><span class="nm">OTT &amp; Streaming</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">03</span><span class="nm">Satellite &amp; TV</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">04</span><span class="nm">Music</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">05</span><span class="nm">International</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">06</span><span class="nm">Dubbing</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">07</span><span class="nm">Remakes &amp; Sequels</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">08</span><span class="nm">Merchandising</span></li>
+        <li><i class="dot" aria-hidden="true"></i><span class="label ix">09</span><span class="nm">Gaming</span></li>
+      </ol>
+      <figcaption class="label prism-cap">Every right. Every channel. Over time.</figcaption>
+    </figure>
+    <div class="tok-notes">
+      <p data-in>These underlying economic rights form the asset base behind the fund units, which CineNow intends to tokenise to create a more flexible and potentially tradable form of participation.</p>
+      <div data-in>
+        <p>The objective is not to tokenise the film itself, but to create tokenised fund units supported by a diversified portfolio of underlying film IP and its associated economic rights.</p>
+        <p class="chip"><i aria-hidden="true"></i>Issuance is targeted for late 2027, subject to regulatory approvals.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PARTNERS TEASER -->
+<section class="band paper" id="partners" aria-labelledby="partners-h">
+  <div class="wrap band-in">
+    <h2 class="label band-label" id="partners-h" data-in>Partnered With</h2>
+    <div class="pslide" data-in><ul class="pslide-track logos logos-ink"><li><a href="https://www.harneys.com/" target="_blank" rel="noopener" aria-label="Harneys (opens in a new tab)"><img src="img/logos/p_harneys.webp" alt="Harneys" style="--h:34px" loading="lazy"></a></li><li><a href="https://www.tamimi.com/" target="_blank" rel="noopener" aria-label="Al Tamimi &amp; Co (opens in a new tab)"><img src="img/logos/c_altamimi.svg" alt="Al Tamimi &amp; Co" style="--h:34px" loading="lazy"></a></li><li><a href="https://trilegal.com/" target="_blank" rel="noopener" aria-label="Trilegal (opens in a new tab)"><img src="img/logos/c_trilegal.svg" alt="Trilegal" style="--h:26px" loading="lazy"></a></li><li><a href="https://www.spencer-west.com/" target="_blank" rel="noopener" aria-label="Spencer West (opens in a new tab)"><img src="img/logos/c_spencerwest.svg" alt="Spencer West" style="--h:26px" loading="lazy"></a></li><li><a href="https://ariasslp.com/en/" target="_blank" rel="noopener" aria-label="Arias (opens in a new tab)"><img src="img/logos/c_arias.svg" alt="Arias" style="--h:34px" loading="lazy"></a></li><li><a href="https://www.rsm.global/" target="_blank" rel="noopener" aria-label="RSM (opens in a new tab)"><img src="img/logos/p_rsm.webp" alt="RSM" style="--h:34px" loading="lazy"></a></li><li><a href="https://anejaassociates.com/" target="_blank" rel="noopener" aria-label="Aneja Associates (opens in a new tab)"><img src="img/logos/c_aneja.svg" alt="Aneja Associates" style="--h:30px" loading="lazy"></a></li><li><a href="https://formidium.com/" target="_blank" rel="noopener" aria-label="Formidium (opens in a new tab)"><img src="img/logos/p_formidium.webp" alt="Formidium" style="--h:26px" loading="lazy"></a></li><li><a href="https://www.ey.com/en_in" target="_blank" rel="noopener" aria-label="EY India (opens in a new tab)"><img src="img/logos/p_ey.svg" alt="EY India" style="--h:40px" loading="lazy"></a></li><li><a href="https://www.howdengroup.com/" target="_blank" rel="noopener" aria-label="Howden (opens in a new tab)"><img src="img/logos/c_howden.svg" alt="Howden" style="--h:28px" loading="lazy"></a></li><li><a href="https://www.gsequity.com/" target="_blank" rel="noopener" aria-label="Greenstone Equity Partners (opens in a new tab)"><img src="img/logos/c_greenstone.svg" alt="Greenstone Equity Partners" style="--h:64px" loading="lazy"></a></li><li><a href="https://www.blockphrase.com/" target="_blank" rel="noopener" aria-label="Blockphrase (opens in a new tab)"><img src="img/logos/c_blockphrase.svg" alt="Blockphrase" style="--h:36px" loading="lazy"></a></li><li><a href="https://www.lunapr.com/" target="_blank" rel="noopener" aria-label="Luna PR (opens in a new tab)"><img src="img/logos/c_luna.svg" alt="Luna PR" style="--h:40px" loading="lazy"></a></li><li><a href="https://blueoceanimc.com/" target="_blank" rel="noopener" aria-label="Blue Ocean IMC (opens in a new tab)"><img src="img/logos/c_blueocean.svg" alt="Blue Ocean IMC" style="--h:34px" loading="lazy"></a></li><li><a href="https://www.harneys.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/p_harneys.webp" alt="" style="--h:34px" loading="lazy"></a></li><li><a href="https://www.tamimi.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_altamimi.svg" alt="" style="--h:34px" loading="lazy"></a></li><li><a href="https://trilegal.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_trilegal.svg" alt="" style="--h:26px" loading="lazy"></a></li><li><a href="https://www.spencer-west.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_spencerwest.svg" alt="" style="--h:26px" loading="lazy"></a></li><li><a href="https://ariasslp.com/en/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_arias.svg" alt="" style="--h:34px" loading="lazy"></a></li><li><a href="https://www.rsm.global/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/p_rsm.webp" alt="" style="--h:34px" loading="lazy"></a></li><li><a href="https://anejaassociates.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_aneja.svg" alt="" style="--h:30px" loading="lazy"></a></li><li><a href="https://formidium.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/p_formidium.webp" alt="" style="--h:26px" loading="lazy"></a></li><li><a href="https://www.ey.com/en_in" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/p_ey.svg" alt="" style="--h:40px" loading="lazy"></a></li><li><a href="https://www.howdengroup.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_howden.svg" alt="" style="--h:28px" loading="lazy"></a></li><li><a href="https://www.gsequity.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_greenstone.svg" alt="" style="--h:64px" loading="lazy"></a></li><li><a href="https://www.blockphrase.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_blockphrase.svg" alt="" style="--h:36px" loading="lazy"></a></li><li><a href="https://www.lunapr.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_luna.svg" alt="" style="--h:40px" loading="lazy"></a></li><li><a href="https://blueoceanimc.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/logos/c_blueocean.svg" alt="" style="--h:34px" loading="lazy"></a></li></ul></div>
+  </div>
+</section>
+
+<!-- TWO PATHS -->
+<section class="fp dark paths-sec" id="paths" data-label="Get involved" data-theme="dark" aria-label="Two paths: investors and the film industry">
+  <div class="fp-in frame-pad"><div class="wrap">
+    <div class="paths">
+      <article class="path path-a" data-in>
+        <div class="ph" data-img><img src="img/doorway.webp" alt="A figure standing before a wall of spectrum light in a dark hall" loading="lazy"></div>
+        <div class="tx">
+          <div><p class="label">For investors</p><h3>Access Film IP as an Alternate, Investable Asset Class</h3><p>Smart, tradable access to Indian film IP, for professional and qualified investors, traditional and digital.</p></div>
+          <a class="btn btn-solid-l" href="investors.html" style="align-self:flex-start">Investor Access <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="path path-b" data-in>
+        <div class="ph" data-img><img src="img/h/u24.webp" alt="A lone viewer in a dark cinema facing a spectrum-lit screen" loading="lazy"></div>
+        <div class="tx">
+          <div><p class="label">For the film industry</p><h3>Bring the Story. We Bring the Capital.</h3><p>We work with producers, studios and rights holders to help fund promising creative projects and connect them with the capital, structure and support needed to bring their stories to market.</p></div>
+          <a class="btn btn-solid-d" href="partner.html" style="align-self:flex-start">Collaborate With Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div></div>
+</section>
+
+<!-- 7 · CLOSE + FOOTER -->
+<section class="fp dark close" id="close" data-label="Contact" data-theme="dark" aria-label="Brand sign-off and footer">
+  <div class="fp-in frame-pad"><div class="wrap" style="display:flex;flex-direction:column;gap:clamp(16px,2.6vh,36px)">
+    <p class="signoff" id="signoff"><span class="w" id="cw1">When Stories</span> <span class="w become" id="cw2">Become</span> <span class="w" id="cw3">Assets</span></p>
+    <footer class="foot">
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#hero">Home</a><a href="about.html">About</a><a href="investors.html">Investors</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+      </nav>
+      <nav class="foot-links" aria-label="Legal" style="font-size:13px">
+        <a href="docs.html">Docs</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a><a href="#">Disclaimer</a><a href="docs/CineNow-Media-Kit.zip" download>Media Kit</a>
+      </nav>
+      <p class="disc">This website is introductory only. It is not an offer or a solicitation. Any offer is made solely to qualified investors through a confidential Private Placement Memorandum, and only where permitted by law. Promotion in the UAE is distributed or approved by Greenstone Equity Partners Financial Products Promotion LLC, regulated by the UAE Capital Market Authority (licence no. 703050).</p>
+      <div class="legal"><span>© 2026 CineNow Limited. A British Virgin Islands business company, no. 2194385.</span><span class="spec" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </footer>
+  </div></div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function () {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = !!(window.gsap && window.ScrollTrigger && window.ScrollToPlugin);
+  const nav = document.getElementById('nav');
+  const rail = document.getElementById('rail');
+  const sections = Array.from(document.querySelectorAll('.fp'));
+  let current = 0;
+
+  const wideQuery = matchMedia('(min-width: 1024px)');
+  const syncWide = () => root.classList.toggle('wide', wideQuery.matches);
+  syncWide(); wideQuery.addEventListener('change', syncWide);
+
+  /* ---------- rail + nav theme (shared by every mode) ---------- */
+  sections.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to ' + s.dataset.label);
+    b.innerHTML = '<span class="nm">' + s.dataset.label + '</span><span class="tk"></span>';
+    b.addEventListener('click', () => goTo(i));
+    rail.appendChild(b);
+  });
+  // Which section sits under a given viewport line (works while sections are pinned).
+  function sectionAtLine(lineY) {
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const r = sections[i].getBoundingClientRect();
+      if (r.top <= lineY && r.bottom > lineY) return i;
+    }
+    return 0;
+  }
+  // Nav and rail ink follow the ground directly behind them, not the section in view.
+  function syncInk() {
+    const navLine = Math.min(nav.offsetHeight || 84, 120) / 2;
+    nav.classList.toggle('on-paper', sections[sectionAtLine(navLine)].dataset.theme === 'paper');
+    rail.classList.toggle('on-paper', sections[sectionAtLine(innerHeight / 2)].dataset.theme === 'paper');
+  }
+  function setActive(i) {
+    current = i;
+    rail.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-current', j === i ? 'true' : 'false'));
+    syncInk();
+  }
+  function indexAt() { return sectionAtLine(innerHeight * 0.45); }
+  setActive(0);
+
+  /* ---------- mobile menu ---------- */
+  const menu = document.getElementById('menu'), mOpen = document.getElementById('menu-open'), mClose = document.getElementById('menu-close');
+  function closeMenu() { menu.hidden = true; mOpen.setAttribute('aria-expanded', 'false'); mOpen.focus(); }
+  mOpen.addEventListener('click', () => { menu.hidden = false; mOpen.setAttribute('aria-expanded', 'true'); mClose.focus(); });
+  mClose.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) closeMenu(); });
+
+  /* ---------- in-page links ---------- */
+  function goToEl(el) {
+    const sec = el.closest('.fp');
+    if (sec) goTo(sections.indexOf(sec));
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const h = a.getAttribute('href');
+    if (h === '#') { e.preventDefault(); return; } // placeholder until the page exists
+    const t = document.querySelector(h);
+    if (!t) return;
+    e.preventDefault();
+    if (!menu.hidden) { menu.hidden = true; mOpen.setAttribute('aria-expanded', 'false'); }
+    goToEl(t);
+  }));
+
+  /* ---------- the archive: columns of film stills (built in every mode) ---------- */
+  // 25 stills from the brand moodboard, upscaled 4x (EDSR super-resolution) to 720x900.
+  const TILES = Array.from({ length: 25 }, (_, i) => 'img/h/u' + String(i).padStart(2, '0') + '.webp');
+  const archive = document.getElementById('archive');
+  const tracks = [];
+  for (let c = 0; c < 7; c++) {
+    const col = document.createElement('div'); col.className = 'acol';
+    const track = document.createElement('div'); track.className = 'track';
+    const picks = [];
+    for (let k = 0; k < 6; k++) picks.push(TILES[(c * 5 + k * 4) % TILES.length]);
+    picks.concat(picks).forEach(src => {
+      const im = new Image(); im.src = src; im.alt = ''; im.decoding = 'async'; im.loading = c < 5 ? 'eager' : 'lazy';
+      track.appendChild(im);
+    });
+    col.appendChild(track); archive.appendChild(col); tracks.push(track);
+  }
+  const stage = document.getElementById('stage');
+  const tcEl = document.getElementById('tc'), frEl = document.getElementById('fr');
+  const pad = n => String(n).padStart(2, '0');
+  // The hero screen sits below the centred copy, its sides on the page grid.
+  const heroCopy = document.querySelector('.hero-copy');
+  const screenGeo = () => {
+    const sr = stage.getBoundingClientRect(), cr = heroCopy.getBoundingClientRect();
+    const padL = parseFloat(getComputedStyle(heroCopy).paddingLeft) || 0;
+    return { top: Math.round(cr.bottom - sr.top + 40), side: Math.max(0, Math.round(cr.left - sr.left + padL)) };
+  };
+  /* Optical spacing for the hero stack: gaps are set baseline-to-cap-height using the fonts' real
+     metrics (what CSS text-box-trim does), so the visible space is exact in every browser. */
+  const metricCtx = document.createElement('canvas').getContext('2d');
+  function textEdges(el) {
+    const cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+    const lh = parseFloat(cs.lineHeight) || fs * 1.2;
+    metricCtx.font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+    const t = metricCtx.measureText('H');
+    const asc = t.fontBoundingBoxAscent || fs * .9, desc = t.fontBoundingBoxDescent || fs * .25, cap = t.actualBoundingBoxAscent || fs * .7;
+    const half = (lh - (asc + desc)) / 2;
+    return { top: half + asc - cap, bottom: half + desc };     // space above the caps, space below the baseline
+  }
+  function opticalHero() {
+    const kick = heroCopy.querySelector('.kicker'), h1 = document.getElementById('hero-h');
+    const sub = heroCopy.querySelector('.hero-sub'), para = heroCopy.querySelector('.hero-p'), ctas = heroCopy.querySelector('.ctas');
+    if (!kick || !h1 || !sub || !ctas) return;
+    const H = parseFloat(getComputedStyle(h1).fontSize);
+    const k = textEdges(kick), h = textEdges(h1), sb = textEdges(sub);
+    const gap = { kickToHead: Math.max(18, H * .34), headToSub: Math.max(18, H * .36), subToPara: 18, paraToCta: Math.max(24, H * .4) };
+    h1.style.marginTop = (gap.kickToHead - k.bottom - h.top) + 'px';
+    sub.style.marginTop = (gap.headToSub - h.bottom - sb.top) + 'px';
+    let last = sb;
+    if (para) { const pp = textEdges(para); para.style.marginTop = (gap.subToPara - sb.bottom - pp.top) + 'px'; last = pp; }
+    ctas.style.marginTop = (gap.paraToCta - last.bottom) + 'px';
+  }
+  function setScreen() {
+    opticalHero();
+    if (innerWidth < 1024) return;
+    const g = screenGeo();
+    stage.style.setProperty('--clipTop', g.top + 'px');
+    stage.style.setProperty('--side', g.side + 'px');
+  }
+  setScreen();
+  if (document.fonts) document.fonts.ready.then(setScreen);
+  function apertureRange() {
+    const W = stage.clientWidth, wide = innerWidth >= 1024;
+    const aw = wide ? Math.max(180, Math.min(340, W * 0.2)) : Math.max(140, W * 0.42);
+    const side = wide ? screenGeo().side : 0;
+    const min = side + aw / 2 + 12, max = W - side - aw / 2 - 12;
+    return { aw, min, max: Math.max(min, max) };
+  }
+  function placeAperture(x, aw) { stage.style.setProperty('--ax', x + 'px'); stage.style.setProperty('--aw', aw + 'px'); }
+  { const r = apertureRange(); placeAperture((r.min + r.max) / 2, r.aw); }
+
+  /* ---------- prologue words + finale strip (built in every mode) ---------- */
+  document.querySelectorAll('[data-words]').forEach(el => {
+    const text = el.textContent.trim();
+    el.setAttribute('aria-label', text);
+    el.innerHTML = text.split(' ').map(w => '<span class="w" aria-hidden="true">' + w + '</span>').join(' ');
+  });
+
+  /* ---------- revenue prism (built in every mode) ---------- */
+  const prism = document.getElementById('prism');
+  const psvg = document.getElementById('prism-svg');
+  const streamEls = Array.from(document.querySelectorAll('#streams li'));
+  const SPEC = ['#16A0F4', '#7041E0', '#E01CAB', '#FF3787', '#FF5B1F'];
+  const hexRgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const specAt = t => {
+    const x = t * 4, i = Math.min(3, Math.floor(x)), f = x - i;
+    const a = hexRgb(SPEC[i]), b = hexRgb(SPEC[i + 1]);
+    return 'rgb(' + a.map((v, k) => Math.round(v + (b[k] - v) * f)).join(',') + ')';
+  };
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const mkPath = (group, cls, color) => {
+    const pth = document.createElementNS(SVGNS, 'path');
+    pth.setAttribute('pathLength', '1');
+    if (cls) pth.setAttribute('class', cls);
+    if (color) pth.setAttribute('stroke', color);
+    psvg.querySelector(group).appendChild(pth);
+    return pth;
+  };
+  const beam = { ray: mkPath('.rays', 'beam', '#F8F7F4'), glow: mkPath('.glow', 'beam', '#F8F7F4') };
+  const streams = streamEls.map((li, i) => {
+    const c = specAt(i / (streamEls.length - 1));
+    li.style.setProperty('--c', c);
+    return { li, ray: mkPath('.rays', '', c), glow: mkPath('.glow', '', c), flow: mkPath('.flows', '') };
+  });
+  function layoutPrism() {
+    const pr = prism.getBoundingClientRect();
+    if (!pr.width) return;
+    psvg.setAttribute('viewBox', '0 0 ' + pr.width + ' ' + pr.height);
+    const sr = prism.querySelector('.prism-src .ph').getBoundingClientRect();
+    const sx = sr.right - pr.left, sy = sr.top + sr.height / 2 - pr.top;
+    const inD = 'M0 ' + sy + ' L' + (sr.left - pr.left) + ' ' + sy;
+    beam.ray.setAttribute('d', inD); beam.glow.setAttribute('d', inD);
+    streams.forEach(st => {
+      const dr = st.li.querySelector('.dot').getBoundingClientRect();
+      const ex = dr.left - pr.left - 6, ey = dr.top + dr.height / 2 - pr.top, mx = sx + (ex - sx) * .5;
+      const d = 'M' + sx + ' ' + sy + ' C' + mx + ' ' + sy + ' ' + mx + ' ' + ey + ' ' + ex + ' ' + ey;
+      st.ray.setAttribute('d', d); st.glow.setAttribute('d', d); st.flow.setAttribute('d', d);
+    });
+  }
+  function hotStream(idx) {
+    prism.classList.toggle('has-hot', idx >= 0);
+    streams.forEach((st, i) => [st.li, st.ray, st.glow, st.flow].forEach(el => el.classList.toggle('hot', i === idx)));
+  }
+  streams.forEach((st, i) => {
+    st.li.addEventListener('pointerenter', () => hotStream(i));
+    st.li.addEventListener('pointerleave', () => hotStream(-1));
+  });
+  layoutPrism();
+  let prismRz;
+  addEventListener('resize', () => { clearTimeout(prismRz); prismRz = setTimeout(layoutPrism, 120); });
+  if (document.fonts) document.fonts.ready.then(layoutPrism);
+  addEventListener('load', layoutPrism);
+
+  /* ---------- static fallback ---------- */
+  let goTo = i => { sections[i].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+  if (reduce || !hasGsap) {
+    addEventListener('resize', () => { setScreen(); const r = apertureRange(); placeAperture((r.min + r.max) / 2, r.aw); });
+    if (document.fonts) document.fonts.ready.then(setScreen);
+    addEventListener('scroll', () => { setActive(indexAt(scrollY)); nav.classList.toggle('is-scrolled', scrollY > 40); }, { passive: true });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  root.classList.add('js-motion');
+  const EASE = 'expo.out';
+
+  /* =====================================================
+     SCROLL MODES
+     fp: desktop with enough height, one section per gesture
+     smooth: everything else, Lenis inertia scrolling
+     ===================================================== */
+  // Continuous smooth scroll everywhere; the one-section mode is switched off.
+  const fpQuery = { matches: false };
+  let mode = null, lenis = null, animating = false, quietUntil = 0;
+  let buildTransitions = () => {}, killTransitions = () => {};
+
+  function sectionsFit() {
+    // overflow up to 20px only eats into the frame's 28px bottom padding
+    return sections.every(s => s.scrollHeight <= s.clientHeight + 20);
+  }
+  function enableFp() {
+    root.classList.add('fp-on');
+    if (!sectionsFit()) { root.classList.remove('fp-on'); return false; }
+    if (lenis) { lenis.destroy(); lenis = null; }
+    mode = 'fp';
+    buildTransitions();
+    ScrollTrigger.refresh();
+    current = indexAt(scrollY);
+    gsap.set(window, { scrollTo: { y: sections[current].offsetTop, autoKill: false } });
+    setActive(current);
+    nav.classList.remove('is-hidden', 'is-scrolled');
+    return true;
+  }
+  function enableSmooth() {
+    root.classList.remove('fp-on');
+    mode = 'smooth';
+    buildTransitions();
+    ScrollTrigger.sort();
+    if (!lenis && window.Lenis) {
+      lenis = new Lenis({ duration: 1.25, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 0.95, touchMultiplier: 1.4 });
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+    ScrollTrigger.refresh();
+  }
+  gsap.ticker.add(t => { if (lenis) lenis.raf(t * 1000); });
+  // Re-check the nav ink every frame, after pins and Lenis have settled the layout.
+  let lastInkY = -1;
+  gsap.ticker.add(() => { if (scrollY !== lastInkY) { lastInkY = scrollY; syncInk(); } });
+  gsap.ticker.lagSmoothing(0);
+
+  function pickMode() {
+    const prevIndex = current;
+    if (fpQuery.matches && enableFp()) return;
+    if (mode !== 'smooth') enableSmooth();
+    if (prevIndex) sections[prevIndex] && window.scrollTo(0, sections[prevIndex].offsetTop);
+  }
+
+  goTo = function (i) {
+    i = Math.max(0, Math.min(sections.length - 1, i));
+    if (mode === 'fp') {
+      if (animating || i === current && Math.abs(scrollY - sections[i].offsetTop) < 2) return;
+      animating = true;
+      setActive(i);
+      gsap.to(window, {
+        duration: 1.15, ease: 'expo.inOut',
+        scrollTo: { y: sections[i].offsetTop, autoKill: false },
+        onComplete: () => { animating = false; quietUntil = performance.now() + 120; }
+      });
+    } else if (lenis) {
+      lenis.scrollTo(sections[i], { duration: 1.6, easing: t => 1 - Math.pow(1 - t, 4) });
+    } else {
+      sections[i].scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Wheel: one section per gesture. Trackpad inertia is absorbed until the wheel goes quiet.
+  addEventListener('wheel', e => {
+    if (mode !== 'fp' || !menu.hidden) return;
+    e.preventDefault();
+    const now = performance.now();
+    if (animating || now < quietUntil) {
+      quietUntil = Math.max(quietUntil, now + 140);
+      return;
+    }
+    if (Math.abs(e.deltaY) < 4) return;
+    goTo(current + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+
+  addEventListener('keydown', e => {
+    if (mode !== 'fp' || !menu.hidden) return;
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+    const next = ['ArrowDown', 'PageDown', ' '].includes(e.key);
+    const prev = ['ArrowUp', 'PageUp'].includes(e.key);
+    if (next || prev) { e.preventDefault(); goTo(current + (next ? 1 : -1)); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End') { e.preventDefault(); goTo(sections.length - 1); }
+  });
+
+  // Keep the active index honest when focus or the scrollbar moves the page.
+  let scrollEnd = null;
+  addEventListener('scroll', () => {
+    if (mode === 'smooth') {
+      nav.classList.toggle('is-scrolled', scrollY > 40);
+      setActive(indexAt(scrollY));
+    }
+    if (mode === 'fp' && !animating) {
+      clearTimeout(scrollEnd);
+      scrollEnd = setTimeout(() => setActive(indexAt(scrollY)), 120);
+    }
+  }, { passive: true });
+
+  // Hide the nav on the way down in smooth mode.
+  let lastY = scrollY;
+  addEventListener('scroll', () => {
+    if (mode === 'smooth') nav.classList.toggle('is-hidden', scrollY > lastY && scrollY > 500 && menu.hidden);
+    lastY = scrollY;
+  }, { passive: true });
+
+  let rz;
+  addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { const keep = current; mode = null; current = keep; pickMode(); }, 200); });
+
+  /* =====================================================
+     MOTION
+     ===================================================== */
+  // Intro: the one full-spectrum moment, then the archive lights up and the aperture opens.
+  const ap = { x: 0, tx: 0, open: 0, lastMove: -1e9, visible: true, t0: performance.now() };
+  { const r = apertureRange(); ap.x = ap.tx = (r.min + r.max) / 2; }
+  const intro = gsap.timeline({ defaults: { ease: 'expo.inOut' } });
+  intro
+    .from('.shutter i', { scaleY: 0, duration: .65, stagger: .06 })
+    .set('.shutter-bg', { autoAlpha: 0 })
+    .to('.shutter i', { yPercent: -100, duration: .8, stagger: .05 }, '+=.05')
+    .set('.shutter', { display: 'none' })
+    .from('#archive', { autoAlpha: 0, scale: 1.08, duration: 1.8, ease: EASE }, '-=.6')
+    .to(ap, { open: 1, duration: 1.4 }, '<.2')
+    .from('#hero-h .ln > span', { yPercent: 110, duration: 1.3, stagger: .12, ease: EASE }, '<')
+    .from('#hero [data-in]', { y: 22, autoAlpha: 0, duration: 1, stagger: .07, ease: EASE }, '<.25');
+
+  // The archive drifts: alternate columns run up and down at different speeds.
+  const drift = tracks.map((tr, c) => {
+    const up = c % 2 === 0;
+    return gsap.fromTo(tr, { yPercent: up ? 0 : -50 }, { yPercent: up ? -50 : 0, duration: 46 + (c % 3) * 14, ease: 'none', repeat: -1 });
+  });
+
+  // The aperture follows the pointer; when nobody is steering, it sweeps on its own.
+  addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const rect = stage.getBoundingClientRect();
+    if (e.clientY < rect.top || e.clientY > rect.bottom) return;
+    ap.tx = e.clientX - rect.left; ap.lastMove = performance.now();
+  }, { passive: true });
+  gsap.ticker.add(() => {
+    if (!ap.visible) return;
+    const now = performance.now(), r = apertureRange();
+    if (now - ap.lastMove > 2600) {
+      const mid = (r.min + r.max) / 2, half = (r.max - r.min) / 2;
+      ap.tx = mid + Math.sin((now - ap.t0) / 4200) * half;
+    }
+    ap.tx = Math.max(r.min, Math.min(r.max, ap.tx));
+    ap.x += (ap.tx - ap.x) * 0.06;
+    placeAperture(ap.x, r.aw * ap.open);
+    const f = Math.floor((now - ap.t0) / (1000 / 24));
+    const sec = Math.floor(f / 24);
+    tcEl.textContent = 'TC ' + pad(Math.floor(sec / 3600)) + ':' + pad(Math.floor(sec / 60) % 60) + ':' + pad(sec % 60) + ':' + pad(f % 24);
+    frEl.textContent = 'FR ' + String(f % 10000).padStart(4, '0');
+  });
+  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top',
+    onToggle: self => { ap.visible = self.isActive; drift.forEach(d => self.isActive ? d.play() : d.pause()); } });
+
+  // Progress bar.
+  gsap.to('.progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+  // Section transitions: incoming content rises, outgoing content recedes.
+  // Scroll-linked depth: each frame's content rises as it enters; images drift inside their frames.
+  let transitions = [];
+  buildTransitions = function () {
+    killTransitions();
+    sections.forEach((s, i) => {
+      const inner = s.querySelector('.fp-in');
+      // The footer is the last frame and can never scroll far enough to finish rising, so it stays put.
+      if (i > 0 && inner && s.id !== 'close') transitions.push(gsap.fromTo(inner, { y: 110 }, { y: 0, ease: 'none', scrollTrigger: { trigger: s, start: 'top bottom', end: 'top 25%', scrub: true } }));
+    });
+    gsap.utils.toArray('.pillar .ph img, .path .ph img').forEach(im => {
+      transitions.push(gsap.fromTo(im, { yPercent: -7 }, { yPercent: 7, ease: 'none', scrollTrigger: { trigger: im.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+    });
+    transitions.push(gsap.to('#archive', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } }));
+    transitions.push(gsap.fromTo('.watermark', { yPercent: -60 }, { yPercent: -40, ease: 'none', scrollTrigger: { trigger: '#foundation', start: 'top bottom', end: 'bottom top', scrub: true } }));
+  };
+  killTransitions = function () {
+    transitions.forEach(t => { if (t.scrollTrigger) t.scrollTrigger.kill(); t.kill(); });
+    transitions = [];
+    gsap.set('.fp-in, .pillar .ph img, .path .ph img, #archive, .hero-copy', { clearProps: 'transform,opacity' });
+  };
+
+  // Portraits zoom from below the chin so heads are never cropped.
+  gsap.set('.person .ph img', { transformOrigin: '50% 100%' });
+  // Reveals, played once as each frame arrives.
+  const onArrive = (el, tl) => ScrollTrigger.create({ trigger: el, start: 'top 72%', once: true, onEnter: () => tl.play() });
+  document.querySelectorAll('.fp:not(#hero):not(#scene)').forEach(s => {
+    const tl = gsap.timeline({ paused: true, delay: .15 });
+    const lines = s.querySelectorAll('[data-lines] .ln > span');
+    const ins = s.querySelectorAll('[data-in]');
+    const imgs = s.querySelectorAll('[data-img]');
+    if (lines.length) tl.from(lines, { yPercent: 110, filter: 'blur(8px)', duration: 1.2, stagger: .1, ease: EASE }, 0);
+    if (ins.length) tl.from(ins, { y: 30, autoAlpha: 0, duration: 1, stagger: .08, ease: EASE }, .15);
+    if (imgs.length) {
+      tl.from(imgs, { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.3, stagger: .1, ease: 'expo.inOut' }, .1);
+      tl.fromTo(Array.from(imgs).map(d => d.querySelector('img')), { scale: 1.25 }, { scale: 1, duration: 1.8, stagger: .1, ease: EASE }, .1);
+    }
+    onArrive(s, tl);
+  });
+
+  // Opportunity: bars draw in spectrum order, figures count up.
+  const statsTl = gsap.timeline({ paused: true, delay: .35 });
+  document.querySelectorAll('#stats .stat').forEach((st, i) => {
+    const bar = st.querySelector('.bar'), dd = st.querySelector('dd');
+    const target = parseFloat(dd.dataset.count), dec = +dd.dataset.dec, pre = dd.dataset.pre, suf = dd.dataset.suf;
+    const fmt = v => pre + (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + suf;
+    const o = { v: 0 };
+    statsTl.from(bar, { scaleX: 0, duration: 1.1, ease: 'expo.inOut' }, i * .12)
+      .from(st.querySelector('dt'), { y: 16, autoAlpha: 0, duration: .9, ease: EASE }, i * .12 + .2)
+      .fromTo(o, { v: 0 }, { v: target, duration: 1.8, ease: 'power3.out', onUpdate: () => { dd.textContent = fmt(o.v); } }, i * .12 + .15);
+  });
+  onArrive('#opportunity', statsTl);
+
+  // Story scenes. Desktop: pinned and scrubbed to the scroll. Smaller screens: played once on arrival.
+  const scenes = gsap.matchMedia();
+  scenes.add({ pin: '(min-width: 1024px) and (min-height: 640px)', flat: '(max-width: 1023px), (max-height: 639px)' }, ctx => {
+    const fills = gsap.utils.toArray('#stages .fill');
+    const metas = gsap.utils.toArray('#stages .meta');
+    if (ctx.conditions.pin) {
+      setScreen();
+      gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=90%', scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+          onRefreshInit: setScreen } })
+        .fromTo('#stage', { clipPath: () => { const g = screenGeo(); return 'inset(' + g.top + 'px ' + g.side + 'px 0px ' + g.side + 'px)'; } },
+          { clipPath: 'inset(0px 0px 0px 0px)', ease: 'none', duration: 1 }, 0)
+        .to('.hero-copy', { y: -90, autoAlpha: 0, ease: 'none', duration: .55 }, 0);
+      // Prologue: the slit opens into a cinemascope frame, then the subtitles light up word by word.
+      const words1 = document.querySelectorAll('.l1 .w'), words2 = document.querySelectorAll('.l2 .w');
+      gsap.timeline({ scrollTrigger: { trigger: '#scene', start: 'top top', end: '+=210%', scrub: 1.1, pin: true, anticipatePin: 1 } })
+        .fromTo('#scene-media', { clipPath: 'inset(49.6% 38% 49.6% 38%)' }, { clipPath: 'inset(20% 0% 20% 0%)', ease: 'none', duration: 1 })
+        .fromTo('#scene-media img', { scale: 1.3 }, { scale: 1, ease: 'none', duration: 1.9 }, 0)
+        .to(words1, { opacity: 1, ease: 'none', duration: .18, stagger: .12 }, .8)
+        .to(words2, { opacity: 1, ease: 'none', duration: .18, stagger: .12 }, 1.35)
+        .to({}, { duration: .35 });
+      // How it works: the section holds while value builds, stage by stage.
+      const tl = gsap.timeline({ scrollTrigger: { trigger: '#exploremodel', start: 'top top', end: '+=130%', scrub: 1, pin: true, anticipatePin: 1 } });
+      fills.forEach((f, i) => {
+        tl.fromTo(f, { scaleY: 0 }, { scaleY: 1, ease: 'none', duration: 1 }, i * .85)
+          .fromTo(metas[i], { autoAlpha: .2, y: 14 }, { autoAlpha: 1, y: 0, ease: 'none', duration: .6 }, i * .85 + .25);
+      });
+      tl.to({}, { duration: .4 });
+    } else {
+      gsap.from('#scene-media', { clipPath: 'inset(0% 50% 0% 50%)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: '#scene', start: 'top 70%', once: true } });
+      const wide = ctx.conditions.flat && innerWidth > 900;
+      const tl = gsap.timeline({ paused: true, delay: .3 });
+      tl.from(fills, wide ? { scaleY: 0, duration: 1.1, stagger: .14, ease: EASE } : { scaleX: 0, duration: 1.1, stagger: .12, ease: EASE })
+        .from(metas, { y: 18, autoAlpha: 0, duration: .9, stagger: .1, ease: EASE }, '<.1');
+      onArrive('#exploremodel', tl);
+    }
+  });
+
+  // Bands (Backed by, As featured in, Partners): items rise in once.
+  document.querySelectorAll('.band').forEach(b => {
+    const tl = gsap.timeline({ paused: true });
+    tl.from(b.querySelectorAll('[data-in]'), { y: 24, autoAlpha: 0, duration: .9, stagger: .08, ease: EASE });
+    ScrollTrigger.create({ trigger: b, start: 'top 85%', once: true, onEnter: () => tl.play() });
+  });
+
+  // Revenue: tiles cascade.
+  // Revenue: white light enters the film, then refracts into nine streams as you scroll.
+  const drawn = [beam.ray, beam.glow].concat(...streams.map(st => [st.ray, st.glow]));
+  drawn.forEach(pth => { pth.setAttribute('stroke-dasharray', '1 1'); pth.setAttribute('stroke-dashoffset', '1'); });
+  const prismTl = gsap.timeline({ scrollTrigger: { trigger: '#prism', start: 'top 82%', end: 'center 52%', scrub: 1,
+    onRefresh: layoutPrism } });
+  prismTl
+    .to([beam.ray, beam.glow], { attr: { 'stroke-dashoffset': 0 }, ease: 'none', duration: .5 }, 0)
+    .fromTo('#prism-src', { autoAlpha: .2 }, { autoAlpha: 1, ease: 'none', duration: .35 }, .3)
+    .fromTo(streams.map(st => st.flow), { opacity: 0 }, { opacity: .6, ease: 'none', duration: .3 }, 1.5);
+  streams.forEach((st, i) => {
+    prismTl.to([st.ray, st.glow], { attr: { 'stroke-dashoffset': 0 }, ease: 'none', duration: .7 }, .55 + i * .08)
+      .fromTo(st.li, { autoAlpha: .12 }, { autoAlpha: 1, ease: 'none', duration: .3 }, .95 + i * .08);
+  });
+  ScrollTrigger.create({ trigger: '#prism', start: 'top bottom', end: 'bottom top', onToggle: self => prism.classList.toggle('paused', !self.isActive) });
+
+  // Close: the frame opens, the words meet, and the spectrum passes through "become" as light.
+  const closeTl = gsap.timeline({ paused: true, delay: .25 });
+  closeTl.from('#cw1', { xPercent: -14, autoAlpha: 0, duration: 1.3, ease: EASE }, .2)
+    .from('#cw3', { xPercent: 14, autoAlpha: 0, duration: 1.3, ease: EASE }, .2)
+    .from('#cw2', { yPercent: 40, autoAlpha: 0, duration: 1.1, ease: EASE }, .35)
+    .fromTo('#cw2', { backgroundPosition: '100% 50%' }, { backgroundPosition: '0% 50%', duration: 2.2, ease: 'power2.inOut' }, .6)
+    .from('#close .foot', { y: 20, autoAlpha: 0, duration: .9, ease: EASE }, .8);
+  onArrive('#close', closeTl);
+
+  // Start in the right mode once fonts and images have settled.
+  pickMode();
+  const settle = () => { const keep = current; mode = null; current = keep; pickMode(); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+  addEventListener('load', settle);
+  document.addEventListener('visibilitychange', () => { document.hidden ? gsap.ticker.sleep() : gsap.ticker.wake(); });
+})();
+</script>
+<script>
+(function(){var m=document.querySelector('.press-marquee');if(!m)return;
+if(!('IntersectionObserver' in window)){m.classList.add('run');return}
+new IntersectionObserver(function(e){m.classList.toggle('run',e[0].isIntersecting)},{threshold:.35}).observe(m)})();
+</script>
+<script>
+/* Team teaser: the first set always opens with Rohit; once the section is in view, all five
+   cards cross-fade to random team members every 3 seconds. Card heights are fixed so nothing below moves. */
+(function () {
+  const POOL = [{"n": "Suresh Menon", "r": "Vice Chairman", "p": "img/people/suresh-menon.webp"}, {"n": "Sameer Nair", "r": "Investment Committee Member", "p": "img/team/sameer.webp"}, {"n": "Jaideep Sahni", "r": "Investment Committee Member", "p": "img/people/jaideep-sahni.webp"}, {"n": "Neha Kaul", "r": "Investment Committee Member", "p": "img/people/neha-kaul.webp"}, {"n": "Michael Jacobsen", "r": "Special Advisor: Sovereign and Institutional Affairs", "p": "img/people/michael-jacobsen.webp"}, {"n": "Siddharth Roy Kapur", "r": "Principal Advisor", "p": "img/team/siddharth.webp"}, {"n": "Abhay Sinha", "r": "President, IMPPA", "p": "img/people/abhay-sinha.webp"}, {"n": "Dr. Resul Pookutty", "r": "Padma Shri, Oscar-Winning Sound Designer", "p": "img/people/resul-pookutty.webp"}, {"n": "Manoj Abraham Matthew", "r": "Director, Dubai Studios", "p": "img/people/manoj-abraham-matthew.webp"}, {"n": "Sanjay Wadhwa", "r": "Managing Partner, AP International Group", "p": "img/people/sanjay-wadhwa.webp"}, {"n": "Nikita (Sachdev) Lord", "r": "Managing Director, Luna PR & Luna Media Corp.", "p": "img/people/nikita-sachdev-lord.webp"}, {"n": "Gaurang Desai", "r": "Managing Director, Equiti Group", "p": "img/people/gaurang-desai.webp"}, {"n": "Jitendra Nagpal", "r": "Founder/GP, Capinity Partners & Tetration Ventures", "p": "img/people/jitendra-nagpal.webp"}, {"n": "Raj Kapoor", "r": "Founder, India Blockchain Alliance", "p": "img/people/raj-kapoor.webp"}, {"n": "Mihir Karlekar", "r": "Strategy, Growth & International Markets", "p": "img/people/mihir-karlekar.webp"}, {"n": "Hamed Faqirzai", "r": "Tokenisation & Capital Markets", "p": "img/team/hamed.webp"}, {"n": "Ashish Homkar", "r": "Tokenisation & Digital Assets Architecture", "p": "img/people/ashish-homkar.webp"}, {"n": "Radhika Gopal", "r": "Content & IP Origination", "p": "img/people/radhika-gopal.webp"}, {"n": "Reshma Shetty", "r": "Talent & Packaging", "p": "img/people/reshma-shetty.webp"}, {"n": "Deepak Nangalia", "r": "Investment & Slate Finance", "p": "img/people/deepak-nangalia.webp"}, {"n": "Aashish Singh", "r": "Production", "p": "img/team/aashish.webp"}, {"n": "Mini Sarma", "r": "Commercial", "p": "img/people/mini-sarma.webp"}, {"n": "Yusuf Shaikh", "r": "Exhibition, IPR & Revenue Partnerships", "p": "img/people/yusuf-shaikh.webp"}, {"n": "Krishna Kumar", "r": "Compliance & Governance", "p": "img/people/krishna-kumar.webp"}, {"n": "Hardik Puri", "r": "Compliance & Governance", "p": "img/people/hardik-puri.webp"}, {"n": "Rahat Beri", "r": "Communications Counsel", "p": "img/people/rahat-beri.webp"}, {"n": "Fiona Robertson", "r": "Legal", "p": "img/people/fiona-robertson.webp"}, {"n": "Aditya Patil", "r": "Technology, Data & Analytics", "p": "img/people/aditya-patil.webp"}, {"n": "Maasoom Shankar", "r": "Business Integration & Programme", "p": "img/people/maasoom-shankar.webp"}, {"n": "Kanchan Marathe", "r": "Creative Director", "p": "img/people/kanchan-marathe.webp"}, {"n": "Divya V Rao", "r": "Creative Director", "p": "img/people/divya-v-rao.webp"}, {"n": "Rohit Vedprakash", "r": "Content & Development", "p": "img/people/rohit-vedprakash.webp"}, {"n": "Zeni Shah", "r": "Distribution & Revenue", "p": "img/people/zeni-shah.webp"}];
+  const slots = Array.from(document.querySelectorAll('#people [data-rotate]'));
+  if (!slots.length) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  POOL.forEach(p => { const i = new Image(); i.src = p.p; });
+  let shown = [];
+  const pick = n => { const fresh = shuffle(POOL.filter(p => !shown.includes(p.n))); return (fresh.length >= n ? fresh : shuffle(POOL.slice())).slice(0, n); };
+  function put(slot, p, animate) {
+    const ph = slot.querySelector('.ph'), old = ph.querySelector('img:not(.out)');
+    const img = new Image(); img.alt = 'Portrait of ' + p.n; img.width = 800; img.height = 1000; img.src = p.p;
+    const swapText = () => { slot.querySelector('h3').textContent = p.n; slot.querySelector('.label').textContent = p.r; };
+    if (!animate) { img.className = ''; ph.appendChild(img); if (old) old.remove(); swapText(); return; }
+    img.className = 'out in'; ph.appendChild(img);
+    const go = () => requestAnimationFrame(() => requestAnimationFrame(() => {
+      slot.classList.add('swap');
+      img.classList.remove('out', 'in'); if (old) old.classList.add('out');
+      setTimeout(() => { swapText(); slot.classList.remove('swap'); }, 400);
+      setTimeout(() => { if (old) old.remove(); }, 900);
+    }));
+    img.decode ? img.decode().then(go, go) : (img.onload = go);
+  }
+  // first set: Rohit (already in the markup) plus four random people
+  const first = pick(slots.length - 1);
+  shown = ['Rohit Dalmia'].concat(first.map(p => p.n));
+  slots.slice(1).forEach((s, i) => put(s, first[i], false));
+  function next() {
+    const set = pick(slots.length); shown = set.map(p => p.n);
+    if (reduce) { slots.forEach((s, i) => put(s, set[i], false)); return; }
+    Promise.all(set.map(p => { const i = new Image(); i.src = p.p; return i.decode ? i.decode().catch(() => {}) : Promise.resolve(); }))
+      .then(() => slots.forEach((s, i) => put(s, set[i], true)));
+  }
+  const list = document.getElementById('people');
+  let hover = false, visible = false, timer = null;
+  list.addEventListener('mouseenter', () => hover = true); list.addEventListener('mouseleave', () => hover = false);
+  const start = () => { if (!timer) timer = setInterval(() => { if (!hover && visible && !document.hidden) next(); }, 3000); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(e => { visible = e[0].isIntersecting; if (visible) start(); }, { threshold: .35 }).observe(list);
+  else { visible = true; start(); }
+})();
+</script>
+
+</body></html>
