@@ -204,12 +204,10 @@ html.js-motion .shutter,html.js-motion .shutter-bg{display:flex}
 .frames i{aspect-ratio:3/4;border-radius:3px;background:var(--black);position:relative}
 .frames i::before,.frames i::after{content:"";position:absolute;left:22%;right:22%;height:2px;background:rgba(255,255,255,.28);border-radius:1px}
 .frames i::before{top:12%}.frames i::after{bottom:12%}
-/* fund lifecycle: six blocks, one per year */
-.life{width:100%}
-.waffle{width:100%;height:96px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;align-items:end}
-.waffle i{height:100%;border-radius:6px;background:var(--paper-2)}
+/* waffle */
+.waffle{width:132px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;margin-inline:0 auto}
+.waffle i{aspect-ratio:1;border-radius:2px;background:var(--paper-2)}
 .waffle i.on{background:var(--c,var(--black))}
-.life-ends{display:flex;justify-content:space-between;margin-top:18px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-p2)}
 /* script marks */
 .marks{width:100%;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:3px}
 .marks i{aspect-ratio:1;border-radius:50%;background:var(--black)}
@@ -578,10 +576,10 @@ html:has(.menu:not([hidden])){overflow:hidden}
         <p class="g-key">Each frame is one film.</p>
       </article>
       <article class="g-card" data-in>
-        <div class="g-vis"><div class="life" aria-hidden="true"><div class="waffle" id="waffle"></div><div class="life-ends"><span>Year 1</span><span>Year 6</span></div></div></div>
+        <div class="g-vis"><div class="waffle" id="waffle" aria-hidden="true"></div></div>
         <p class="g-num" data-count="6">6</p>
         <p class="g-cap">Year fund lifecycle.</p>
-        <p class="g-key">Each block is one year.</p>
+        <p class="g-key">6 year fund lifecycle</p>
       </article>
       <article class="g-card" data-in>
         <div class="g-vis"><div class="marks" id="marks" aria-hidden="true"></div></div>
@@ -839,10 +837,13 @@ html:has(.menu:not([hidden])){overflow:hidden}
   for (let i = 0; i < 30; i++) frames.appendChild(document.createElement('i'));
   const waffle = document.getElementById('waffle');
   const specs = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)', 'var(--s5)'];
-  // Six blocks, one per year of the fund's life, running through the spectrum.
-  const cells = [], lifeInk = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s3)', 'var(--s4)', 'var(--s5)'];
-  for (let i = 0; i < 6; i++) { const c = document.createElement('i'); c.className = 'on'; c.style.setProperty('--c', lifeInk[i]); waffle.appendChild(c); cells.push(c); }
-  const filled = cells.map((c, i) => i);
+  // Fill bottom-up, column by column, so 60 squares read as a rising level.
+  const cells = [];
+  for (let i = 0; i < 100; i++) { const c = document.createElement('i'); waffle.appendChild(c); cells.push(c); }
+  const order = [];
+  for (let r = 9; r >= 0; r--) for (let c = 0; c < 10; c++) order.push(r * 10 + c);
+  const filled = order.slice(0, 60);
+  filled.forEach((idx, k) => { cells[idx].classList.add('on'); cells[idx].style.setProperty('--c', specs[Math.min(4, Math.floor((idx % 10) / 2))]); });
   const marks = document.getElementById('marks');
   for (let i = 0; i < 300; i++) marks.appendChild(document.createElement('i'));
 
